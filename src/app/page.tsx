@@ -12,7 +12,9 @@ export default function Home() {
       <Header
         setCurrentView={setCurrentView}
       />
-      <Workspace />
+      <Workspace
+        currentView={currentView}
+      />
     </main>
   );
 }

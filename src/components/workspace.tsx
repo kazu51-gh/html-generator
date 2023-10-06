@@ -1,6 +1,12 @@
 import { useState } from "react";
+import BasicSetting from "@/components/basicSetting";
+import { type } from "os";
 
-export default function Workspace() {
+type Props = {
+  currentView: string
+}
+
+export default function Workspace({ currentView }: Props) {
   const [textareaData, setTextareaData] = useState('');
 
   return(
@@ -13,7 +19,11 @@ export default function Workspace() {
           placeholder="HTMLを作成していきましょう。"
         />
       </div>
-      <div className="flex-1">工事中...</div>
+      <div className="flex-1">
+        {currentView === 'page-setting' &&
+          <BasicSetting />
+        }
+      </div>
     </div>
   );
 }
