@@ -1,6 +1,6 @@
 import { useState } from "react";
 import BasicSetting from "@/components/basicSetting";
-import { type } from "os";
+import TagLists from "@/components/tagLists";
 
 type Props = {
   currentView: string
@@ -22,6 +22,9 @@ export default function Workspace({ currentView }: Props) {
       <div className="flex-1">
         {currentView === 'page-setting' &&
           <BasicSetting />
+        }
+        {currentView === 'tag-lists' &&
+          <TagLists />
         }
       </div>
     </div>
