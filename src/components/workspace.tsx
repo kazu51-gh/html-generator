@@ -1,6 +1,7 @@
 import { useState } from "react";
 import BasicSetting from "@/components/basicSetting";
 import TagLists from "@/components/tagLists";
+import Viewer from "@/components/viewer";
 
 type Props = {
   currentView: string
@@ -25,6 +26,9 @@ export default function Workspace({ currentView }: Props) {
         }
         {currentView === 'tag-lists' &&
           <TagLists />
+        }
+        {currentView === 'viewer' &&
+          <Viewer textareaData={textareaData} />
         }
       </div>
     </div>
