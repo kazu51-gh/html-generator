@@ -1,5 +1,3 @@
-'use client'
-
 import { basePath } from "../../next.config";
 import path from "path";
 import { useEffect , useState } from "react";
@@ -7,8 +5,16 @@ import { useEffect , useState } from "react";
 const BASE_PATH = basePath ? basePath : '';
 
 const BasicSetting = () => {
-  const [pageTitle, setPageTitle] = useState(sessionStorage.getItem('pageTitle') || '');
-  const [pageDescription, setPageDescription] = useState(sessionStorage.getItem('pageDescription') || '');
+  const getStoredData = (key: string, defaultData: string) => {
+    if (typeof sessionStorage !== 'undefined') {
+      return sessionStorage.getItem(key) || defaultData;
+    } else {
+      return defaultData;
+    }
+  }
+
+  const [pageTitle, setPageTitle] = useState(getStoredData('pageTitle', ''));
+  const [pageDescription, setPageDescription] = useState(getStoredData('pageDescription', ''));
   const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
