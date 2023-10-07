@@ -18,6 +18,7 @@ const Accordion = ({title, description}: Props) => {
       </summary>
       <div className="border-t border-t-gray-100 p-4 text-secondary-500">
         {description}
+        <hr className="border border-gray-200 my-4" />
         <IdAndClass />
       </div>
     </details>

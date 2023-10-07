@@ -1,6 +1,7 @@
 import Accordion from "./accordion";
 import { basePath } from "../../next.config";
 import path from "path";
+import { tagDescription } from "@/tagDescription";
 
 const BASE_PATH = basePath ? basePath : '';
 
@@ -19,7 +20,7 @@ const TagLists = () => {
       </div>
       <div className="h-2/3 mt-4 overflow-y-scroll max-w-xl">
         <div className="divide-y divide-gray-100 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
-          <Accordion title="<h1> ~ <h6> : 見出し" description="xxx" />
+          <Accordion title="<h1> ~ <h6> : 見出し" description={tagDescription.h} />
           <Accordion title="<p> : 本文" description="xxx" />
           <Accordion title="<a> : リンク" description="xxx" />
           <Accordion title="<img> : 画像" description="xxx" />
