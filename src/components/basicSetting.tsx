@@ -1,3 +1,5 @@
+'use client'
+
 import { basePath } from "../../next.config";
 import path from "path";
 import { useEffect , useState } from "react";
