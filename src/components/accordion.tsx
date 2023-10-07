@@ -1,3 +1,5 @@
+import IdAndClass from "./idAndClass";
+
 type Props = {
   title: string,
   description: string
@@ -16,9 +18,7 @@ const Accordion = ({title, description}: Props) => {
       </summary>
       <div className="border-t border-t-gray-100 p-4 text-secondary-500">
         {description}
-        <ul>
-          <li draggable="true">ドラッグするタグブロック</li>
-        </ul>
+        <IdAndClass />
       </div>
     </details>
   );

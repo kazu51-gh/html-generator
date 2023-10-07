@@ -17,7 +17,7 @@ const TagLists = () => {
           />
         </div>
       </div>
-      <div className="mt-4 max-w-lg">
+      <div className="mt-4 max-w-xl">
         <div className="divide-y divide-gray-100 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
           <Accordion title="title" description="xxx" />
           <Accordion title="title" description="xxx" />
