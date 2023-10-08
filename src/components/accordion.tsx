@@ -2,10 +2,12 @@ import IdAndClass from "./idAndClass";
 
 type Props = {
   title: string,
-  description: string
+  description: string,
+  required: string,
+  recommended: string
 }
 
-const Accordion = ({title, description}: Props) => {
+const Accordion = ({title, description, required, recommended}: Props) => {
   return(
     <details className="group">
       <summary className="flex cursor-pointer list-none items-center justify-between p-4 text-lg font-medium text-secondary-900 group-open:bg-gray-50">
@@ -18,6 +20,9 @@ const Accordion = ({title, description}: Props) => {
       </summary>
       <div className="border-t border-t-gray-100 p-4 text-secondary-500">
         {description}
+        <br />
+        <div className="my-3">{required}</div>
+        <div className="my-3">{recommended}</div>
         <hr className="border border-gray-200 my-4" />
         <IdAndClass />
       </div>
