@@ -1,29 +1,21 @@
 import { basePath } from "../../next.config";
 import path from "path";
-import { useEffect , useState } from "react";
+import { Dispatch, FC, SetStateAction, useState } from "react";
 
 const BASE_PATH = basePath ? basePath : '';
 
-const BasicSetting = () => {
-  const getStoredData = (key: string, defaultData: string) => {
-    if (typeof sessionStorage !== 'undefined') {
-      return sessionStorage.getItem(key) || defaultData;
-    } else {
-      return defaultData;
-    }
-  }
-
-  const [pageTitle, setPageTitle] = useState(getStoredData('pageTitle', ''));
-  const [pageDescription, setPageDescription] = useState(getStoredData('pageDescription', ''));
+const BasicSetting: FC<{
+  pageTitle: string,
+  setPageTitle: Dispatch<SetStateAction<string>>,
+  pageDescription: string,
+  setPageDescription: Dispatch<SetStateAction<string>>
+}> = ({
+  pageTitle,
+  setPageTitle,
+  pageDescription,
+  setPageDescription
+}) => {
   const [openModal, setOpenModal] = useState(false);
-
-  useEffect(() => {
-    sessionStorage.setItem('pageTitle', pageTitle);
-  }, [pageTitle]);
-
-  useEffect(() => {
-    sessionStorage.setItem('pageDescription', pageDescription);
-  }, [pageDescription]);
 
   return(
     <div>

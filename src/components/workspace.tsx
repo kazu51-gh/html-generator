@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BasicSetting from "@/components/basicSetting";
 import HtmlDownload from "@/components/htmlDownload";
 import TagLists from "@/components/tagLists";
@@ -8,8 +8,27 @@ type Props = {
   currentView: string
 }
 
+const getStoredData = (key: string, defaultData: string) => {
+  if (typeof sessionStorage !== 'undefined') {
+    return sessionStorage.getItem(key) || defaultData;
+  } else {
+    return defaultData;
+  }
+}
+
 export default function Workspace({ currentView }: Props) {
+  
+  const [pageTitle, setPageTitle] = useState(getStoredData('pageTitle', ''));
+  const [pageDescription, setPageDescription] = useState(getStoredData('pageDescription', ''));
   const [textareaData, setTextareaData] = useState('');
+
+  useEffect(() => {
+    sessionStorage.setItem('pageTitle', pageTitle);
+  }, [pageTitle]);
+
+  useEffect(() => {
+    sessionStorage.setItem('pageDescription', pageDescription);
+  }, [pageDescription]);
 
   return(
     <div className="flex">
@@ -23,7 +42,12 @@ export default function Workspace({ currentView }: Props) {
       </div>
       <div className="flex-1">
         {currentView === 'page-setting' &&
-          <BasicSetting />
+          <BasicSetting
+            pageTitle={pageTitle}
+            setPageTitle={setPageTitle}
+            pageDescription={pageDescription}
+            setPageDescription={setPageDescription}
+          />
         }
         {currentView === 'tag-lists' &&
           <TagLists />
@@ -32,7 +56,11 @@ export default function Workspace({ currentView }: Props) {
           <Viewer textareaData={textareaData} />
         }
         {currentView === 'html-download' &&
-          <HtmlDownload textareaData={textareaData} />
+          <HtmlDownload
+            pageTitle={pageTitle}
+            pageDescription={pageDescription}
+            textareaData={textareaData}
+          />
         }
       </div>
     </div>

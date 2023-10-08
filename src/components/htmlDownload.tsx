@@ -4,10 +4,12 @@ import path from "path";
 const BASE_PATH = basePath ? basePath : '';
 
 type Props = {
+  pageTitle: string,
+  pageDescription: string,
   textareaData: string
 }
 
-const makeHTML = (textareaData: string) => {
+const makeHTML = (title: string, description: string, textareaData: string) => {
   const htmlTemplate = `
 <!DOCTYPE html>
 <html lang="ja">
@@ -21,8 +23,7 @@ const makeHTML = (textareaData: string) => {
   </body>
 </html>
 `;
-
-  const text = htmlTemplate.replace('{contents}', textareaData);
+  const text = htmlTemplate.replace('{title}', title).replace('{description}', description).replace('{contents}', textareaData);
   const downloadData = new Blob([text], {type: 'text/html'});
   const downloadLink = document.createElement('a');
   downloadLink.href = URL.createObjectURL(downloadData);
@@ -30,7 +31,8 @@ const makeHTML = (textareaData: string) => {
   downloadLink.click();
 }
 
-const HtmlDownload = ({ textareaData }: Props) => {
+const HtmlDownload = ({ pageTitle, pageDescription, textareaData }: Props) => {
+  
   return(
     <div>
       <div className="flex">
@@ -46,7 +48,7 @@ const HtmlDownload = ({ textareaData }: Props) => {
       <div className="download-html">
         <button
           className="bg-white border border-black font-medium inline-block my-4 px-8 py-4 rounded text-base text-black"
-          onClick={() => makeHTML(textareaData)}
+          onClick={() => makeHTML(pageTitle, pageDescription, textareaData)}
           type="button"
         >
           ダウンロード
