@@ -39,9 +39,9 @@ const Header: React.FC<ChildProps> = ({ setCurrentView } ) => {
           </li>
           <li
             className="cursor-pointer mx-5"
-            onClick={() => setCurrentView('switch-blocks')}
+            onClick={() => setCurrentView('html-download')}
           >
-            要素入れ替え
+            ダウンロード
           </li>
         </ul>
       </div>

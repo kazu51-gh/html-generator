@@ -1,5 +1,6 @@
 import { useState } from "react";
 import BasicSetting from "@/components/basicSetting";
+import HtmlDownload from "@/components/htmlDownload";
 import TagLists from "@/components/tagLists";
 import Viewer from "@/components/viewer";
 
@@ -29,6 +30,9 @@ export default function Workspace({ currentView }: Props) {
         }
         {currentView === 'viewer' &&
           <Viewer textareaData={textareaData} />
+        }
+        {currentView === 'html-download' &&
+          <HtmlDownload />
         }
       </div>
     </div>
