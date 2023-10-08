@@ -32,7 +32,7 @@ export default function Workspace({ currentView }: Props) {
           <Viewer textareaData={textareaData} />
         }
         {currentView === 'html-download' &&
-          <HtmlDownload />
+          <HtmlDownload textareaData={textareaData} />
         }
       </div>
     </div>
