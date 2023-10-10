@@ -1,3 +1,4 @@
+import { useState } from "react";
 import IdAndClass from "./idAndClass";
 
 type Props = {
@@ -10,14 +11,57 @@ type Props = {
 
 
 const Accordion = ({title, description, required, recommended, tagList}: Props) => {
-  const tagLists = tagList.map((tag, index) =>
-    <li
-      key={index}
-      className="border border-black inline-block"
+  const [radioValue, setRadioValue] = useState('h1');
+
+  const selectTag = tagList.map((tag) =>
+    <div
+      key={tag}
+      className="flex"
     >
-      {tag}
-    </li>
+      <input
+        id={tag}
+        className="mr-1"
+        type="radio"
+        value={tag}
+        checked={tag === radioValue}
+        onChange={(e) => setRadioValue(e.target.value)}
+      />
+      <label
+        className="mr-3"
+        htmlFor={tag}
+      >
+        {tag}
+      </label>
+    </div>
   );
+
+  const determinedByRadio = (radioValue: string) => {
+    if (radioValue === 'h1') { return('<h1>text</h1>'); }
+    else if (radioValue === 'h2') { return('<h2>text</h2>'); }
+    else if (radioValue === 'h3') { return('<h3>text</h3>'); }
+    else if (radioValue === 'h4') { return('<h4>text</h4>'); }
+    else if (radioValue === 'h5') { return('<h5>text</h5>'); }
+    else if (radioValue === 'h6') { return('<h6>text</h6>'); }
+  }
+
+  const determinedByTagName = (tagName: string) => {
+    if (tagName === 'p') { return('<p>text</p>'); }
+    else if (tagName === 'a') { return('<a href="link_here">text</a>'); }
+    else if (tagName === 'img') { return('<img src="link_here" alt="text">'); }
+    else if (tagName === 'ul') { return('<ul><li>text</li></ul>'); }
+    else if (tagName === 'ol') { return('<ol><li>text</li></ol>'); }
+    else if (tagName === 'div') { return('<div>elements</div>'); }
+    else if (tagName === 'span') { return('<span>elements</span>'); }
+    else if (tagName === 'br') { return('<br />'); }
+    else if (tagName === 'hr') { return('<hr/>'); }
+    else if (tagName === 'strong') { return('<strong>text</strong>'); }
+    else if (tagName === 'blockquote') { return('<blockquote cite="url">text</blockquote>'); }
+    else if (tagName === 'code') { return('<code>code</code>'); }
+    else if (tagName === 'input') { return('<input type="" />'); }
+    else if (tagName === 'textarea') { return('<textarea></textarea>'); }
+    else if (tagName === 'button') { return('<button>text</button>'); }
+    else if (tagName === 'table') { return('<table></table>'); }
+  }
 
   return(
     <details className="group">
@@ -36,9 +80,21 @@ const Accordion = ({title, description, required, recommended, tagList}: Props) 
         <div className="my-3">{recommended}</div>
         <hr className="border border-gray-200 my-4" />
         <IdAndClass />
-        <ul>
-          {tagLists}
-        </ul>
+        {tagList.length !== 1 &&
+          <div>
+            <div className="flex">
+              {selectTag}
+            </div>
+            <div className="bg-gray-200 inline-block my-3 px-3 py-1.5">
+              {determinedByRadio(radioValue)}
+            </div>
+          </div>
+        }
+        {tagList.length === 1 &&
+          <div className="bg-gray-200 inline-block my-3 px-3 py-1.5">
+            {determinedByTagName(tagList[0])}
+          </div>
+        }
       </div>
     </details>
   );
