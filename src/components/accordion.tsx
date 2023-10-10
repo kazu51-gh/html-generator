@@ -4,10 +4,21 @@ type Props = {
   title: string,
   description: string,
   required: string,
-  recommended: string
+  recommended: string,
+  tagList: string[]
 }
 
-const Accordion = ({title, description, required, recommended}: Props) => {
+
+const Accordion = ({title, description, required, recommended, tagList}: Props) => {
+  const tagLists = tagList.map((tag, index) =>
+    <li
+      key={index}
+      className="border border-black inline-block"
+    >
+      {tag}
+    </li>
+  );
+
   return(
     <details className="group">
       <summary className="flex cursor-pointer list-none items-center justify-between p-4 text-lg font-medium text-secondary-900 group-open:bg-gray-50">
@@ -25,6 +36,9 @@ const Accordion = ({title, description, required, recommended}: Props) => {
         <div className="my-3">{recommended}</div>
         <hr className="border border-gray-200 my-4" />
         <IdAndClass />
+        <ul>
+          {tagLists}
+        </ul>
       </div>
     </details>
   );

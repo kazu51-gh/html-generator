@@ -17,3 +17,23 @@ export const tagDescription = {
   button: 'ボタンを作成するタグです。ユーザがクリックやタップなどをすることで指定の操作を実行します(フォームの送信やダイヤログの開閉など)。',
   table: 'データを表形式で表示するタグです。<table>関連のタグを組み合わせることで、様々な行や列を定義することが出来ます。',
 };
+
+export const tagList = {
+  h: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+  p: ['p'],
+  a: ['a'],
+  img: ['img'],
+  ul: ['ul'],
+  ol: ['ol'],
+  div: ['div'],
+  span: ['span'],
+  br: ['br'],
+  hr: ['hr'],
+  strong: ['strong'],
+  blockquote: ['blockquote'],
+  code: ['code'],
+  input: ['input'],
+  textarea: ['textarea'],
+  button: ['button'],
+  table: ['table'],
+}
