@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { basePath } from "../../next.config";
 import path from "path";
 import parse from "html-react-parser";
@@ -5,10 +6,10 @@ import parse from "html-react-parser";
 const BASE_PATH = basePath ? basePath : '';
 
 type Props = {
-  textareaData: string
+  textareaData: string;
 }
 
-const Viewer = ({ textareaData }: Props) => {
+const Viewer: FC<Props> = ({ textareaData }) => {
   const text = parse(textareaData);
   
   return(

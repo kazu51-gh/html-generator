@@ -1,17 +1,10 @@
+import { FC } from "react";
 import { basePath } from "../../next.config";
 import path from "path";
 
 const BASE_PATH = basePath ? basePath : '';
 
-type Props = {
-  pageTitle: string,
-  pageDescription: string,
-  textareaData: string
-}
-
-const makeHTML = (title: string, description: string, textareaData: string) => {
-  const htmlTemplate = `
-<!DOCTYPE html>
+const htmlTemplate =`<!DOCTYPE html>
 <html lang="ja">
   <head>
     <meta charset="UTF-8">
@@ -23,16 +16,25 @@ const makeHTML = (title: string, description: string, textareaData: string) => {
   </body>
 </html>
 `;
-  const text = htmlTemplate.replace('{title}', title).replace('{description}', description).replace('{contents}', textareaData);
-  const downloadData = new Blob([text], {type: 'text/html'});
-  const downloadLink = document.createElement('a');
-  downloadLink.href = URL.createObjectURL(downloadData);
-  downloadLink.download = 'sample.html';
-  downloadLink.click();
+
+type Props = {
+  pageTitle: string;
+  pageDescription: string;
+  textareaData: string;
 }
 
-const HtmlDownload = ({ pageTitle, pageDescription, textareaData }: Props) => {
-  
+const HtmlDownload:FC<Props> = ({ pageTitle, pageDescription, textareaData }) => {
+  const makeHTML = (title: string, description: string, textareaData: string) => {
+    const text = htmlTemplate.replace('{title}', title)
+                            .replace('{description}', description)
+                            .replace('{contents}', textareaData);
+    const downloadData = new Blob([text], {type: 'text/html'});
+    const downloadLink = document.createElement('a');
+    downloadLink.href = URL.createObjectURL(downloadData);
+    downloadLink.download = 'sample.html';
+    downloadLink.click();
+  }
+
   return(
     <div>
       <div className="flex">

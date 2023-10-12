@@ -1,20 +1,17 @@
+import { Dispatch, FC, SetStateAction, useState } from "react";
 import { basePath } from "../../next.config";
 import path from "path";
-import { Dispatch, FC, SetStateAction, useState } from "react";
 
 const BASE_PATH = basePath ? basePath : '';
 
-const BasicSetting: FC<{
-  pageTitle: string,
-  setPageTitle: Dispatch<SetStateAction<string>>,
-  pageDescription: string,
-  setPageDescription: Dispatch<SetStateAction<string>>
-}> = ({
-  pageTitle,
-  setPageTitle,
-  pageDescription,
-  setPageDescription
-}) => {
+type Props = {
+  pageTitle: string;
+  setPageTitle: Dispatch<SetStateAction<string>>;
+  pageDescription: string;
+  setPageDescription: Dispatch<SetStateAction<string>>;
+}
+
+const BasicSetting: FC<Props> = ({ pageTitle, setPageTitle, pageDescription, setPageDescription }) => {
   const [openModal, setOpenModal] = useState(false);
 
   return(

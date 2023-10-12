@@ -1,23 +1,22 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import BasicSetting from "@/components/basicSetting";
 import HtmlDownload from "@/components/htmlDownload";
 import TagLists from "@/components/tagLists";
 import Viewer from "@/components/viewer";
 
 type Props = {
-  currentView: string
+  currentView: string;
 }
 
-const getStoredData = (key: string, defaultData: string) => {
-  if (typeof sessionStorage !== 'undefined') {
-    return sessionStorage.getItem(key) || defaultData;
-  } else {
-    return defaultData;
+const Workspace: FC<Props> = ({ currentView }) => {
+  const getStoredData = (key: string, defaultData: string) => {
+    if (typeof sessionStorage !== 'undefined') {
+      return sessionStorage.getItem(key) || defaultData;
+    } else {
+      return defaultData;
+    }
   }
-}
 
-export default function Workspace({ currentView }: Props) {
-  
   const [pageTitle, setPageTitle] = useState(getStoredData('pageTitle', ''));
   const [pageDescription, setPageDescription] = useState(getStoredData('pageDescription', ''));
   const [textareaData, setTextareaData] = useState('');
@@ -66,3 +65,5 @@ export default function Workspace({ currentView }: Props) {
     </div>
   );
 }
+
+export default Workspace;

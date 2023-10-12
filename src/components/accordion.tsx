@@ -1,16 +1,16 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import IdAndClass from "./idAndClass";
 
 type Props = {
-  title: string,
-  description: string,
-  required: string,
-  recommended: string,
-  tagList: string[]
+  title: string;
+  description: string;
+  required: string;
+  recommended: string;
+  tagList: string[];
 }
 
 
-const Accordion = ({title, description, required, recommended, tagList}: Props) => {
+const Accordion: FC<Props> = ({title, description, required, recommended, tagList}) => {
   const [radioValue, setRadioValue] = useState('h1');
   const [ulListNum, setUlListNum] = useState(1);
   const [olListNum, setOlListNum] = useState(1);

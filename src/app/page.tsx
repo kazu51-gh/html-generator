@@ -4,7 +4,7 @@ import { useState } from "react";
 import Header from '@/components/header';
 import Workspace from "@/components/workspace";
 
-export default function Home() {
+const Home = () => {
   const [currentView, setCurrentView] = useState<string>('page-setting');
   
   return (
@@ -18,3 +18,5 @@ export default function Home() {
     </main>
   );
 }
+
+export default Home;

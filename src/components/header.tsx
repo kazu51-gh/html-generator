@@ -1,14 +1,14 @@
+import { Dispatch, FC, SetStateAction } from "react";
 import path from "path";
 import { basePath } from "../../next.config";
-import React from "react";
 
 const BASE_PATH = basePath ? basePath : "";
 
-interface ChildProps {
-  setCurrentView: React.Dispatch<React.SetStateAction<string>>;
+type Props = {
+  setCurrentView: Dispatch<SetStateAction<string>>;
 }
 
-const Header: React.FC<ChildProps> = ({ setCurrentView } ) => {
+const Header: FC<Props> = ({ setCurrentView }) => {
   return (
     <header>
       <div className="container flex flex-wrap flex-col md:flex-row items-center mx-auto p-5">

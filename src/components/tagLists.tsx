@@ -20,7 +20,7 @@ const TagLists = () => {
       </div>
       <div className="h-2/3 mt-4 overflow-y-scroll max-w-xl">
         <div className="divide-y divide-gray-100 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
-          <Accordion 
+          <Accordion
             title="<h1> ~ <h6> : 見出し"
             description={tagDescription.h}
             required=""
