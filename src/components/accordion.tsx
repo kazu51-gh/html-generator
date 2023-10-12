@@ -12,6 +12,8 @@ type Props = {
 
 const Accordion = ({title, description, required, recommended, tagList}: Props) => {
   const [radioValue, setRadioValue] = useState('h1');
+  const [ulListNum, setUlListNum] = useState(1);
+  const [olListNum, setOlListNum] = useState(1);
 
   const selectTag = tagList.map((tag) =>
     <div
@@ -48,8 +50,6 @@ const Accordion = ({title, description, required, recommended, tagList}: Props) 
     if (tagName === 'p') { return('<p>text</p>'); }
     else if (tagName === 'a') { return('<a href="link_here">text</a>'); }
     else if (tagName === 'img') { return('<img src="link_here" alt="text">'); }
-    else if (tagName === 'ul') { return('<ul><li>text</li></ul>'); }
-    else if (tagName === 'ol') { return('<ol><li>text</li></ol>'); }
     else if (tagName === 'div') { return('<div>elements</div>'); }
     else if (tagName === 'span') { return('<span>elements</span>'); }
     else if (tagName === 'br') { return('<br />'); }
@@ -62,6 +62,113 @@ const Accordion = ({title, description, required, recommended, tagList}: Props) 
     else if (tagName === 'button') { return('<button>text</button>'); }
     else if (tagName === 'table') { return('<table></table>'); }
   }
+
+  const generateUlLists = () => {
+    let list = '\t';
+    if (ulListNum === 1) {
+      list = list + `<li>text</li>`
+      return list;
+    } else if (ulListNum === 2) {
+      list = list + `<li>text</li>\r\n\t<li>text</li>`
+      return list;
+    }
+    for(let i = 0; i < ulListNum - 1; i++) {
+      list = list + '<li>text</li>\r\n\t';
+    }
+    list = list + '<li>text</li>';
+    return list;
+  }
+
+  const generateOlLists = () => {
+    let list = '\t';
+    if (olListNum === 1) {
+      list = list + `<li>text</li>`
+      return list;
+    } else if (olListNum === 2) {
+      list = list + `<li>text</li>\r\n\t<li>text</li>`
+      return list;
+    }
+    for(let i = 0; i < olListNum - 1; i++) {
+      list = list + '<li>text</li>\r\n\t';
+    }
+    list = list + '<li>text</li>';
+    return list;
+  }
+
+  const generateUlText = () => {
+    return(`<ul>\r\n${generateUlLists()}\r\n</ul>`);
+  }
+
+  const generateOlText = () => {
+    return(`<ol>\r\n${generateOlLists()}\r\n</ol>`);
+  }
+
+  const checkNeedConsideration = (tagList: string[]) => {
+    if (tagList.length !== 1) {
+      return(
+        <div>
+          <div className="flex">
+            {selectTag}
+          </div>
+          <div className="bg-gray-200 inline-block my-3 px-3 py-1.5">
+            {determinedByRadio(radioValue)}
+          </div>
+        </div>
+      );
+    } else if (tagList[0] === 'ul') {
+      return(
+        <div>
+          {ulList}
+          <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
+            {generateUlText()}
+          </div>
+        </div>
+      );
+    } else if (tagList[0] === 'ol') {
+      return(
+        <div>
+          {olList}
+          <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
+            {generateOlText()}
+          </div>
+        </div>
+      );
+    } else {
+      return(
+        <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
+          {determinedByTagName(tagList[0])}
+        </div>
+      );
+    }
+  }
+
+  const ulList =
+  <div>
+    <div className="flex">
+      <p>リストの数(1以上の整数を入力)：</p>
+      <input
+        className="border border-black px-1 w-12"
+        min={1}
+        onChange={(e) => setUlListNum(parseInt(e.target.value))}
+        required
+        type="number"
+      />
+    </div>
+  </div>
+
+  const olList =
+  <div>
+    <div className="flex">
+      <p>リストの数(1以上の整数を入力)：</p>
+      <input
+        className="border border-black px-1 w-12"
+        min={1}
+        onChange={(e) => setOlListNum(parseInt(e.target.value))}
+        required
+        type="number"
+      />
+    </div>
+  </div>
 
   return(
     <details className="group">
@@ -80,21 +187,7 @@ const Accordion = ({title, description, required, recommended, tagList}: Props) 
         <div className="my-3">{recommended}</div>
         <hr className="border border-gray-200 my-4" />
         <IdAndClass />
-        {tagList.length !== 1 &&
-          <div>
-            <div className="flex">
-              {selectTag}
-            </div>
-            <div className="bg-gray-200 inline-block my-3 px-3 py-1.5">
-              {determinedByRadio(radioValue)}
-            </div>
-          </div>
-        }
-        {tagList.length === 1 &&
-          <div className="bg-gray-200 inline-block my-3 px-3 py-1.5">
-            {determinedByTagName(tagList[0])}
-          </div>
-        }
+        {checkNeedConsideration(tagList)}
       </div>
     </details>
   );
