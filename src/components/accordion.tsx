@@ -1,6 +1,8 @@
 import { FC, useState } from "react";
 import IdAndClass from "./idAndClass";
 import { tagCode } from "@/tagData";
+import { Ul } from "@/generateHTMLCode/ul";
+import { Ol } from "@/generateHTMLCode/ol";
 
 type Props = {
   title: string;
@@ -17,10 +19,7 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
   const [olListNum, setOlListNum] = useState(1);
 
   const selectTag = tagList.map((tag) =>
-    <div
-      key={tag}
-      className="flex"
-    >
+    <div key={tag} className="flex">
       <input
         id={tag}
         className="mr-1"
@@ -29,10 +28,7 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
         checked={tag === radioValue}
         onChange={(e) => setRadioValue(e.target.value)}
       />
-      <label
-        className="mr-3"
-        htmlFor={tag}
-      >
+      <label className="mr-3" htmlFor={tag}>
         {tag}
       </label>
     </div>
@@ -48,44 +44,16 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
     return htmlCode;
   }
 
-  const generateUlLists = () => {
-    let list = '\t';
-    if (ulListNum === 1) {
-      list = list + `<li>text</li>`
-      return list;
-    } else if (ulListNum === 2) {
-      list = list + `<li>text</li>\r\n\t<li>text</li>`
-      return list;
-    }
-    for(let i = 0; i < ulListNum - 1; i++) {
-      list = list + '<li>text</li>\r\n\t';
-    }
-    list = list + '<li>text</li>';
-    return list;
+  const generateUl = () => {
+    const ul = new Ul(ulListNum);
+    const code = ul.generateCode();
+    return(code);
   }
 
-  const generateOlLists = () => {
-    let list = '\t';
-    if (olListNum === 1) {
-      list = list + `<li>text</li>`
-      return list;
-    } else if (olListNum === 2) {
-      list = list + `<li>text</li>\r\n\t<li>text</li>`
-      return list;
-    }
-    for(let i = 0; i < olListNum - 1; i++) {
-      list = list + '<li>text</li>\r\n\t';
-    }
-    list = list + '<li>text</li>';
-    return list;
-  }
-
-  const generateUlText = () => {
-    return(`<ul>\r\n${generateUlLists()}\r\n</ul>`);
-  }
-
-  const generateOlText = () => {
-    return(`<ol>\r\n${generateOlLists()}\r\n</ol>`);
+  const generateOl = () => {
+    const ol = new Ol(olListNum);
+    const code = ol.generateCode();
+    return(code);
   }
 
   const checkNeedConsideration = (tagList: string[]) => {
@@ -105,7 +73,7 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
         <div>
           {ulList}
           <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
-            {generateUlText()}
+            {generateUl()}
           </div>
         </div>
       );
@@ -114,7 +82,7 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
         <div>
           {olList}
           <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
-            {generateOlText()}
+            {generateOl()}
           </div>
         </div>
       );
@@ -133,6 +101,7 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
       <p>リストの数(1以上の整数を入力)：</p>
       <input
         className="border border-black px-1 w-12"
+        defaultValue={1}
         min={1}
         onChange={(e) => setUlListNum(parseInt(e.target.value))}
         required
@@ -147,6 +116,7 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
       <p>リストの数(1以上の整数を入力)：</p>
       <input
         className="border border-black px-1 w-12"
+        defaultValue={1}
         min={1}
         onChange={(e) => setOlListNum(parseInt(e.target.value))}
         required
