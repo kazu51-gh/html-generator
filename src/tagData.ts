@@ -37,3 +37,28 @@ export const tagList = {
   button: ['button'],
   table: ['table'],
 }
+
+export const tagCode = [
+  {name: 'h1', code: '<h1>見出し</h1>'},
+  {name: 'h2', code: '<h2>見出し</h2>'},
+  {name: 'h3', code: '<h3>見出し</h3>'},
+  {name: 'h4', code: '<h4>見出し</h4>'},
+  {name: 'h5', code: '<h5>見出し</h5>'},
+  {name: 'h6', code: '<h6>見出し</h6>'},
+  {name: 'p', code: '<p>テキスト</p>'},
+  {name: 'a', code: '<a href="link_here">表示するテキスト</a>'},
+  {name: 'img', code: '<img src="link_here" alt="text">'},
+  {name: 'ul', code: '<ul><li>リスト</li></ul>'},
+  {name: 'ol', code: '<ol><li>リスト</li></ol>'},
+  {name: 'div', code: '<div>コンテナの中身</div>'},
+  {name: 'span', code: '<span>コンテナの中身</span>'},
+  {name: 'br', code: '<br />'},
+  {name: 'hr', code: '<hr/>'},
+  {name: 'strong', code: '<strong>テキスト</strong>'},
+  {name: 'blockquote', code: '<blockquote cite="url">引用文</blockquote>'},
+  {name: 'code', code: '<code>コード</code>'},
+  {name: 'input', code: '<input type="" />'},
+  {name: 'textarea', code: '<textarea></textarea>'},
+  {name: 'button', code: '<button>ボタンに表示するテキスト</button>'},
+  {name: 'table', code: '<table>テーブルの中身</table>'},
+];

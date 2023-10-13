@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import IdAndClass from "./idAndClass";
+import { tagCode } from "@/tagData";
 
 type Props = {
   title: string;
@@ -38,29 +39,13 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
   );
 
   const determinedByRadio = (radioValue: string) => {
-    if (radioValue === 'h1') { return('<h1>text</h1>'); }
-    else if (radioValue === 'h2') { return('<h2>text</h2>'); }
-    else if (radioValue === 'h3') { return('<h3>text</h3>'); }
-    else if (radioValue === 'h4') { return('<h4>text</h4>'); }
-    else if (radioValue === 'h5') { return('<h5>text</h5>'); }
-    else if (radioValue === 'h6') { return('<h6>text</h6>'); }
+    const htmlCode = tagCode.find((tag) => tag.name === radioValue)?.code;
+    return htmlCode;
   }
 
   const determinedByTagName = (tagName: string) => {
-    if (tagName === 'p') { return('<p>text</p>'); }
-    else if (tagName === 'a') { return('<a href="link_here">text</a>'); }
-    else if (tagName === 'img') { return('<img src="link_here" alt="text">'); }
-    else if (tagName === 'div') { return('<div>elements</div>'); }
-    else if (tagName === 'span') { return('<span>elements</span>'); }
-    else if (tagName === 'br') { return('<br />'); }
-    else if (tagName === 'hr') { return('<hr/>'); }
-    else if (tagName === 'strong') { return('<strong>text</strong>'); }
-    else if (tagName === 'blockquote') { return('<blockquote cite="url">text</blockquote>'); }
-    else if (tagName === 'code') { return('<code>code</code>'); }
-    else if (tagName === 'input') { return('<input type="" />'); }
-    else if (tagName === 'textarea') { return('<textarea></textarea>'); }
-    else if (tagName === 'button') { return('<button>text</button>'); }
-    else if (tagName === 'table') { return('<table></table>'); }
+    const htmlCode = tagCode.find((tag) => tag.name === tagName)?.code;
+    return htmlCode;
   }
 
   const generateUlLists = () => {
