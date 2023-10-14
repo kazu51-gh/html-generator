@@ -41,8 +41,8 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
   }
 
   const determinedByTagName = (tagName: string) => {
-    const htmlCode = tagCode.find((tag) => tag.name === tagName)?.code;
-    return htmlCode;
+    const tag = new GenerateTag();
+    return tag.generate(tagName);
   }
 
   const generateUl = () => {

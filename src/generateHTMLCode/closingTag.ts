@@ -7,7 +7,7 @@ import { Tag } from "./tag";
 export class ClosingTag extends Tag {
   public tagName: string;
 
-  constructor(tagName: string) {
+  constructor(tagName: string = '') {
     super();
     this.tagName = tagName;
   }

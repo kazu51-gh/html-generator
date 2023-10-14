@@ -5,7 +5,7 @@
 export class Contents extends Object {
   public contents: string | Contents;
 
-  constructor(contents: string | Contents) {
+  constructor(contents: string | Contents = '') {
     super();
     this.contents = contents;
   }

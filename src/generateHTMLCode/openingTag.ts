@@ -8,7 +8,7 @@ export class OpeningTag extends Tag {
   public tagName: string;
   public attribute: string;
 
-  constructor(tagName: string, attribute: string) {
+  constructor(tagName: string = '', attribute: string = '') {
     super();
     this.tagName = tagName;
     this.attribute = attribute;
@@ -19,6 +19,6 @@ export class OpeningTag extends Tag {
     if (this.attribute === '') {
       return(tag.lessThan + this.tagName + tag.greaterThan);
     }
-    return(tag.lessThan + this.tagName + this.attribute + tag.greaterThan);
+    return(tag.lessThan + this.tagName + ' ' + this.attribute + tag.greaterThan);
   }
 }
