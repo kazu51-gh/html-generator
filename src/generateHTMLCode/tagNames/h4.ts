@@ -20,11 +20,10 @@ export class H4 extends PairTagElement {
 
   /**
    * h4タグのコードを生成する
-   * @param text コンテンツの内容
    * @returns 生成したコード
    */
-  public generate(text: string): string {
-    return(this.createOpeningTag() + this.createContents(text) + this.createClosingTag());
+  public generate(): string {
+    return(this.createOpeningTag() + this.createContents('テキスト') + this.createClosingTag());
   }
 
   /**
