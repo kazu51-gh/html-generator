@@ -3,7 +3,7 @@ import IdAndClass from "./idAndClass";
 import { tagCode } from "@/tagData";
 import { Ul } from "@/generateHTMLCode/ul";
 import { Ol } from "@/generateHTMLCode/ol";
-import { H } from "@/generateHTMLCode/tagNames/h";
+import { GenerateTag } from "@/generateHTMLCode/generateTag";
 
 type Props = {
   title: string;
@@ -36,7 +36,7 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
   );
 
   const determinedByRadio = (radioValue: string) => {
-    const tag = new H();
+    const tag = new GenerateTag();
     return tag.generate(radioValue);
   }
 
