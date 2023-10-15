@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import IdAndClass from "./idAndClass";
-import { TagElement } from "@/generateHTMLTag/tagElement";
+import { TagElement } from "@/generateTag/tagElement";
 
 type Props = {
   title: string;
