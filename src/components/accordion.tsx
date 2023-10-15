@@ -1,9 +1,6 @@
 import { FC, useState } from "react";
 import IdAndClass from "./idAndClass";
-import { tagCode } from "@/tagData";
-import { Ul } from "@/generateHTMLCode/ul";
-import { Ol } from "@/generateHTMLCode/ol";
-import { GenerateTag } from "@/generateHTMLCode/generateTag";
+import { TagElement } from "@/generateHTMLTag/tagElement";
 
 type Props = {
   title: string;
@@ -18,6 +15,8 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
   const [radioValue, setRadioValue] = useState('h1');
   const [ulListNum, setUlListNum] = useState(1);
   const [olListNum, setOlListNum] = useState(1);
+
+  const emptyElementTag = ['br', 'hr', 'img', 'input'];
 
   const selectTag = tagList.map((tag) =>
     <div key={tag} className="flex">
@@ -35,26 +34,14 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
     </div>
   );
 
-  const determinedByRadio = (radioValue: string) => {
-    const tag = new GenerateTag();
-    return tag.generate(radioValue);
+  const generateEmptyTagElement = (tagName: string): string => {
+    const element = new TagElement();
+    return element.getEmptyTagElement(tagName);
   }
 
-  const determinedByTagName = (tagName: string) => {
-    const tag = new GenerateTag();
-    return tag.generate(tagName);
-  }
-
-  const generateUl = () => {
-    const ul = new Ul(ulListNum);
-    const code = ul.generateCode();
-    return(code);
-  }
-
-  const generateOl = () => {
-    const ol = new Ol(olListNum);
-    const code = ol.generateCode();
-    return(code);
+  const generatePairTagElement = (tagName: string, contents:string) => {
+    const element = new TagElement();
+    return element.getPairTagElement(tagName, contents)
   }
 
   const checkNeedConsideration = (tagList: string[]) => {
@@ -65,32 +52,26 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
             {selectTag}
           </div>
           <div className="bg-gray-200 inline-block my-3 px-3 py-1.5">
-            {determinedByRadio(radioValue)}
+            {generatePairTagElement(radioValue, '例のコンテンツ')}
           </div>
         </div>
       );
-    } else if (tagList[0] === 'ul') {
+    } else if (emptyElementTag.find((tag) => tag === tagList[0])) {
       return(
-        <div>
-          {ulList}
-          <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
-            {generateUl()}
-          </div>
-        </div>
-      );
-    } else if (tagList[0] === 'ol') {
-      return(
-        <div>
-          {olList}
-          <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
-            {generateOl()}
-          </div>
+        <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
+          {generateEmptyTagElement(tagList[0])}
         </div>
       );
     } else {
       return(
         <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
-          {determinedByTagName(tagList[0])}
+          {tagList[0] === 'ol' &&
+            <div>工事中...</div>
+          }
+          {tagList[0] === 'ul' &&
+            <div>工事中...</div>
+          }
+          {generatePairTagElement(tagList[0], '例のコンテンツ')}
         </div>
       );
     }
