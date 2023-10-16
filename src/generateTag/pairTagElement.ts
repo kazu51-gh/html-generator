@@ -1,11 +1,12 @@
 import { ClosingTag } from "@/generateTag/closingTag";
 import { Contents } from "@/generateTag/contents";
 import { OpeningTag } from "@/generateTag/openingTag";
+import { Element } from "@/generateTag/Element";
 
 /**
  * ペアタグ要素を定義するクラス
  */
-export class PairTagElement extends Object {
+export class PairTagElement extends Element {
   public openingTag: OpeningTag;
   public closingTag: ClosingTag;
   public contents: Contents;

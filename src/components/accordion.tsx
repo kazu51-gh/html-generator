@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import IdAndClass from "./idAndClass";
-import { TagElement } from "@/generateTag/tagElement";
+import { PairTagElement } from "@/generateTag/pairTagElement";
+import { EmptyTagElement } from "@/generateTag/emptyTagElement";
 
 type Props = {
   title: string;
@@ -35,12 +36,12 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
   );
 
   const generateEmptyTagElement = (tagName: string): string => {
-    const element = new TagElement();
+    const element = new EmptyTagElement();
     return element.getEmptyTagElement(tagName);
   }
 
   const generatePairTagElement = (tagName: string, contents:string) => {
-    const element = new TagElement();
+    const element = new PairTagElement();
     return element.getPairTagElement(tagName, contents)
   }
 
