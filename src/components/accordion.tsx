@@ -35,49 +35,6 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
     </div>
   );
 
-  const generateEmptyTagElement = (tagName: string): string => {
-    const element = new EmptyTagElement();
-    return element.getEmptyTagElement(tagName);
-  }
-
-  const generatePairTagElement = (tagName: string, contents:string) => {
-    const element = new PairTagElement();
-    return element.getPairTagElement(tagName, contents)
-  }
-
-  const checkNeedConsideration = (tagList: string[]) => {
-    if (tagList.length !== 1) {
-      return(
-        <div>
-          <div className="flex">
-            {selectTag}
-          </div>
-          <div className="bg-gray-200 inline-block my-3 px-3 py-1.5">
-            {generatePairTagElement(radioValue, '例のコンテンツ')}
-          </div>
-        </div>
-      );
-    } else if (emptyElementTag.find((tag) => tag === tagList[0])) {
-      return(
-        <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
-          {generateEmptyTagElement(tagList[0])}
-        </div>
-      );
-    } else {
-      return(
-        <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
-          {tagList[0] === 'ol' &&
-            <div>工事中...</div>
-          }
-          {tagList[0] === 'ul' &&
-            <div>工事中...</div>
-          }
-          {generatePairTagElement(tagList[0], '例のコンテンツ')}
-        </div>
-      );
-    }
-  }
-
   const ulList =
   <div>
     <div className="flex">
@@ -107,6 +64,91 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
       />
     </div>
   </div>
+
+  const determineNumberOfListTags = (numberOfLists: number): string => {
+    const element = new PairTagElement();
+    const liTag = element.getPairTagElement('li', 'リスト');
+    if (numberOfLists === 1) {
+      return('\r\n\t' + liTag + '\r\n');
+    } else if (numberOfLists === 2) {
+      return('\r\n\t' + liTag + '\r\n\t' + liTag + '\r\n');
+    } else {
+      let code = '\r\n';
+      for(let i = 0; i < numberOfLists; i++) {
+        code = code + '\t' + liTag + '\r\n';
+      }
+      return code;
+    }
+  }
+
+  const generateEmptyTagElement = (tagName: string): string => {
+    const element = new EmptyTagElement();
+    return element.getEmptyTagElement(tagName);
+  }
+
+  const generatePairTagElement = (tagName: string, contents:string): string => {
+    const element = new PairTagElement();
+    return element.getPairTagElement(tagName, contents);
+  }
+
+  const generateUlTagElement = (ulListNum: number): string => {
+    const element = new PairTagElement();
+    const contents = determineNumberOfListTags(ulListNum);
+    const ul = element.getPairTagElement('ul', contents);
+    return(ul);
+  }
+
+  const generateOlTagElement = (olListNum: number): string => {
+    const element = new PairTagElement();
+    const contents = determineNumberOfListTags(olListNum);
+    const ol = element.getPairTagElement('ol', contents);
+    return(ol);
+  }
+
+  const checkNeedConsideration = (tagList: string[]) => {
+    if (tagList.length !== 1) {
+      return(
+        <div>
+          <div className="flex">
+            {selectTag}
+          </div>
+          <div className="bg-gray-200 inline-block my-3 px-3 py-1.5">
+            {generatePairTagElement(radioValue, '例のコンテンツ')}
+          </div>
+        </div>
+      );
+    } else if (tagList[0] === 'ul') {
+      return(
+        <div>
+          {ulList}
+          <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
+            {generateUlTagElement(ulListNum)}
+          </div>
+        </div>
+      );
+    } else if (tagList[0] === 'ol') {
+      return(
+        <div>
+          {olList}
+          <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
+            {generateOlTagElement(olListNum)}
+          </div>
+        </div>
+      );
+    } else if (emptyElementTag.find((tag) => tag === tagList[0])) {
+      return(
+        <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
+          {generateEmptyTagElement(tagList[0])}
+        </div>
+      );
+    } else {
+      return(
+        <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
+          {generatePairTagElement(tagList[0], '例のコンテンツ')}
+        </div>
+      );
+    }
+  }
 
   return(
     <details className="group">
