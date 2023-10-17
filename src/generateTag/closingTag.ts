@@ -1,7 +1,9 @@
+import { Tag } from "@/generateTag/tag";
+
 /**
  * 閉じタグを定義するクラス
  */
-export class ClosingTag extends Object {
+export class ClosingTag extends Tag {
   public greaterThan: string;
   public lessThan: string;
   public slash: string;
