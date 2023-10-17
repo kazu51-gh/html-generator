@@ -19,7 +19,7 @@ const Workspace: FC<Props> = ({ currentView }) => {
 
   const [pageTitle, setPageTitle] = useState(getStoredData('pageTitle', ''));
   const [pageDescription, setPageDescription] = useState(getStoredData('pageDescription', ''));
-  const [textareaData, setTextareaData] = useState('');
+  const [textareaData, setTextareaData] = useState(getStoredData('textareaData', ''));
 
   useEffect(() => {
     sessionStorage.setItem('pageTitle', pageTitle);
@@ -29,6 +29,10 @@ const Workspace: FC<Props> = ({ currentView }) => {
     sessionStorage.setItem('pageDescription', pageDescription);
   }, [pageDescription]);
 
+  useEffect(() => {
+    sessionStorage.setItem('textareaData', textareaData);
+  }, [textareaData]);
+
   return(
     <div className="flex">
       <div className="flex-1">
@@ -37,6 +41,7 @@ const Workspace: FC<Props> = ({ currentView }) => {
           rows={25}
           onChange={(e) => setTextareaData(e.target.value)}
           placeholder="HTMLを作成していきましょう。"
+          value={textareaData}
         />
       </div>
       <div className="flex-1">
