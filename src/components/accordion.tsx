@@ -16,6 +16,8 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
   const [radioValue, setRadioValue] = useState('h1');
   const [ulListNum, setUlListNum] = useState(1);
   const [olListNum, setOlListNum] = useState(1);
+  const [columns, setColumns] = useState(1);
+  const [rows, setRows] = useState(1);
 
   const emptyElementTag = ['br', 'hr', 'img', 'input'];
 
@@ -65,6 +67,32 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
     </div>
   </div>
 
+const table =
+<div>
+  <div className="flex my-1">
+    <p>行数(1以上の整数を入力)：</p>
+    <input
+      className="border border-black px-1 w-12"
+      defaultValue={1}
+      min={1}
+      onChange={(e) => setColumns(parseInt(e.target.value))}
+      required
+      type="number"
+    />
+  </div>
+  <div className="flex my-1">
+    <p>列数(1以上の整数を入力)：</p>
+    <input
+      className="border border-black px-1 w-12"
+      defaultValue={1}
+      min={1}
+      onChange={(e) => setRows(parseInt(e.target.value))}
+      required
+      type="number"
+    />
+  </div>
+</div>
+
   const determineNumberOfListTags = (numberOfLists: number): string => {
     const element = new PairTagElement();
     const liTag = element.getPairTagElement('li', 'リスト');
@@ -76,6 +104,54 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
       let code = '\r\n';
       for(let i = 0; i < numberOfLists; i++) {
         code = code + '\t' + liTag + '\r\n';
+      }
+      return code;
+    }
+  }
+
+  const determineNumberOfThTags = (numberOfTr: number): string => {
+    const element = new PairTagElement();
+    const thTag = element.getPairTagElement('th', '列タイトル');
+    if (numberOfTr === 1) {
+      return('\r\n\t\t\t' + thTag + '\r\n');
+    } else if (numberOfTr === 2) {
+      return('\r\n\t\t\t' + thTag + '\r\n\t\t\t' + thTag + '\r\n');
+    } else {
+      let code = '\r\n';
+      for(let i = 0; i < numberOfTr; i++) {
+        code = code + '\t\t\t' + thTag + '\r\n';
+      }
+      return code;
+    }
+  }
+
+  const determineNumberOfTdTags = (numberOfTd: number): string => {
+    const element = new PairTagElement();
+    const tdTag = element.getPairTagElement('td', 'コンテンツ');
+    if (numberOfTd === 1) {
+      return('\r\n\t\t\t' + tdTag + '\r\n');
+    } else if (numberOfTd === 2) {
+      return('\r\n\t\t\t' + tdTag + '\r\n\t\t\t' + tdTag + '\r\n');
+    } else {
+      let code = '\r\n';
+      for(let i = 0; i < numberOfTd; i++) {
+        code = code + '\t\t\t' + tdTag + '\r\n';
+      }
+      return code;
+    }
+  }
+
+  const determineNumberOfTrTags = (numberOfTr: number, td: string): string => {
+    const element = new PairTagElement();
+    const tdTag = element.getPairTagElement('tr', td);
+    if (numberOfTr === 1) {
+      return('\r\n\t\t' + tdTag + '\r\n');
+    } else if (numberOfTr === 2) {
+      return('\r\n\t\t' + tdTag + '\r\n\t\t' + tdTag + '\r\n');
+    } else {
+      let code = '\r\n';
+      for(let i = 0; i < numberOfTr; i++) {
+        code = code + '\t\t' + tdTag + '\r\n';
       }
       return code;
     }
@@ -105,6 +181,19 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
     return(ol);
   }
 
+  const generateTableElement = (columns: number, rows: number): string => {
+    const element = new PairTagElement();
+    const caption = '\r\n\t' + element.getPairTagElement('caption', 'テーブル名');
+    const thTags = determineNumberOfThTags(columns) + '\t\t';
+    const tdTags = determineNumberOfTdTags(columns) + '\t\t';
+    const trTagForThead = '\r\n\t\t' + element.getPairTagElement('tr', thTags) + '\r\n\t';
+    const trTagForTbody = determineNumberOfTrTags(rows, tdTags) + '\t';
+    const theadTag = '\t' + element.getPairTagElement('thead', trTagForThead) + '\r\n';
+    const tbodyTag = '\t' + element.getPairTagElement('tbody', trTagForTbody) + '\r\n';
+    const table = element.getPairTagElement('table', caption + '\r\n' + theadTag + tbodyTag);
+    return(table);
+  }
+
   const checkNeedConsideration = (tagList: string[]) => {
     if (tagList.length !== 1) {
       return(
@@ -132,6 +221,15 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
           {olList}
           <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
             {generateOlTagElement(olListNum)}
+          </div>
+        </div>
+      );
+    } else if (tagList[0] === 'table') {
+      return(
+        <div>
+          {table}
+          <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
+            {generateTableElement(columns, rows)}
           </div>
         </div>
       );
