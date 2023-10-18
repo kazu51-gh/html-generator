@@ -45,12 +45,21 @@ export class OpeningTag extends Tag {
   /**
    * ペアタグ要素の開始タグを取得する
    * @param tagName タグ名
+   * @param attribute 属性
    * @returns 開始タグ
    */
-  public getOpeningTag(tagName: string): string {
+  public getOpeningTag(tagName: string, attribute: string[]): string {
     const lessThan = this.getLessThan();
     const greaterThan = this.getGreaterThan();
-    return(lessThan + tagName + greaterThan);
+    let attributes = '';
+
+    if (attribute.length === 0) { return(lessThan + tagName + greaterThan); }
+
+    for(let i= 0; i < attribute.length; i++) {
+      attributes = ' ' + attributes;
+    }
+    
+    return(lessThan + tagName + attributes + greaterThan);
   }
 
   /**
@@ -58,10 +67,18 @@ export class OpeningTag extends Tag {
    * @param tagName タグ名
    * @returns 開始タグ
    */
-  public getOpeningTagForEmpty(tagName: string): string {
+  public getOpeningTagForEmpty(tagName: string, attribute: string[]): string {
     const lessThan = this.getLessThan();
     const slash = this.getSlash();
     const greaterThan = this.getGreaterThan();
-    return(lessThan + tagName + ' ' + slash + greaterThan);
+    let attributes = '';
+
+    if (attribute.length === 0) { return(lessThan + tagName + ' ' + slash + greaterThan); }
+
+    for(let i= 0; i < attribute.length; i++) {
+      attributes = ' ' + attributes;
+    }
+
+    return(lessThan + tagName + attributes + ' ' + slash + greaterThan);
   }
 }

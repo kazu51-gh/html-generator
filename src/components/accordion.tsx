@@ -1,7 +1,6 @@
 import { FC, useState } from "react";
+import { GenerateElement } from "@/generateTag/generateElement";
 import IdAndClass from "./idAndClass";
-import { PairTagElement } from "@/generateTag/pairTagElement";
-import { EmptyTagElement } from "@/generateTag/emptyTagElement";
 
 type Props = {
   title: string;
@@ -18,8 +17,8 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
   const [olListNum, setOlListNum] = useState(1);
   const [columns, setColumns] = useState(1);
   const [rows, setRows] = useState(1);
-
-  const emptyElementTag = ['br', 'hr', 'img', 'input'];
+  const [tagId, setTagId] = useState('');
+  const [tagClass, setTagClass] = useState('');
 
   const selectTag = tagList.map((tag) =>
     <div key={tag} className="flex">
@@ -93,116 +92,17 @@ const table =
   </div>
 </div>
 
-  const determineNumberOfListTags = (numberOfLists: number): string => {
-    const element = new PairTagElement();
-    const liTag = element.getPairTagElement('li', 'リスト');
-    if (numberOfLists === 1) {
-      return('\r\n\t' + liTag + '\r\n');
-    } else if (numberOfLists === 2) {
-      return('\r\n\t' + liTag + '\r\n\t' + liTag + '\r\n');
-    } else {
-      let code = '\r\n';
-      for(let i = 0; i < numberOfLists; i++) {
-        code = code + '\t' + liTag + '\r\n';
-      }
-      return code;
-    }
-  }
+  const displayHTML = (tagList: string[], attributes: string[] = []) => {
+    const generateElement = new GenerateElement();
 
-  const determineNumberOfThTags = (numberOfTr: number): string => {
-    const element = new PairTagElement();
-    const thTag = element.getPairTagElement('th', '列タイトル');
-    if (numberOfTr === 1) {
-      return('\r\n\t\t\t' + thTag + '\r\n');
-    } else if (numberOfTr === 2) {
-      return('\r\n\t\t\t' + thTag + '\r\n\t\t\t' + thTag + '\r\n');
-    } else {
-      let code = '\r\n';
-      for(let i = 0; i < numberOfTr; i++) {
-        code = code + '\t\t\t' + thTag + '\r\n';
-      }
-      return code;
-    }
-  }
-
-  const determineNumberOfTdTags = (numberOfTd: number): string => {
-    const element = new PairTagElement();
-    const tdTag = element.getPairTagElement('td', 'コンテンツ');
-    if (numberOfTd === 1) {
-      return('\r\n\t\t\t' + tdTag + '\r\n');
-    } else if (numberOfTd === 2) {
-      return('\r\n\t\t\t' + tdTag + '\r\n\t\t\t' + tdTag + '\r\n');
-    } else {
-      let code = '\r\n';
-      for(let i = 0; i < numberOfTd; i++) {
-        code = code + '\t\t\t' + tdTag + '\r\n';
-      }
-      return code;
-    }
-  }
-
-  const determineNumberOfTrTags = (numberOfTr: number, td: string): string => {
-    const element = new PairTagElement();
-    const tdTag = element.getPairTagElement('tr', td);
-    if (numberOfTr === 1) {
-      return('\r\n\t\t' + tdTag + '\r\n');
-    } else if (numberOfTr === 2) {
-      return('\r\n\t\t' + tdTag + '\r\n\t\t' + tdTag + '\r\n');
-    } else {
-      let code = '\r\n';
-      for(let i = 0; i < numberOfTr; i++) {
-        code = code + '\t\t' + tdTag + '\r\n';
-      }
-      return code;
-    }
-  }
-
-  const generateEmptyTagElement = (tagName: string): string => {
-    const element = new EmptyTagElement();
-    return element.getEmptyTagElement(tagName);
-  }
-
-  const generatePairTagElement = (tagName: string, contents:string): string => {
-    const element = new PairTagElement();
-    return element.getPairTagElement(tagName, contents);
-  }
-
-  const generateUlTagElement = (ulListNum: number): string => {
-    const element = new PairTagElement();
-    const contents = determineNumberOfListTags(ulListNum);
-    const ul = element.getPairTagElement('ul', contents);
-    return(ul);
-  }
-
-  const generateOlTagElement = (olListNum: number): string => {
-    const element = new PairTagElement();
-    const contents = determineNumberOfListTags(olListNum);
-    const ol = element.getPairTagElement('ol', contents);
-    return(ol);
-  }
-
-  const generateTableElement = (columns: number, rows: number): string => {
-    const element = new PairTagElement();
-    const caption = '\r\n\t' + element.getPairTagElement('caption', 'テーブル名');
-    const thTags = determineNumberOfThTags(columns) + '\t\t';
-    const tdTags = determineNumberOfTdTags(columns) + '\t\t';
-    const trTagForThead = '\r\n\t\t' + element.getPairTagElement('tr', thTags) + '\r\n\t';
-    const trTagForTbody = determineNumberOfTrTags(rows, tdTags) + '\t';
-    const theadTag = '\t' + element.getPairTagElement('thead', trTagForThead) + '\r\n';
-    const tbodyTag = '\t' + element.getPairTagElement('tbody', trTagForTbody) + '\r\n';
-    const table = element.getPairTagElement('table', caption + '\r\n' + theadTag + tbodyTag);
-    return(table);
-  }
-
-  const checkNeedConsideration = (tagList: string[]) => {
     if (tagList.length !== 1) {
       return(
         <div>
           <div className="flex">
             {selectTag}
           </div>
-          <div className="bg-gray-200 inline-block my-3 px-3 py-1.5">
-            {generatePairTagElement(radioValue, '例のコンテンツ')}
+          <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
+            {generateElement.generateElement(radioValue, attributes)}
           </div>
         </div>
       );
@@ -211,7 +111,7 @@ const table =
         <div>
           {ulList}
           <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
-            {generateUlTagElement(ulListNum)}
+            {generateElement.generateElement(tagList[0], attributes, ulListNum)}
           </div>
         </div>
       );
@@ -220,7 +120,7 @@ const table =
         <div>
           {olList}
           <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
-            {generateOlTagElement(olListNum)}
+            {generateElement.generateElement(tagList[0], attributes, olListNum)}
           </div>
         </div>
       );
@@ -229,20 +129,14 @@ const table =
         <div>
           {table}
           <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
-            {generateTableElement(columns, rows)}
+            {generateElement.generateElement(tagList[0], attributes, 0, columns, rows)}
           </div>
-        </div>
-      );
-    } else if (emptyElementTag.find((tag) => tag === tagList[0])) {
-      return(
-        <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
-          {generateEmptyTagElement(tagList[0])}
         </div>
       );
     } else {
       return(
         <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
-          {generatePairTagElement(tagList[0], '例のコンテンツ')}
+          {generateElement.generateElement(tagList[0], attributes)}
         </div>
       );
     }
@@ -264,8 +158,13 @@ const table =
         <div className="my-3">{required}</div>
         <div className="my-3">{recommended}</div>
         <hr className="border border-gray-200 my-4" />
-        <IdAndClass />
-        {checkNeedConsideration(tagList)}
+        <IdAndClass
+          tagId={tagId}
+          setTagId={setTagId}
+          tagClass={tagClass}
+          setTagClass={setTagClass}
+        />
+        {displayHTML(tagList)}
       </div>
     </details>
   );
