@@ -12,7 +12,7 @@ type Props = {
 }
 
 const BasicSetting: FC<Props> = ({ pageTitle, setPageTitle, pageDescription, setPageDescription }) => {
-  const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState<Boolean>(false);
 
   return(
     <div>
