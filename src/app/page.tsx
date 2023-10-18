@@ -1,17 +1,15 @@
 "use client"
 
 import { useState } from "react";
-import Header from '@/components/header';
+import Header from "@/components/header/header";
 import Workspace from "@/components/workspace";
 
 const Home = () => {
   const [currentView, setCurrentView] = useState<string>('page-setting');
   
-  return (
+  return(
     <main className="flex flex-col h-screen w-screen">
-      <Header
-        setCurrentView={setCurrentView}
-      />
+      <Header setCurrentView={setCurrentView} />
       <Workspace
         currentView={currentView}
       />
