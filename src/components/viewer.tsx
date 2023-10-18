@@ -25,7 +25,7 @@ const Viewer: FC<Props> = ({ textareaData }) => {
         </div>
       </div>
       <div className="block border border-black h-5/6 mt-3 p-2 w-11/12">
-        <div className="prose">
+        <div className="default-css">
           {text}
         </div>
       </div>
