@@ -111,7 +111,7 @@ const table =
         <div>
           {ulList}
           <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
-            {generateElement.generateElement(tagList[0], attributes, ulListNum)}
+            {generateElement.generateElement(tagList[0], attributes, '', ulListNum)}
           </div>
         </div>
       );
@@ -120,7 +120,7 @@ const table =
         <div>
           {olList}
           <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
-            {generateElement.generateElement(tagList[0], attributes, olListNum)}
+            {generateElement.generateElement(tagList[0], attributes, '', olListNum)}
           </div>
         </div>
       );
@@ -129,7 +129,7 @@ const table =
         <div>
           {table}
           <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
-            {generateElement.generateElement(tagList[0], attributes, 0, columns, rows)}
+            {generateElement.generateElement(tagList[0], attributes, '', 0, columns, rows)}
           </div>
         </div>
       );

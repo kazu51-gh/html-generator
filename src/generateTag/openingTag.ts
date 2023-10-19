@@ -56,7 +56,7 @@ export class OpeningTag extends Tag {
     if (attribute.length === 0) { return(lessThan + tagName + greaterThan); }
 
     for(let i= 0; i < attribute.length; i++) {
-      attributes = ' ' + attributes;
+      attributes = attributes + ' ' + attribute[i];
     }
     
     return(lessThan + tagName + attributes + greaterThan);
@@ -76,7 +76,7 @@ export class OpeningTag extends Tag {
     if (attribute.length === 0) { return(lessThan + tagName + ' ' + slash + greaterThan); }
 
     for(let i= 0; i < attribute.length; i++) {
-      attributes = ' ' + attributes;
+      attributes = attributes + ' ' + attribute[i];
     }
 
     return(lessThan + tagName + attributes + ' ' + slash + greaterThan);

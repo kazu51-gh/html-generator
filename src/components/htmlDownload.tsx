@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { basePath } from "../../next.config";
+import { GenerateHTML } from "@/generateHTML/generateHTML";
 import path from "path";
 
 const BASE_PATH = basePath ? basePath : '';
@@ -25,9 +26,8 @@ type Props = {
 
 const HtmlDownload:FC<Props> = ({ pageTitle, pageDescription, textareaData }) => {
   const makeHTML = (title: string, description: string, textareaData: string) => {
-    const text = htmlTemplate.replace('{title}', title)
-                            .replace('{description}', description)
-                            .replace('{contents}', textareaData);
+    const generateHTML = new GenerateHTML();
+    const text = generateHTML.generate(title, description, textareaData);
     const downloadData = new Blob([text], {type: 'text/html'});
     const downloadLink = document.createElement('a');
     downloadLink.href = URL.createObjectURL(downloadData);
@@ -47,15 +47,13 @@ const HtmlDownload:FC<Props> = ({ pageTitle, pageDescription, textareaData }) =>
           />
         </div>
       </div>
-      <div className="download-html">
-        <button
-          className="bg-white border border-black font-medium inline-block my-4 px-8 py-4 rounded text-base text-black"
-          onClick={() => makeHTML(pageTitle, pageDescription, textareaData)}
-          type="button"
-        >
-          ダウンロード
-        </button>
-      </div>
+      <button
+        className="bg-white border border-black font-medium inline-block my-4 px-8 py-4 rounded text-base text-black"
+        onClick={() => makeHTML(pageTitle, pageDescription, textareaData)}
+        type="button"
+      >
+        ダウンロード
+      </button>
     </div>
   );
 }

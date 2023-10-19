@@ -25,6 +25,7 @@ export class GenerateElement extends Object {
   public generateElement = (
     tagName: string,
     attributes: string[] = [],
+    content: string = '',
     lists: number = 0,
     columns: number = 0,
     rows: number = 0
@@ -49,6 +50,11 @@ export class GenerateElement extends Object {
     else if (tagName === 'textarea') { element = this.generateTextareaTagElement(tagName, attributes); }
     else if (tagName === 'button') { element = this.generateButtonTagElement(tagName, attributes); }
     else if (tagName === 'table') { element = this.generateTableTagElement(tagName, attributes, columns, rows); }
+    else if (tagName === 'meta') { element = this.generateMetaTagElement(tagName, attributes); }
+    else if (tagName === 'title') { element = this.generateTitleTagElement(tagName, attributes, content); }
+    else if (tagName === 'head') { element = this.generateHeadTagElement(tagName, attributes, content); }
+    else if (tagName === 'body') { element = this.generateBodyTagElement(tagName, attributes, content); }
+    else if (tagName === 'html') { element = this.generateHtmlTagElement(tagName, attributes, content); }
     return(element);
   }
 
@@ -186,4 +192,28 @@ export class GenerateElement extends Object {
     return code + '\r\n';
   }
 
+  public generateMetaTagElement = (tagName: string, attributes: string[]): string => {
+    const metaTagElement = this.emptyTagElement.getEmptyTagElement(tagName, attributes);
+    return(metaTagElement);
+  }
+
+  public generateTitleTagElement = (tagName: string, attributes: string[], content: string): string => {
+    const titleTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
+    return(titleTagElement);
+  }
+
+  public generateHeadTagElement = (tagName: string, attributes: string[], content: string): string => {
+    const headTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
+    return(headTagElement);
+  }
+
+  public generateBodyTagElement = (tagName: string, attributes: string[], content: string): string => {
+    const bodyTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
+    return(bodyTagElement);
+  }
+
+  public generateHtmlTagElement = (tagName: string, attributes: string[], content: string): string => {
+    const bodyTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
+    return(bodyTagElement);
+  }
 }
