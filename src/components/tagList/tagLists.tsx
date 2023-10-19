@@ -1,5 +1,5 @@
 import Accordion from "./accordion";
-import { basePath } from "../../next.config";
+import { basePath } from "../../../next.config";
 import path from "path";
 import { tagDescription, tagList } from "@/tagData";
 

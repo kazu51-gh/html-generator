@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import BasicSetting from "@/components/basicSetting";
 import HtmlDownload from "@/components/htmlDownload";
-import TagLists from "@/components/tagLists";
+import TagLists from "@/components/tagList/tagLists";
 import Viewer from "@/components/viewer";
 
 type Props = {

@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import { GenerateElement } from "@/generateTag/generateElement";
-import IdAndClass from "./idAndClass";
+import IdAndClass from "@/components/tagList/idAndClass";
+import NumberOfElements from "./numberOfElements";
 
 type Props = {
   title: string;
@@ -36,62 +37,6 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
     </div>
   );
 
-  const ulList =
-  <div>
-    <div className="flex">
-      <p>リストの数(1以上の整数を入力)：</p>
-      <input
-        className="border border-black px-1 w-12"
-        defaultValue={1}
-        min={1}
-        onChange={(e) => setUlListNum(parseInt(e.target.value))}
-        required
-        type="number"
-      />
-    </div>
-  </div>
-
-  const olList =
-  <div>
-    <div className="flex">
-      <p>リストの数(1以上の整数を入力)：</p>
-      <input
-        className="border border-black px-1 w-12"
-        defaultValue={1}
-        min={1}
-        onChange={(e) => setOlListNum(parseInt(e.target.value))}
-        required
-        type="number"
-      />
-    </div>
-  </div>
-
-const table =
-<div>
-  <div className="flex my-1">
-    <p>行数(1以上の整数を入力)：</p>
-    <input
-      className="border border-black px-1 w-12"
-      defaultValue={1}
-      min={1}
-      onChange={(e) => setColumns(parseInt(e.target.value))}
-      required
-      type="number"
-    />
-  </div>
-  <div className="flex my-1">
-    <p>列数(1以上の整数を入力)：</p>
-    <input
-      className="border border-black px-1 w-12"
-      defaultValue={1}
-      min={1}
-      onChange={(e) => setRows(parseInt(e.target.value))}
-      required
-      type="number"
-    />
-  </div>
-</div>
-
   const displayHTML = (tagList: string[], attributes: string[] = []) => {
     const generateElement = new GenerateElement();
 
@@ -109,7 +54,7 @@ const table =
     } else if (tagList[0] === 'ul') {
       return(
         <div>
-          {ulList}
+          <NumberOfElements title="リストの数(1以上の整数を入力)" setFunction={setUlListNum} />
           <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
             {generateElement.generateElement(tagList[0], attributes, '', ulListNum)}
           </div>
@@ -118,7 +63,7 @@ const table =
     } else if (tagList[0] === 'ol') {
       return(
         <div>
-          {olList}
+          <NumberOfElements title="リストの数(1以上の整数を入力)" setFunction={setOlListNum} />
           <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
             {generateElement.generateElement(tagList[0], attributes, '', olListNum)}
           </div>
@@ -127,7 +72,8 @@ const table =
     } else if (tagList[0] === 'table') {
       return(
         <div>
-          {table}
+          <NumberOfElements title="行数(1以上の整数を入力)" setFunction={setColumns} />
+          <NumberOfElements title="列数(1以上の整数を入力)" setFunction={setRows} />
           <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
             {generateElement.generateElement(tagList[0], attributes, '', 0, columns, rows)}
           </div>
