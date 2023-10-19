@@ -9,7 +9,7 @@ type Props = {
 }
 
 const Workspace: FC<Props> = ({ currentView }) => {
-  const getStoredData = (key: string, defaultData: string) => {
+  const getStoredData = (key: string, defaultData: string): string => {
     if (typeof sessionStorage !== 'undefined') {
       return sessionStorage.getItem(key) || defaultData;
     } else {
@@ -17,9 +17,9 @@ const Workspace: FC<Props> = ({ currentView }) => {
     }
   }
 
-  const [pageTitle, setPageTitle] = useState(getStoredData('pageTitle', ''));
-  const [pageDescription, setPageDescription] = useState(getStoredData('pageDescription', ''));
-  const [textareaData, setTextareaData] = useState(getStoredData('textareaData', ''));
+  const [pageTitle, setPageTitle] = useState<string>(getStoredData('pageTitle', ''));
+  const [pageDescription, setPageDescription] = useState<string>(getStoredData('pageDescription', ''));
+  const [textareaData, setTextareaData] = useState<string>(getStoredData('textareaData', ''));
 
   useEffect(() => {
     sessionStorage.setItem('pageTitle', pageTitle);

@@ -5,19 +5,6 @@ import path from "path";
 
 const BASE_PATH = basePath ? basePath : '';
 
-const htmlTemplate =`<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="{description}">
-    <title>{title}</title>
-  </head>
-  <body>
-    {contents}
-  </body>
-</html>
-`;
-
 type Props = {
   pageTitle: string;
   pageDescription: string;

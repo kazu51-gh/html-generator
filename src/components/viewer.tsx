@@ -10,7 +10,6 @@ type Props = {
 }
 
 const Viewer: FC<Props> = ({ textareaData }) => {
-  const text = parse(textareaData);
   
   return(
     <div className="h-full">
@@ -26,7 +25,7 @@ const Viewer: FC<Props> = ({ textareaData }) => {
       </div>
       <div className="block border border-black h-5/6 mt-3 p-2 w-11/12">
         <div className="default-css">
-          {text}
+          {parse(textareaData)}
         </div>
       </div>
     </div>
