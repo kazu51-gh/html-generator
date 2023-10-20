@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import BasicSetting from "@/components/basicSetting";
+import CodeArea from "@/components/textarea/codeArea";
 import HtmlDownload from "@/components/htmlDownload";
 import TagLists from "@/components/tagList/tagLists";
 import Viewer from "@/components/viewer";
@@ -35,15 +36,10 @@ const Workspace: FC<Props> = ({ currentView }) => {
 
   return(
     <div className="flex">
-      <div className="flex-1">
-        <textarea
-          className="block border border-black mx-auto p-3 resize-none rounded-lg text-xl w-11/12"
-          rows={25}
-          onChange={(e) => setTextareaData(e.target.value)}
-          placeholder="HTMLを作成していきましょう。"
-          value={textareaData}
-        />
-      </div>
+      <CodeArea
+        textareaData={textareaData}
+        setTextareaData={setTextareaData}
+      />
       <div className="flex-1">
         {currentView === 'page-setting' &&
           <BasicSetting
