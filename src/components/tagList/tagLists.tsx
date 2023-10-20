@@ -1,23 +1,11 @@
 import Accordion from "./accordion";
-import { basePath } from "../../../next.config";
-import path from "path";
 import { tagDescription, tagList } from "@/tagData";
-
-const BASE_PATH = basePath ? basePath : '';
+import PageTitle from "@/components/headings/pageTitle";
 
 const TagLists = () => {
   return(
     <div className="h-screen">
-      <div className="flex">
-        <h2 className="mr-2 text-2xl">タグ一覧</h2>
-        <div className="flex items-center">
-          <img
-            alt="question_mark"
-            className="cursor-pointer h-5 w-5"
-            src={path.join(BASE_PATH, "question-mark.png")}
-          />
-        </div>
-      </div>
+      <PageTitle title="タグ一覧" />
       <div className="h-2/3 mt-4 overflow-y-scroll max-w-xl">
         <div className="divide-y divide-gray-100 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
           <Accordion

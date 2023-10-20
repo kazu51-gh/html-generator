@@ -1,9 +1,6 @@
 import { Dispatch, FC, SetStateAction } from "react";
-import { basePath } from "../../next.config";
-import path from "path";
 import Setting from "@/components/input/pageSetting/setting";
-
-const BASE_PATH = basePath ? basePath : '';
+import PageTitle from "@/components/headings/pageTitle";
 
 type Props = {
   pageTitle: string;
@@ -16,16 +13,7 @@ const BasicSetting: FC<Props> = ({ pageTitle, setPageTitle, pageDescription, set
 
   return(
     <div>
-      <div className="flex">
-        <h2 className="mr-2 text-2xl">ページの基本情報</h2>
-        <div className="flex items-center">
-          <img
-            alt="question_mark"
-            className="cursor-pointer h-5 w-5"
-            src={path.join(BASE_PATH, "question-mark.png")}
-          />
-        </div>
-      </div>
+      <PageTitle title="ページの基本情報設定" />
       <Setting
         setSetting={setPageTitle}
         placeholder="(例) 私のホームページ"
