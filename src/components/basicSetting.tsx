@@ -1,6 +1,7 @@
 import { Dispatch, FC, SetStateAction, useState } from "react";
 import { basePath } from "../../next.config";
 import path from "path";
+import SettingWindow from "@/components/inputWindows/settingWindow";
 
 const BASE_PATH = basePath ? basePath : '';
 
@@ -58,11 +59,9 @@ const BasicSetting: FC<Props> = ({ pageTitle, setPageTitle, pageDescription, set
             />
           </div>
         </div>
-        <input
-          className="border border-black p-2 rounded-md text-xl w-1/2"
-          onChange={(e) => setPageTitle(e.target.value)}
+        <SettingWindow
+          setSetting={setPageTitle}
           placeholder="(例) 私のホームページ"
-          type="text"
           value={pageTitle}
         />
       </div>
@@ -78,11 +77,9 @@ const BasicSetting: FC<Props> = ({ pageTitle, setPageTitle, pageDescription, set
             />
           </div>
         </div>
-        <input
-          className="border border-black p-2 rounded-md text-xl w-1/2"
-          onChange={(e) => setPageDescription(e.target.value)}
+        <SettingWindow
+          setSetting={setPageDescription}
           placeholder="(例) 私のことを知ってください。"
-          type="text"
           value={pageDescription}
         />
       </div>
