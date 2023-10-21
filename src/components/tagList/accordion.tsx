@@ -105,9 +105,7 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
         <div className="my-3">{recommended}</div>
         <hr className="border border-gray-200 my-4" />
         <IdAndClass
-          tagId={tagId}
           setTagId={setTagId}
-          tagClass={tagClass}
           setTagClass={setTagClass}
         />
         {displayHTML(tagList)}

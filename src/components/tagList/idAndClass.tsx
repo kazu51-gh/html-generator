@@ -1,13 +1,11 @@
-import { Dispatch, FC, SetStateAction, useState } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 
 type Props = {
-  tagId: string;
-  setTagId: Dispatch<SetStateAction<string>>
-  tagClass: string;
+  setTagId: Dispatch<SetStateAction<string>>;
   setTagClass: Dispatch<SetStateAction<string>>;
 }
 
-const IdAndClass:FC<Props> = ({tagId, setTagId, tagClass, setTagClass}) => {
+const IdAndClass:FC<Props> = ({ setTagId, setTagClass }) => {
 
   return(
     <div className="flex my-3">
