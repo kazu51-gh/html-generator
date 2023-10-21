@@ -15,7 +15,7 @@ const IdAndClass:FC<Props> = ({tagId, setTagId, tagClass, setTagClass}) => {
         <div className="flex w-full">
           <label className="mr-1">id :</label>
           <input
-            className="border border-black px-1 rounded w-3/4"
+            className="border border-black px-1 rounded w-3/4 dark:bg-gray-500 dark:border-gray-300 dark:text-gray-300"
             onChange={(e) => setTagId(e.target.value)}
           />
         </div>
@@ -24,7 +24,7 @@ const IdAndClass:FC<Props> = ({tagId, setTagId, tagClass, setTagClass}) => {
         <div className="flex w-full">
           <label className="mr-1">class :</label>
           <input
-            className="border border-black px-1 rounded w-3/4"
+            className="border border-black px-1 rounded w-3/4 dark:bg-gray-500 dark:border-gray-300 dark:text-gray-300"
             onChange={(e) => setTagClass(e.target.value)}
           />
         </div>

@@ -7,7 +7,7 @@ const TagLists = () => {
     <div className="h-screen">
       <PageTitle title="タグ一覧" />
       <div className="h-2/3 mt-4 overflow-y-scroll max-w-xl">
-        <div className="divide-y divide-gray-100 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
+        <div className="divide-y divide-gray-100 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300">
           <Accordion
             title="<h1> ~ <h6> : 見出し"
             description={tagDescription.h}

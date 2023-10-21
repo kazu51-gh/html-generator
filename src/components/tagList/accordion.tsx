@@ -46,7 +46,7 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
           <div className="flex">
             {selectTag}
           </div>
-          <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
+          <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap dark:bg-gray-500 dark:text-gray-300">
             {generateElement.generateElement(radioValue, attributes)}
           </div>
         </div>
@@ -55,7 +55,7 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
       return(
         <div>
           <NumberOfElements title="リストの数(1以上の整数を入力)" setFunction={setUlListNum} />
-          <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
+          <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap dark:bg-gray-500 dark:text-gray-300">
             {generateElement.generateElement(tagList[0], attributes, '', ulListNum)}
           </div>
         </div>
@@ -64,7 +64,7 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
       return(
         <div>
           <NumberOfElements title="リストの数(1以上の整数を入力)" setFunction={setOlListNum} />
-          <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
+          <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap dark:bg-gray-500 dark:text-gray-300">
             {generateElement.generateElement(tagList[0], attributes, '', olListNum)}
           </div>
         </div>
@@ -74,14 +74,14 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
         <div>
           <NumberOfElements title="行数(1以上の整数を入力)" setFunction={setColumns} />
           <NumberOfElements title="列数(1以上の整数を入力)" setFunction={setRows} />
-          <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
+          <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap dark:bg-gray-500 dark:text-gray-300">
             {generateElement.generateElement(tagList[0], attributes, '', 0, columns, rows)}
           </div>
         </div>
       );
     } else {
       return(
-        <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap">
+        <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap dark:bg-gray-500 dark:text-gray-300">
           {generateElement.generateElement(tagList[0], attributes)}
         </div>
       );
@@ -90,7 +90,7 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
 
   return(
     <details className="group">
-      <summary className="flex cursor-pointer list-none items-center justify-between p-4 text-lg font-medium text-secondary-900 group-open:bg-gray-50">
+      <summary className="flex cursor-pointer list-none items-center justify-between p-4 text-lg font-medium group-open:bg-gray-50 dark:group-open:bg-gray-500 dark:group-open:text-white">
         {title}
         <div className="text-secondary-500">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="block h-5 w-5 transition-all duration-300 group-open:rotate-180">
