@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
-import { GenerateElement } from "@/generateTag/generateElement";
+import DisplayCode from "@/components/tagList/displayCode";
 import IdAndClass from "@/components/tagList/idAndClass";
-import NumberOfElements from "./numberOfElements";
+import NumberOfElements from "@/components/tagList/numberOfElements";
 
 type Props = {
   title: string;
@@ -11,8 +11,7 @@ type Props = {
   tagList: string[];
 }
 
-
-const Accordion: FC<Props> = ({title, description, required, recommended, tagList}) => {
+const Accordion: FC<Props> = ({ title, description, required, recommended, tagList }) => {
   const [radioValue, setRadioValue] = useState('h1');
   const [ulListNum, setUlListNum] = useState(1);
   const [olListNum, setOlListNum] = useState(1);
@@ -37,36 +36,61 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
     </div>
   );
 
-  const displayHTML = (tagList: string[], attributes: string[] = []) => {
-    const generateElement = new GenerateElement();
-
+  const displayHTML = (tagList: string[]) => {
     if (tagList.length !== 1) {
       return(
         <div>
           <div className="flex">
             {selectTag}
           </div>
-          <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap dark:bg-gray-500 dark:text-gray-300">
-            {generateElement.generateElement(radioValue, attributes)}
-          </div>
+          {tagId === '' && tagClass === '' &&
+            <DisplayCode tagName={radioValue} attributes={[]} lists={0} columns={0} rows={0} />
+          }
+          {tagId !== '' && tagClass === '' &&
+            <DisplayCode tagName={radioValue} attributes={[`"id"="${tagId}"`]} lists={0} columns={0} rows={0} />
+          }
+          {tagId === '' && tagClass !== '' &&
+            <DisplayCode tagName={radioValue} attributes={[`"class"="${tagClass}"`]} lists={0} columns={0} rows={0} />
+          }
+          {tagId !== '' && tagClass !== '' &&
+            <DisplayCode tagName={radioValue} attributes={[`"id"="${tagId}"`, `"class"="${tagClass}"`]} lists={0} columns={0} rows={0} />
+          }
         </div>
       );
     } else if (tagList[0] === 'ul') {
       return(
         <div>
           <NumberOfElements title="リストの数(1以上の整数を入力)" setFunction={setUlListNum} />
-          <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap dark:bg-gray-500 dark:text-gray-300">
-            {generateElement.generateElement(tagList[0], attributes, '', ulListNum)}
-          </div>
+          {tagId === '' && tagClass === '' &&
+            <DisplayCode tagName={tagList[0]} attributes={[]} lists={ulListNum} columns={0} rows={0} />
+          }
+          {tagId !== '' && tagClass === '' &&
+            <DisplayCode tagName={tagList[0]} attributes={[`"id"="${tagId}"`]} lists={ulListNum} columns={0} rows={0} />
+          }
+          {tagId === '' && tagClass !== '' &&
+            <DisplayCode tagName={tagList[0]} attributes={[`"class"="${tagClass}"`]} lists={ulListNum} columns={0} rows={0} />
+          }
+          {tagId !== '' && tagClass !== '' &&
+            <DisplayCode tagName={tagList[0]} attributes={[`"id"="${tagId}"`, `"class"="${tagClass}"`]} lists={ulListNum} columns={0} rows={0} />
+          }
         </div>
       );
     } else if (tagList[0] === 'ol') {
       return(
         <div>
           <NumberOfElements title="リストの数(1以上の整数を入力)" setFunction={setOlListNum} />
-          <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap dark:bg-gray-500 dark:text-gray-300">
-            {generateElement.generateElement(tagList[0], attributes, '', olListNum)}
-          </div>
+          {tagId === '' && tagClass === '' &&
+            <DisplayCode tagName={tagList[0]} attributes={[]} lists={olListNum} columns={0} rows={0} />
+          }
+          {tagId !== '' && tagClass === '' &&
+            <DisplayCode tagName={tagList[0]} attributes={[`"id"="${tagId}"`]} lists={olListNum} columns={0} rows={0} />
+          }
+          {tagId === '' && tagClass !== '' &&
+            <DisplayCode tagName={tagList[0]} attributes={[`"class"="${tagClass}"`]} lists={olListNum} columns={0} rows={0} />
+          }
+          {tagId !== '' && tagClass !== '' &&
+            <DisplayCode tagName={tagList[0]} attributes={[`"id"="${tagId}"`, `"class"="${tagClass}"`]} lists={olListNum} columns={0} rows={0} />
+          }
         </div>
       );
     } else if (tagList[0] === 'table') {
@@ -74,15 +98,35 @@ const Accordion: FC<Props> = ({title, description, required, recommended, tagLis
         <div>
           <NumberOfElements title="行数(1以上の整数を入力)" setFunction={setColumns} />
           <NumberOfElements title="列数(1以上の整数を入力)" setFunction={setRows} />
-          <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap dark:bg-gray-500 dark:text-gray-300">
-            {generateElement.generateElement(tagList[0], attributes, '', 0, columns, rows)}
-          </div>
+          {tagId === '' && tagClass === '' &&
+            <DisplayCode tagName={tagList[0]} attributes={[]} lists={0} columns={columns} rows={rows} />
+          }
+          {tagId !== '' && tagClass === '' &&
+            <DisplayCode tagName={tagList[0]} attributes={[`"id"="${tagId}"`]} lists={0} columns={columns} rows={rows} />
+          }
+          {tagId === '' && tagClass !== '' &&
+            <DisplayCode tagName={tagList[0]} attributes={[`"class"="${tagClass}"`]} lists={0} columns={columns} rows={rows} />
+          }
+          {tagId !== '' && tagClass !== '' &&
+            <DisplayCode tagName={tagList[0]} attributes={[`"id"="${tagId}"`, `"class"="${tagClass}"`]} lists={0} columns={columns} rows={rows} />
+          }
         </div>
       );
     } else {
       return(
-        <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap dark:bg-gray-500 dark:text-gray-300">
-          {generateElement.generateElement(tagList[0], attributes)}
+        <div>
+          {tagId === '' && tagClass === '' &&
+            <DisplayCode tagName={tagList[0]} attributes={[]} lists={0} columns={0} rows={0} />
+          }
+          {tagId !== '' && tagClass === '' &&
+            <DisplayCode tagName={tagList[0]} attributes={[`"id"="${tagId}"`]} lists={0} columns={0} rows={0} />
+          }
+          {tagId === '' && tagClass !== '' &&
+            <DisplayCode tagName={tagList[0]} attributes={[`"class"="${tagClass}"`]} lists={0} columns={0} rows={0} />
+          }
+          {tagId !== '' && tagClass !== '' &&
+            <DisplayCode tagName={tagList[0]} attributes={[`"id"="${tagId}"`, `"class"="${tagClass}"`]} lists={0} columns={0} rows={0} />
+          }
         </div>
       );
     }
