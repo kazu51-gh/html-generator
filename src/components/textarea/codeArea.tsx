@@ -13,9 +13,8 @@ const CodeArea: FC<Props> = ({ textareaData, setTextareaData }) => {
         rows={25}
         onChange={(e) => setTextareaData(e.target.value)}
         placeholder="HTMLを作成していきましょう。"
-      >
-        {textareaData}
-      </textarea>
+        value={textareaData}
+      ></textarea>
     </div>
   );
 }
