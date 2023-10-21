@@ -11,7 +11,7 @@ const Viewer: FC<Props> = ({ textareaData }) => {
   return(
     <div className="h-full">
       <PageTitle title="プレビュー" />
-      <div className="block border border-black h-5/6 mt-3 p-2 w-11/12">
+      <div className="block border border-black rounded-md h-[90%] my-3 px-2 w-11/12 dark:bg-white dark:border-gray-500 dark:text-black">
         <div className="default-css">
           {parse(textareaData)}
         </div>
