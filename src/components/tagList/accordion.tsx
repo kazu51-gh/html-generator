@@ -47,13 +47,13 @@ const Accordion: FC<Props> = ({ title, description, required, recommended, tagLi
             <DisplayCode tagName={radioValue} attributes={[]} lists={0} columns={0} rows={0} />
           }
           {tagId !== '' && tagClass === '' &&
-            <DisplayCode tagName={radioValue} attributes={[`"id"="${tagId}"`]} lists={0} columns={0} rows={0} />
+            <DisplayCode tagName={radioValue} attributes={[`id="${tagId}"`]} lists={0} columns={0} rows={0} />
           }
           {tagId === '' && tagClass !== '' &&
-            <DisplayCode tagName={radioValue} attributes={[`"class"="${tagClass}"`]} lists={0} columns={0} rows={0} />
+            <DisplayCode tagName={radioValue} attributes={[`class="${tagClass}"`]} lists={0} columns={0} rows={0} />
           }
           {tagId !== '' && tagClass !== '' &&
-            <DisplayCode tagName={radioValue} attributes={[`"id"="${tagId}"`, `"class"="${tagClass}"`]} lists={0} columns={0} rows={0} />
+            <DisplayCode tagName={radioValue} attributes={[`id="${tagId}"`, `class="${tagClass}"`]} lists={0} columns={0} rows={0} />
           }
         </div>
       );
@@ -65,13 +65,13 @@ const Accordion: FC<Props> = ({ title, description, required, recommended, tagLi
             <DisplayCode tagName={tagList[0]} attributes={[]} lists={ulListNum} columns={0} rows={0} />
           }
           {tagId !== '' && tagClass === '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[`"id"="${tagId}"`]} lists={ulListNum} columns={0} rows={0} />
+            <DisplayCode tagName={tagList[0]} attributes={[`id="${tagId}"`]} lists={ulListNum} columns={0} rows={0} />
           }
           {tagId === '' && tagClass !== '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[`"class"="${tagClass}"`]} lists={ulListNum} columns={0} rows={0} />
+            <DisplayCode tagName={tagList[0]} attributes={[`class="${tagClass}"`]} lists={ulListNum} columns={0} rows={0} />
           }
           {tagId !== '' && tagClass !== '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[`"id"="${tagId}"`, `"class"="${tagClass}"`]} lists={ulListNum} columns={0} rows={0} />
+            <DisplayCode tagName={tagList[0]} attributes={[`id="${tagId}"`, `class="${tagClass}"`]} lists={ulListNum} columns={0} rows={0} />
           }
         </div>
       );
@@ -83,13 +83,13 @@ const Accordion: FC<Props> = ({ title, description, required, recommended, tagLi
             <DisplayCode tagName={tagList[0]} attributes={[]} lists={olListNum} columns={0} rows={0} />
           }
           {tagId !== '' && tagClass === '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[`"id"="${tagId}"`]} lists={olListNum} columns={0} rows={0} />
+            <DisplayCode tagName={tagList[0]} attributes={[`id="${tagId}"`]} lists={olListNum} columns={0} rows={0} />
           }
           {tagId === '' && tagClass !== '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[`"class"="${tagClass}"`]} lists={olListNum} columns={0} rows={0} />
+            <DisplayCode tagName={tagList[0]} attributes={[`class="${tagClass}"`]} lists={olListNum} columns={0} rows={0} />
           }
           {tagId !== '' && tagClass !== '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[`"id"="${tagId}"`, `"class"="${tagClass}"`]} lists={olListNum} columns={0} rows={0} />
+            <DisplayCode tagName={tagList[0]} attributes={[`id="${tagId}"`, `class="${tagClass}"`]} lists={olListNum} columns={0} rows={0} />
           }
         </div>
       );
@@ -102,13 +102,13 @@ const Accordion: FC<Props> = ({ title, description, required, recommended, tagLi
             <DisplayCode tagName={tagList[0]} attributes={[]} lists={0} columns={columns} rows={rows} />
           }
           {tagId !== '' && tagClass === '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[`"id"="${tagId}"`]} lists={0} columns={columns} rows={rows} />
+            <DisplayCode tagName={tagList[0]} attributes={[`id="${tagId}"`]} lists={0} columns={columns} rows={rows} />
           }
           {tagId === '' && tagClass !== '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[`"class"="${tagClass}"`]} lists={0} columns={columns} rows={rows} />
+            <DisplayCode tagName={tagList[0]} attributes={[`class="${tagClass}"`]} lists={0} columns={columns} rows={rows} />
           }
           {tagId !== '' && tagClass !== '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[`"id"="${tagId}"`, `"class"="${tagClass}"`]} lists={0} columns={columns} rows={rows} />
+            <DisplayCode tagName={tagList[0]} attributes={[`id="${tagId}"`, `class="${tagClass}"`]} lists={0} columns={columns} rows={rows} />
           }
         </div>
       );
@@ -119,13 +119,13 @@ const Accordion: FC<Props> = ({ title, description, required, recommended, tagLi
             <DisplayCode tagName={tagList[0]} attributes={[]} lists={0} columns={0} rows={0} />
           }
           {tagId !== '' && tagClass === '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[`"id"="${tagId}"`]} lists={0} columns={0} rows={0} />
+            <DisplayCode tagName={tagList[0]} attributes={[`id="${tagId}"`]} lists={0} columns={0} rows={0} />
           }
           {tagId === '' && tagClass !== '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[`"class"="${tagClass}"`]} lists={0} columns={0} rows={0} />
+            <DisplayCode tagName={tagList[0]} attributes={[`class="${tagClass}"`]} lists={0} columns={0} rows={0} />
           }
           {tagId !== '' && tagClass !== '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[`"id"="${tagId}"`, `"class"="${tagClass}"`]} lists={0} columns={0} rows={0} />
+            <DisplayCode tagName={tagList[0]} attributes={[`id="${tagId}"`, `class="${tagClass}"`]} lists={0} columns={0} rows={0} />
           }
         </div>
       );
