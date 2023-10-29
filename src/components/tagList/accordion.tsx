@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import DisplayCode from "@/components/tagList/displayCode";
 import IdAndClass from "@/components/tagList/idAndClass";
 import NumberOfElements from "@/components/tagList/numberOfElements";
+import SelectHeading from "@/components/radio/selectHeading";
 
 type Props = {
   title: string;
@@ -20,29 +21,11 @@ const Accordion: FC<Props> = ({ title, description, required, recommended, tagLi
   const [tagId, setTagId] = useState('');
   const [tagClass, setTagClass] = useState('');
 
-  const selectTag = tagList.map((tag) =>
-    <div key={tag} className="flex">
-      <input
-        id={tag}
-        className="mr-1"
-        type="radio"
-        value={tag}
-        checked={tag === radioValue}
-        onChange={(e) => setRadioValue(e.target.value)}
-      />
-      <label className="mr-3" htmlFor={tag}>
-        {tag}
-      </label>
-    </div>
-  );
-
   const displayHTML = (tagList: string[]) => {
     if (tagList.length !== 1) {
       return(
         <div>
-          <div className="flex">
-            {selectTag}
-          </div>
+          <SelectHeading tagList={tagList} radioValue={radioValue} setRadioValue={setRadioValue} />
           {tagId === '' && tagClass === '' &&
             <DisplayCode tagName={radioValue} attributes={[]} lists={0} columns={0} rows={0} />
           }
