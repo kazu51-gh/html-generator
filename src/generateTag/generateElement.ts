@@ -33,22 +33,22 @@ export class GenerateElement extends Object {
     const hTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
     let element = '';
 
-    if (hTags.find((hTag) => hTag === tagName)) { element = this.generateHTagElement(tagName, attributes); }
-    else if (tagName === 'p') { element = this.generatePTagElement(tagName, attributes); }
-    else if (tagName === 'a') { element = this.generateATagElement(tagName, attributes); }
+    if (hTags.find((hTag) => hTag === tagName)) { element = this.generateHTagElement(tagName, attributes, content); }
+    else if (tagName === 'p') { element = this.generatePTagElement(tagName, attributes, content); }
+    else if (tagName === 'a') { element = this.generateATagElement(tagName, attributes, content); }
     else if (tagName === 'img') { element = this.generateImgTagElement(tagName, attributes); }
     else if (tagName === 'ul') { element = this.generateUlTagElement(tagName, attributes, lists); }
     else if (tagName === 'ol') { element = this.generateOlTagElement(tagName, attributes, lists); }
-    else if (tagName === 'div') { element = this.generateDivTagElement(tagName, attributes); }
-    else if (tagName === 'span') { element = this.generateSpanTagElement(tagName, attributes); }
+    else if (tagName === 'div') { element = this.generateDivTagElement(tagName, attributes, content); }
+    else if (tagName === 'span') { element = this.generateSpanTagElement(tagName, attributes, content); }
     else if (tagName === 'br') { element = this.generateBrTagElement(tagName, attributes); }
     else if (tagName === 'hr') { element = this.generateHrTagElement(tagName, attributes); }
-    else if (tagName === 'strong') { element = this.generateStrongTagElement(tagName, attributes); }
-    else if (tagName === 'blockquote') { element = this.generateBlockquoteTagElement(tagName, attributes); }
-    else if (tagName === 'code') { element = this.generateCodeTagElement(tagName, attributes); }
+    else if (tagName === 'strong') { element = this.generateStrongTagElement(tagName, attributes, content); }
+    else if (tagName === 'blockquote') { element = this.generateBlockquoteTagElement(tagName, attributes, content); }
+    else if (tagName === 'code') { element = this.generateCodeTagElement(tagName, attributes, content); }
     else if (tagName === 'input') { element = this.generateInputTagElement(tagName, attributes); }
-    else if (tagName === 'textarea') { element = this.generateTextareaTagElement(tagName, attributes); }
-    else if (tagName === 'button') { element = this.generateButtonTagElement(tagName, attributes); }
+    else if (tagName === 'textarea') { element = this.generateTextareaTagElement(tagName, attributes, content); }
+    else if (tagName === 'button') { element = this.generateButtonTagElement(tagName, attributes, content); }
     else if (tagName === 'table') { element = this.generateTableTagElement(tagName, attributes, columns, rows); }
     else if (tagName === 'meta') { element = this.generateMetaTagElement(tagName, attributes); }
     else if (tagName === 'title') { element = this.generateTitleTagElement(tagName, attributes, content); }
@@ -58,18 +58,18 @@ export class GenerateElement extends Object {
     return(element);
   }
 
-  public generateHTagElement = (tagName: string, attributes: string[]): string => {
-    const hTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, '見出しのテキスト');
+  public generateHTagElement = (tagName: string, attributes: string[], content: string): string => {
+    const hTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
     return(hTagElement);
   }
 
-  public generatePTagElement = (tagName: string, attributes: string[]): string => {
-    const pTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, '本文のテキスト');
+  public generatePTagElement = (tagName: string, attributes: string[], content: string): string => {
+    const pTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
     return(pTagElement);
   }
 
-  public generateATagElement = (tagName: string, attributes: string[]): string => {
-    const aTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, 'リンクとして表示するテキスト');
+  public generateATagElement = (tagName: string, attributes: string[], content: string): string => {
+    const aTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
     return(aTagElement);
   }
 
@@ -100,13 +100,13 @@ export class GenerateElement extends Object {
     return code + '\r\n';
   }
 
-  public generateDivTagElement = (tagName: string, attributes: string[]): string => {
-    const divTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, 'コンテンツ');
+  public generateDivTagElement = (tagName: string, attributes: string[], content: string): string => {
+    const divTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
     return(divTagElement);
   }
 
-  public generateSpanTagElement = (tagName: string, attributes: string[]): string => {
-    const spanTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, 'コンテンツ');
+  public generateSpanTagElement = (tagName: string, attributes: string[], content: string): string => {
+    const spanTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
     return(spanTagElement);
   }
 
@@ -120,18 +120,18 @@ export class GenerateElement extends Object {
     return(hrTagElement);
   }
 
-  public generateStrongTagElement = (tagName: string, attributes: string[]): string => {
-    const strongTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, '強調するテキスト');
+  public generateStrongTagElement = (tagName: string, attributes: string[], content: string): string => {
+    const strongTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
     return(strongTagElement);
   }
 
-  public generateBlockquoteTagElement = (tagName: string, attributes: string[]): string => {
-    const blockquoteTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, '引用文');
+  public generateBlockquoteTagElement = (tagName: string, attributes: string[], content: string): string => {
+    const blockquoteTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
     return(blockquoteTagElement);
   }
 
-  public generateCodeTagElement = (tagName: string, attributes: string[]): string => {
-    const codeTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, 'コード');
+  public generateCodeTagElement = (tagName: string, attributes: string[], content: string): string => {
+    const codeTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
     return(codeTagElement);
   }
 
@@ -140,13 +140,13 @@ export class GenerateElement extends Object {
     return(inputTagElement);
   }
 
-  public generateTextareaTagElement = (tagName: string, attributes: string[]): string => {
-    const textareaTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, 'テキストエリアの初期テキスト');
+  public generateTextareaTagElement = (tagName: string, attributes: string[], content: string): string => {
+    const textareaTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
     return(textareaTagElement);
   }
 
-  public generateButtonTagElement = (tagName: string, attributes: string[]): string => {
-    const buttonTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, 'ボタンに表示するテキスト');
+  public generateButtonTagElement = (tagName: string, attributes: string[], content: string): string => {
+    const buttonTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
     return(buttonTagElement);
   }
 
