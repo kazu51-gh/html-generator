@@ -10,7 +10,13 @@ type Props = {
 const DownloadButton: FC<Props> = ({ pageTitle, pageDescription, textareaData }) => {
   const makeHTML = (title: string, description: string, textareaData: string) => {
     const generateHTML = new GenerateHTML();
-    const text = generateHTML.generate(title, description, textareaData);
+    const contents = textareaData.split('\n');
+    let contentsList = [];
+    for(let i = 0; i < contents.length; i++) {
+      const code = '\t\t' + contents[i];
+      if (code !== '\t\tundefined') { contentsList.push(code); }
+    }
+    const text = generateHTML.generate(title, description, contentsList.join('\r\n'));
     const downloadData = new Blob([text], {type: 'text/html'});
     const downloadLink = document.createElement('a');
     downloadLink.href = URL.createObjectURL(downloadData);

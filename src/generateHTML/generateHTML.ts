@@ -21,7 +21,7 @@ export class GenerateHTML extends Object {
     const pageTitle = this.generateElement.generateElement('title', [], title);
     const headContents = '\r\n\t\t' + charset + '\r\n\t\t' + pageDescription + '\r\n\t\t' + pageTitle + '\r\n\t';
     const head = this.generateElement.generateElement('head', [], headContents);
-    const bodyContents = '\r\n\t\t' + contents + '\r\n\t'
+    const bodyContents = '\r\n' + contents + '\r\n\t'
     const body = this.generateElement.generateElement('body', [], bodyContents);
     const htmlContents = '\r\n\t' + head + '\r\n\t' + body + '\r\n';
     const html = doctype + '\r\n' + this.generateElement.generateElement('html', ['lang="ja"'], htmlContents);
