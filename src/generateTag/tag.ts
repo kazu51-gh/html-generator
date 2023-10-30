@@ -1,5 +1,5 @@
 /**
- * タグを定義するクラス
+ * タグ(tag)を定義するクラス
  */
 export class Tag extends Object {
 

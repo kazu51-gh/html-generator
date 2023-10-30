@@ -1,17 +1,17 @@
 import { ClosingTag } from "@/generateTag/closingTag";
 import { Contents } from "@/generateTag/contents";
 import { OpeningTag } from "@/generateTag/openingTag";
-import { Element } from "@/generateTag/Element";
+import { Element } from "@/generateTag/element";
 import { Attribute } from "@/generateTag/attribute";
 
 /**
  * ペアタグ要素を定義するクラス
  */
 export class PairTagElement extends Element {
-  public openingTag: OpeningTag;
-  public closingTag: ClosingTag;
-  public contents: Contents;
-  public attribute: Attribute;
+  private openingTag: OpeningTag;
+  private closingTag: ClosingTag;
+  private contents: Contents;
+  private attribute: Attribute;
 
   /**
    * ペアタグ要素のインスタンスを生成する

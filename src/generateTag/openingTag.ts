@@ -1,12 +1,11 @@
 import { Tag } from "@/generateTag/tag";
 
 /**
- * 開始タグを定義するクラス
+ * 開始タグ(opening tag)を定義するクラス
  */
 export class OpeningTag extends Tag {
-  public greaterThan: string;
-  public lessThan: string;
-  public slash: string;
+  private greaterThan: string;
+  private lessThan: string;
   
   /**
    * 開始タグのインスタンスを生成する
@@ -14,7 +13,6 @@ export class OpeningTag extends Tag {
   constructor() {
     super();
     this.lessThan = '<';
-    this.slash = '/';
     this.greaterThan = '>';
   }
 
@@ -22,7 +20,7 @@ export class OpeningTag extends Tag {
    * 大なり文字(>)を取得する
    * @returns 大なり文字(>)
    */
-  public getGreaterThan(): string {
+  private getGreaterThan(): string {
     return this.greaterThan;
   }
 
@@ -30,16 +28,8 @@ export class OpeningTag extends Tag {
    * 小なり文字(<)を取得する
    * @returns 小なり文字(<)
    */
-  public getLessThan(): string {
+  private getLessThan(): string {
     return this.lessThan;
-  }
-
-  /**
-   * スラッシュ(/)を取得する
-   * @returns スラッシュ(/)
-   */
-  public getSlash(): string {
-    return this.slash;
   }
 
   /**
@@ -55,30 +45,10 @@ export class OpeningTag extends Tag {
 
     if (attribute.length === 0) { return(lessThan + tagName + greaterThan); }
 
-    for(let i= 0; i < attribute.length; i++) {
+    for(let i = 0; i < attribute.length; i++) {
       attributes = attributes + ' ' + attribute[i];
     }
     
     return(lessThan + tagName + attributes + greaterThan);
-  }
-
-  /**
-   * 空要素の開始タグを取得する
-   * @param tagName タグ名
-   * @returns 開始タグ
-   */
-  public getOpeningTagForEmpty(tagName: string, attribute: string[]): string {
-    const lessThan = this.getLessThan();
-    const slash = this.getSlash();
-    const greaterThan = this.getGreaterThan();
-    let attributes = '';
-
-    if (attribute.length === 0) { return(lessThan + tagName + ' ' + slash + greaterThan); }
-
-    for(let i= 0; i < attribute.length; i++) {
-      attributes = attributes + ' ' + attribute[i];
-    }
-
-    return(lessThan + tagName + attributes + ' ' + slash + greaterThan);
   }
 }

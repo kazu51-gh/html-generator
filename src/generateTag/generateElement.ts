@@ -2,14 +2,14 @@ import { PairTagElement } from "@/generateTag/pairTagElement";
 import { EmptyTagElement } from "@/generateTag/emptyTagElement";
 
 /**
- * HTML要素を生成するクラス
+ * 要素(element)を生成するクラス
  */
 export class GenerateElement extends Object {
   private pairTagElement: PairTagElement;
   private emptyTagElement: EmptyTagElement;
 
   /**
-   * HTML要素を生成するクラスのインスタンスを生成する
+   * 要素を生成するクラスのインスタンスを生成する
    */
   constructor() {
     super();
@@ -18,9 +18,9 @@ export class GenerateElement extends Object {
   }
 
   /**
-   * HTML要素を生成する
+   * 要素を生成する
    * @param tagName タグ名
-   * @returns HTML要素
+   * @returns 要素
    */
   public generateElement = (
     tagName: string,

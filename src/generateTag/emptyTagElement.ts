@@ -1,13 +1,13 @@
-import { Element } from "@/generateTag/Element";
+import { Element } from "@/generateTag/element";
 import { OpeningTag } from "@/generateTag/openingTag";
 import { Attribute } from "@/generateTag/attribute";
 
 /**
- * 空要素を定義するクラス
+ * 空要素(void element)を定義するクラス
  */
 export class EmptyTagElement extends Element {
-  public openingTag: OpeningTag;
-  public attribute: Attribute;
+  private openingTag: OpeningTag;
+  private attributes: Attribute;
 
   /**
    * 空要素のインスタンスを生成する
@@ -15,7 +15,7 @@ export class EmptyTagElement extends Element {
   constructor() {
     super();
     this.openingTag = new OpeningTag();
-    this.attribute = new Attribute();
+    this.attributes = new Attribute();
   }
 
   /**
@@ -24,7 +24,7 @@ export class EmptyTagElement extends Element {
    * @returns 空要素
    */
   public getEmptyTagElement(tagName: string, attributes: string[]): string {
-    const element = this.openingTag.getOpeningTagForEmpty(tagName, attributes);
+    const element = this.openingTag.getOpeningTag(tagName, attributes);
     return(element);
   }
 }

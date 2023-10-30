@@ -1,5 +1,5 @@
 /**
- * コンテンツを定義するクラス
+ * コンテンツ(content)を定義するクラス
  */
 export class Contents extends Object {
 

@@ -1,5 +1,5 @@
 /**
- * 属性を定義するクラス
+ * 属性(attribute)を定義するクラス
  */
 export class Attribute extends Object {
 
