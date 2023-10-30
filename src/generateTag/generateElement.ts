@@ -33,21 +33,23 @@ export class GenerateElement extends Object {
     const hTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
     const htmlDocumentTags = ['title', 'head', 'body', 'html'];
     const listTags = ['ol', 'ul'];
-    const noContentTag = ['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'];
+    const noContentTag = ['area', 'base', 'br', 'col', 'embed', 'hr', 'link', 'meta', 'param', 'source', 'track', 'wbr'];
 
     if (hTags.find((hTag) => (hTag === tagName))) { return(this.pairTagElement.getPairTagElement(tagName, attributes, '見出しのテキスト')); }
     else if (noContentTag.find((tag) => (tag === tagName))) { return(this.emptyTagElement.getEmptyTagElement(tagName, attributes)); }
     else if (listTags.find((tag) => (tag === tagName))) { return(this.generateListElement(tagName, attributes, lists)); }
     else if (htmlDocumentTags.find((tag) => (tag === tagName))) { return(this.pairTagElement.getPairTagElement(tagName, attributes, content)); }
+    else if (tagName === 'img') { return(this.emptyTagElement.getEmptyTagElement(tagName, attributes.concat(['src="画像へのパス"', 'alt="代替テキスト"']))); }
+    else if (tagName === 'input') { return(this.emptyTagElement.getEmptyTagElement(tagName, attributes.concat(['type="タイプ"']))); }
     else if (tagName === 'p') { return(this.pairTagElement.getPairTagElement(tagName, attributes, '表示するテキスト')); }
-    else if (tagName === 'a') { return(this.pairTagElement.getPairTagElement(tagName, attributes, 'リンクを貼り付けるテキスト')); }
+    else if (tagName === 'a') { return(this.pairTagElement.getPairTagElement(tagName, attributes.concat(['href="リンク"']), 'リンクを貼り付けるテキスト')); }
     else if (tagName === 'div') { return(this.pairTagElement.getPairTagElement(tagName, attributes, 'コンテンツ')); }
     else if (tagName === 'span') { return(this.pairTagElement.getPairTagElement(tagName, attributes, 'コンテンツ')); }
     else if (tagName === 'strong') { return(this.pairTagElement.getPairTagElement(tagName, attributes, '強調するテキスト')); }
-    else if (tagName === 'blockquote') { return(this.pairTagElement.getPairTagElement(tagName, attributes, '引用文')); }
+    else if (tagName === 'blockquote') { return(this.pairTagElement.getPairTagElement(tagName, attributes.concat(['cite="引用元"']), '引用文')); }
     else if (tagName === 'code') { return(this.pairTagElement.getPairTagElement(tagName, attributes, 'コード')); }
-    else if (tagName === 'textarea') { return(this.pairTagElement.getPairTagElement(tagName, attributes, '初期テキスト')); }
-    else if (tagName === 'button') { return(this.pairTagElement.getPairTagElement(tagName, attributes, 'ボタンに表示するテキスト')); }
+    else if (tagName === 'textarea') { return(this.pairTagElement.getPairTagElement(tagName, attributes.concat(['rows="縦方向の文字数"', 'cols="横方向の文字数"']), '初期テキスト')); }
+    else if (tagName === 'button') { return(this.pairTagElement.getPairTagElement(tagName, attributes.concat(['type="タイプ"']), 'ボタンに表示するテキスト')); }
     else if (tagName === 'table') { return(this.generateTableTagElement(tagName, attributes, columns, rows)); }
     return('一致するタグが存在しません');
   }
