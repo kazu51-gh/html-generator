@@ -110,7 +110,7 @@ const TagLists = () => {
             title="<textarea> : テキストエリア"
             description={tagDescription.textarea}
             required=""
-            recommended="推奨属性 : row, col ･･･ テキストエリアの大きさを指定します。CSSを用いて大きさを指定することも出来ます。"
+            recommended="推奨属性 : rows, cols ･･･ テキストエリアの大きさを指定します。CSSを用いて大きさを指定することも出来ます。"
             tagList={tagList.textarea}
           />
           <Accordion
