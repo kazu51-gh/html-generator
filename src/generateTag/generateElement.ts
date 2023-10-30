@@ -31,189 +31,110 @@ export class GenerateElement extends Object {
     rows: number = 0
     ): string => {
     const hTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
-    let element = '';
+    const htmlDocumentTags = ['title', 'head', 'body', 'html'];
+    const listTags = ['ol', 'ul'];
+    const noContentTag = ['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'];
 
-    if (hTags.find((hTag) => hTag === tagName)) { element = this.generateHTagElement(tagName, attributes, '見出しのテキスト'); }
-    else if (tagName === 'p') { element = this.generatePTagElement(tagName, attributes, '表示するテキスト'); }
-    else if (tagName === 'a') { element = this.generateATagElement(tagName, attributes, 'リンクを貼り付けるテキスト'); }
-    else if (tagName === 'img') { element = this.generateImgTagElement(tagName, attributes); }
-    else if (tagName === 'ul') { element = this.generateUlTagElement(tagName, attributes, lists); }
-    else if (tagName === 'ol') { element = this.generateOlTagElement(tagName, attributes, lists); }
-    else if (tagName === 'div') { element = this.generateDivTagElement(tagName, attributes, 'コンテンツ'); }
-    else if (tagName === 'span') { element = this.generateSpanTagElement(tagName, attributes, 'コンテンツ'); }
-    else if (tagName === 'br') { element = this.generateBrTagElement(tagName, attributes); }
-    else if (tagName === 'hr') { element = this.generateHrTagElement(tagName, attributes); }
-    else if (tagName === 'strong') { element = this.generateStrongTagElement(tagName, attributes, '強調するテキスト'); }
-    else if (tagName === 'blockquote') { element = this.generateBlockquoteTagElement(tagName, attributes, '引用文'); }
-    else if (tagName === 'code') { element = this.generateCodeTagElement(tagName, attributes, 'コード'); }
-    else if (tagName === 'input') { element = this.generateInputTagElement(tagName, attributes); }
-    else if (tagName === 'textarea') { element = this.generateTextareaTagElement(tagName, attributes, '初期テキスト'); }
-    else if (tagName === 'button') { element = this.generateButtonTagElement(tagName, attributes, 'ボタンに表示するテキスト'); }
-    else if (tagName === 'table') { element = this.generateTableTagElement(tagName, attributes, columns, rows); }
-    else if (tagName === 'meta') { element = this.generateMetaTagElement(tagName, attributes); }
-    else if (tagName === 'title') { element = this.generateTitleTagElement(tagName, attributes, content); }
-    else if (tagName === 'head') { element = this.generateHeadTagElement(tagName, attributes, content); }
-    else if (tagName === 'body') { element = this.generateBodyTagElement(tagName, attributes, content); }
-    else if (tagName === 'html') { element = this.generateHtmlTagElement(tagName, attributes, content); }
+    if (hTags.find((hTag) => (hTag === tagName))) { return(this.pairTagElement.getPairTagElement(tagName, attributes, '見出しのテキスト')); }
+    else if (noContentTag.find((tag) => (tag === tagName))) { return(this.emptyTagElement.getEmptyTagElement(tagName, attributes)); }
+    else if (listTags.find((tag) => (tag === tagName))) { return(this.generateListElement(tagName, attributes, lists)); }
+    else if (htmlDocumentTags.find((tag) => (tag === tagName))) { return(this.pairTagElement.getPairTagElement(tagName, attributes, content)); }
+    else if (tagName === 'p') { return(this.pairTagElement.getPairTagElement(tagName, attributes, '表示するテキスト')); }
+    else if (tagName === 'a') { return(this.pairTagElement.getPairTagElement(tagName, attributes, 'リンクを貼り付けるテキスト')); }
+    else if (tagName === 'div') { return(this.pairTagElement.getPairTagElement(tagName, attributes, 'コンテンツ')); }
+    else if (tagName === 'span') { return(this.pairTagElement.getPairTagElement(tagName, attributes, 'コンテンツ')); }
+    else if (tagName === 'strong') { return(this.pairTagElement.getPairTagElement(tagName, attributes, '強調するテキスト')); }
+    else if (tagName === 'blockquote') { return(this.pairTagElement.getPairTagElement(tagName, attributes, '引用文')); }
+    else if (tagName === 'code') { return(this.pairTagElement.getPairTagElement(tagName, attributes, 'コード')); }
+    else if (tagName === 'textarea') { return(this.pairTagElement.getPairTagElement(tagName, attributes, '初期テキスト')); }
+    else if (tagName === 'button') { return(this.pairTagElement.getPairTagElement(tagName, attributes, 'ボタンに表示するテキスト')); }
+    else if (tagName === 'table') { return(this.generateTableTagElement(tagName, attributes, columns, rows)); }
+    return('一致するタグが存在しません');
+  }
+
+  /**
+   * リスト要素(ol, ul)を生成する
+   * @param tagName タグ名
+   * @param attributes 属性
+   * @param lists リスト
+   * @returns リスト要素
+   */
+  public generateListElement = (tagName: string, attributes: string[], lists: number): string => {
+    const contents = this.generateLiTagElement(lists);
+    const element = this.pairTagElement.getPairTagElement(tagName, attributes, contents);
     return(element);
   }
 
-  public generateHTagElement = (tagName: string, attributes: string[], content: string): string => {
-    const hTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
-    return(hTagElement);
-  }
-
-  public generatePTagElement = (tagName: string, attributes: string[], content: string): string => {
-    const pTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
-    return(pTagElement);
-  }
-
-  public generateATagElement = (tagName: string, attributes: string[], content: string): string => {
-    const aTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
-    return(aTagElement);
-  }
-
-  public generateImgTagElement = (tagName: string, attributes: string[]): string => {
-    const imgTagElement = this.emptyTagElement.getEmptyTagElement(tagName, attributes);
-    return(imgTagElement);
-  }
-
-  public generateUlTagElement = (tagName: string, attributes: string[], lists: number): string => {
-    const contents = this.generateLiTagElement(lists);
-    const ulTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, contents);
-    return(ulTagElement);
-  }
-
-  public generateOlTagElement = (tagName: string, attributes: string[], lists: number): string => {
-    const contents = this.generateLiTagElement(lists);
-    const olTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, contents);
-    return(olTagElement);
-  }
-
+  /**
+   * liタグを指定された個数だけ生成する
+   * @param lists リスト
+   * @returns liタグの集合文字列
+   */
   public generateLiTagElement = (lists: number): string => {
-    const liTag = this.pairTagElement.getPairTagElement('li', [], 'リスト');
     let code = '';
-
     for(let i = 0; i < lists; i++) {
-      code = code + '\r\n\t' + liTag;
+      code = code + '\r\n\t' + this.pairTagElement.getPairTagElement('li', [], `リスト${i+1}`);
     }
     return code + '\r\n';
   }
 
-  public generateDivTagElement = (tagName: string, attributes: string[], content: string): string => {
-    const divTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
-    return(divTagElement);
-  }
-
-  public generateSpanTagElement = (tagName: string, attributes: string[], content: string): string => {
-    const spanTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
-    return(spanTagElement);
-  }
-
-  public generateBrTagElement = (tagName: string, attributes: string[]): string => {
-    const brTagElement = this.emptyTagElement.getEmptyTagElement(tagName, attributes);
-    return(brTagElement);
-  }
-
-  public generateHrTagElement = (tagName: string, attributes: string[]): string => {
-    const hrTagElement = this.emptyTagElement.getEmptyTagElement(tagName, attributes);
-    return(hrTagElement);
-  }
-
-  public generateStrongTagElement = (tagName: string, attributes: string[], content: string): string => {
-    const strongTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
-    return(strongTagElement);
-  }
-
-  public generateBlockquoteTagElement = (tagName: string, attributes: string[], content: string): string => {
-    const blockquoteTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
-    return(blockquoteTagElement);
-  }
-
-  public generateCodeTagElement = (tagName: string, attributes: string[], content: string): string => {
-    const codeTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
-    return(codeTagElement);
-  }
-
-  public generateInputTagElement = (tagName: string, attributes: string[]): string => {
-    const inputTagElement = this.emptyTagElement.getEmptyTagElement(tagName, attributes);
-    return(inputTagElement);
-  }
-
-  public generateTextareaTagElement = (tagName: string, attributes: string[], content: string): string => {
-    const textareaTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
-    return(textareaTagElement);
-  }
-
-  public generateButtonTagElement = (tagName: string, attributes: string[], content: string): string => {
-    const buttonTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
-    return(buttonTagElement);
-  }
-
+  /**
+   * テーブル要素(table)を生成する。
+   * @param tagName タグ名
+   * @param attributes 属性
+   * @param columns 行数
+   * @param rows 列数
+   * @returns テーブル要素
+   */
   public generateTableTagElement = (tagName: string, attributes: string[], columns: number, rows: number): string => {
     const caption = '\r\n\t' + this.pairTagElement.getPairTagElement('caption', [], 'テーブル名');
     const thTags = this.generateThTagElement(columns) + '\t\t';
-    const tdTags = this.generateTdElement(columns) + '\t\t';
+    const tdTags = this.generateTdTagElement(columns) + '\t\t';
     const trTagForThead = '\r\n\t\t' + this.pairTagElement.getPairTagElement('tr', [], thTags) + '\r\n\t';
-    const trTagForTbody = this.generateTrElement(rows, tdTags) + '\t';
+    const trTagForTbody = this.generateTrTagElement(rows, tdTags) + '\t';
     const theadTag = '\t' + this.pairTagElement.getPairTagElement('thead', [], trTagForThead) + '\r\n';
     const tbodyTag = '\t' + this.pairTagElement.getPairTagElement('tbody', [], trTagForTbody) + '\r\n';
     const tableTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, caption + '\r\n' + theadTag + tbodyTag);
     return(tableTagElement);
   }
 
+  /**
+   * thタグを指定された個数だけ生成する
+   * @param columns 行数
+   * @returns thタグの集合文字列
+   */
   public generateThTagElement = (columns: number): string => {
-    const thTag = this.pairTagElement.getPairTagElement('th', [], '列のタイトル');
     let code = '';
-
     for(let i = 0; i < columns; i++) {
-      code = code + '\r\n\t\t\t' + thTag;
+      code = code + '\r\n\t\t\t' + this.pairTagElement.getPairTagElement('th', [], `列タイトル${i+1}`);
     }
     return code + '\r\n';
   }
 
-  public generateTdElement = (columns: number): string => {
-    const tdTag = this.pairTagElement.getPairTagElement('td', [], 'コンテンツ');
+  /**
+   * tdタグを指定された個数だけ生成する
+   * @param columns 行数
+   * @returns tdタグの集合文字列
+   */
+  public generateTdTagElement = (columns: number): string => {
     let code = '';
-
     for(let i = 0; i < columns; i++) {
-      code = code + '\r\n\t\t\t' + tdTag;
+      code = code + '\r\n\t\t\t' + this.pairTagElement.getPairTagElement('td', [], `コンテンツ${i+1}`);
     }
     return code + '\r\n';
   }
 
-  public generateTrElement = (rows: number, td: string): string => {
-    const tdTag = this.pairTagElement.getPairTagElement('tr', [], td);
+  /**
+   * trタグを指定された個数だけ生成する
+   * @param rows 列数
+   * @param tdTags tdタグの集合文字列
+   * @returns trタグの集合文字列
+   */
+  public generateTrTagElement = (rows: number, tdTags: string): string => {
     let code = '';
-
     for(let i = 0; i < rows; i++) {
-      code = code + '\r\n\t\t' + tdTag;
+      code = code + '\r\n\t\t' + this.pairTagElement.getPairTagElement('tr', [], tdTags);
     }
     return code + '\r\n';
-  }
-
-  public generateMetaTagElement = (tagName: string, attributes: string[]): string => {
-    const metaTagElement = this.emptyTagElement.getEmptyTagElement(tagName, attributes);
-    return(metaTagElement);
-  }
-
-  public generateTitleTagElement = (tagName: string, attributes: string[], content: string): string => {
-    const titleTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
-    return(titleTagElement);
-  }
-
-  public generateHeadTagElement = (tagName: string, attributes: string[], content: string): string => {
-    const headTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
-    return(headTagElement);
-  }
-
-  public generateBodyTagElement = (tagName: string, attributes: string[], content: string): string => {
-    const bodyTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
-    return(bodyTagElement);
-  }
-
-  public generateHtmlTagElement = (tagName: string, attributes: string[], content: string): string => {
-    const bodyTagElement = this.pairTagElement.getPairTagElement(tagName, attributes, content);
-    return(bodyTagElement);
   }
 }
