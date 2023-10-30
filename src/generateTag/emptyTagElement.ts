@@ -1,4 +1,4 @@
-import { Element } from "@/generateTag/element";
+import { Element } from "@/generateTag/Element";
 import { OpeningTag } from "@/generateTag/openingTag";
 import { Attribute } from "@/generateTag/attribute";
 

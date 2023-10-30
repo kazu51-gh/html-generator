@@ -1,7 +1,7 @@
 import { ClosingTag } from "@/generateTag/closingTag";
 import { Contents } from "@/generateTag/contents";
 import { OpeningTag } from "@/generateTag/openingTag";
-import { Element } from "@/generateTag/element";
+import { Element } from "@/generateTag/Element";
 import { Attribute } from "@/generateTag/attribute";
 
 /**
