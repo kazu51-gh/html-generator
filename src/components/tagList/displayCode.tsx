@@ -4,15 +4,14 @@ import { GenerateElement } from "@/generateTag/generateElement";
 type Props = {
   tagName: string;
   attributes: string[];
-  content: string;
   lists: number;
   columns: number;
   rows: number;
 }
 
-const DisplayCode: FC<Props> = ({ tagName, attributes, content, lists, columns, rows }) => {
+const DisplayCode: FC<Props> = ({ tagName, attributes, lists, columns, rows }) => {
   const generateElement = new GenerateElement();
-  const code = generateElement.generateElement(tagName, attributes, content, lists, columns, rows);
+  const code = generateElement.generateElement(tagName, attributes, '', lists, columns, rows);
 
   const copyCode = (code: string) => {
     navigator.clipboard.writeText(code).then(

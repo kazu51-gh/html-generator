@@ -33,22 +33,22 @@ export class GenerateElement extends Object {
     const hTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
     let element = '';
 
-    if (hTags.find((hTag) => hTag === tagName)) { element = this.generateHTagElement(tagName, attributes, content); }
-    else if (tagName === 'p') { element = this.generatePTagElement(tagName, attributes, content); }
-    else if (tagName === 'a') { element = this.generateATagElement(tagName, attributes, content); }
+    if (hTags.find((hTag) => hTag === tagName)) { element = this.generateHTagElement(tagName, attributes, '見出しのテキスト'); }
+    else if (tagName === 'p') { element = this.generatePTagElement(tagName, attributes, '表示するテキスト'); }
+    else if (tagName === 'a') { element = this.generateATagElement(tagName, attributes, 'リンクを貼り付けるテキスト'); }
     else if (tagName === 'img') { element = this.generateImgTagElement(tagName, attributes); }
     else if (tagName === 'ul') { element = this.generateUlTagElement(tagName, attributes, lists); }
     else if (tagName === 'ol') { element = this.generateOlTagElement(tagName, attributes, lists); }
-    else if (tagName === 'div') { element = this.generateDivTagElement(tagName, attributes, content); }
-    else if (tagName === 'span') { element = this.generateSpanTagElement(tagName, attributes, content); }
+    else if (tagName === 'div') { element = this.generateDivTagElement(tagName, attributes, 'コンテンツ'); }
+    else if (tagName === 'span') { element = this.generateSpanTagElement(tagName, attributes, 'コンテンツ'); }
     else if (tagName === 'br') { element = this.generateBrTagElement(tagName, attributes); }
     else if (tagName === 'hr') { element = this.generateHrTagElement(tagName, attributes); }
-    else if (tagName === 'strong') { element = this.generateStrongTagElement(tagName, attributes, content); }
-    else if (tagName === 'blockquote') { element = this.generateBlockquoteTagElement(tagName, attributes, content); }
-    else if (tagName === 'code') { element = this.generateCodeTagElement(tagName, attributes, content); }
+    else if (tagName === 'strong') { element = this.generateStrongTagElement(tagName, attributes, '強調するテキスト'); }
+    else if (tagName === 'blockquote') { element = this.generateBlockquoteTagElement(tagName, attributes, '引用文'); }
+    else if (tagName === 'code') { element = this.generateCodeTagElement(tagName, attributes, 'コード'); }
     else if (tagName === 'input') { element = this.generateInputTagElement(tagName, attributes); }
-    else if (tagName === 'textarea') { element = this.generateTextareaTagElement(tagName, attributes, content); }
-    else if (tagName === 'button') { element = this.generateButtonTagElement(tagName, attributes, content); }
+    else if (tagName === 'textarea') { element = this.generateTextareaTagElement(tagName, attributes, '初期テキスト'); }
+    else if (tagName === 'button') { element = this.generateButtonTagElement(tagName, attributes, 'ボタンに表示するテキスト'); }
     else if (tagName === 'table') { element = this.generateTableTagElement(tagName, attributes, columns, rows); }
     else if (tagName === 'meta') { element = this.generateMetaTagElement(tagName, attributes); }
     else if (tagName === 'title') { element = this.generateTitleTagElement(tagName, attributes, content); }
