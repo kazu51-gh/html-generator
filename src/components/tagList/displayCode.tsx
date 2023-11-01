@@ -22,11 +22,11 @@ const DisplayCode: FC<Props> = ({ tagName, attributes, lists, columns, rows }) =
 
   return(
     <div>
-      <div className="bg-gray-200 inline-block my-3 px-3 py-1.5 whitespace-pre-wrap dark:bg-gray-500 dark:text-gray-300">
+      <div className="bg-white border border-black inline-block m-3 px-2 py-1 rounded whitespace-pre-wrap dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300">
         {code}
       </div>
       <button
-        className="bg-white border border-black font-medium inline-block mx-2 my-3 px-2 py-1 rounded text-base text-black hover:bg-slate-100 dark:hover:bg-slate-700 dark:bg-slate-600 dark:border-gray-300 dark:text-gray-300"
+        className="bg-white border border-black inline-block m-3 px-2 py-1 rounded text-base text-black hover:bg-slate-100 dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300 dark:hover:bg-gray-600"
         onClick={() => copyCode(code)}
       >
         コードをコピー

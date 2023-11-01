@@ -117,20 +117,22 @@ const Accordion: FC<Props> = ({ title, description, required, recommended, tagLi
 
   return(
     <details className="group">
-      <summary className="flex cursor-pointer list-none items-center justify-between p-4 text-lg font-medium group-open:bg-gray-50 dark:group-open:bg-gray-500 dark:group-open:text-white">
+      <summary className="cursor-pointer flex justify-between items-center p-3 text-lg">
         {title}
-        <div className="text-secondary-500">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="block h-5 w-5 transition-all duration-300 group-open:rotate-180">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-          </svg>
-        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" width={28} height={28} viewBox="0 0 28 28">
+          <path
+            fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width={1.5}
+            d="M 7,10.5 L 14,17.5 L 21,10.5"
+            className="block transition-all duration-300 group-open:rotate-180 origin-center"
+          />
+        </svg>
       </summary>
-      <div className="border-t border-t-gray-100 p-4 text-secondary-500">
+      <div className="border-t border-t-black p-3 dark:border-t-gray-500">
         {description}
         <br />
         <div className="my-3">{required}</div>
         <div className="my-3">{recommended}</div>
-        <hr className="border border-gray-200 my-4" />
+        <hr className="border border-gray-300 my-3 dark:border-gray-500" />
         <IdAndClass
           setTagId={setTagId}
           setTagClass={setTagClass}
