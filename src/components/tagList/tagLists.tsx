@@ -1,131 +1,131 @@
-import Accordion from "./accordion";
-import { tagDescription, tagList } from "@/tagData";
+import Accordion from "@/components/tagList/accordion";
+import { tagDescriptions, tagNames, tagTitles } from "@/data/tagData";
 import PageTitle from "@/components/headings/pageTitle";
 
 const TagLists = () => {
   return(
     <div className="h-screen">
       <PageTitle title="タグ一覧" />
-      <div className="h-2/3 max-w-xl mx-1 my-3 overflow-y-scroll">
+      <div className="h-2/3 max-w-xl mx-1 my-2 overflow-y-scroll">
         <div className="bg-white border border-black divide-y divide-black rounded dark:bg-gray-700 dark:border-gray-500 dark:divide-gray-500 dark:text-gray-300">
           <Accordion
-            title="<h1> ~ <h6> : 見出し"
-            description={tagDescription.h}
+            title={tagTitles.h}
+            description={tagDescriptions.h}
             required=""
             recommended=""
-            tagList={tagList.h}
+            tagList={tagNames.h}
           />
           <Accordion
-            title="<p> : 本文"
-            description={tagDescription.p}
+            title={tagTitles.p}
+            description={tagDescriptions.p}
             required=""
             recommended=""
-            tagList={tagList.p}
+            tagList={tagNames.p}
           />
           <Accordion
-            title="<a> : リンク"
-            description={tagDescription.a}
+            title={tagTitles.a}
+            description={tagDescriptions.a}
             required="必須属性 : href ･･･ ハイパーリンクが指す先のURLをここに指定します。"
             recommended=""
-            tagList={tagList.a}
+            tagList={tagNames.a}
           />
           <Accordion
-            title="<img> : 画像"
-            description={tagDescription.img}
+            title={tagTitles.img}
+            description={tagDescriptions.img}
             required="必須属性 : src ･･･ Webページに挿入する画像へのパスを指定します。"
             recommended="推奨属性 : alt ･･･ 画像が読み込まれなかった場合の代替テキストを指定します。"
-            tagList={tagList.img}
+            tagList={tagNames.img}
           />
           <Accordion
-            title="<ul> : 順序なしの箇条書き"
-            description={tagDescription.ul}
+            title={tagTitles.ul}
+            description={tagDescriptions.ul}
             required=""
             recommended=""
-            tagList={tagList.ul}
+            tagList={tagNames.ul}
           />
           <Accordion
-            title="<ol> : 順序ありの箇条書き"
-            description={tagDescription.ol}
+            title={tagTitles.ol}
+            description={tagDescriptions.ol}
             required=""
             recommended=""
-            tagList={tagList.ol}
+            tagList={tagNames.ol}
           />
           <Accordion
-            title="<div> : ブロック要素のコンテナ"
-            description={tagDescription.div}
+            title={tagTitles.div}
+            description={tagDescriptions.div}
             required=""
             recommended=""
-            tagList={tagList.div}
+            tagList={tagNames.div}
           />
           <Accordion
-            title="<span> : インライン要素のコンテナ"
-            description={tagDescription.span}
+            title={tagTitles.span}
+            description={tagDescriptions.span}
             required=""
             recommended=""
-            tagList={tagList.span}
+            tagList={tagNames.span}
           />
           <Accordion
-            title="<br> : 改行"
-            description={tagDescription.br}
+            title={tagTitles.br}
+            description={tagDescriptions.br}
             required=""
             recommended=""
-            tagList={tagList.br}
+            tagList={tagNames.br}
           />
           <Accordion
-            title="<hr> : 水平線"
-            description={tagDescription.hr}
+            title={tagTitles.hr}
+            description={tagDescriptions.hr}
             required=""
             recommended=""
-            tagList={tagList.hr}
+            tagList={tagNames.hr}
           />
           <Accordion
-            title="<strong> : 強調表示"
-            description={tagDescription.strong}
+            title={tagTitles.strong}
+            description={tagDescriptions.strong}
             required=""
             recommended=""
-            tagList={tagList.strong}
+            tagList={tagNames.strong}
           />
           <Accordion
-            title="<blockquote> : 引用"
-            description={tagDescription.blockquote}
+            title={tagTitles.blockquote}
+            description={tagDescriptions.blockquote}
             required=""
             recommended="推奨属性 : cite ･･･ 引用元のURLや引用元の情報を指定します。"
-            tagList={tagList.blockquote}
+            tagList={tagNames.blockquote}
           />
           <Accordion
-            title="<code> : コード表示"
-            description={tagDescription.code}
+            title={tagTitles.code}
+            description={tagDescriptions.code}
             required=""
             recommended=""
-            tagList={tagList.code}
+            tagList={tagNames.code}
           />
           <Accordion
-            title="<input> : 入力フォーム"
-            description={tagDescription.input}
+            title={tagTitles.input}
+            description={tagDescriptions.input}
             required=""
             recommended="推奨属性 : type ･･･ 表示する種類の型を指定します。未指定の場合は型がtextになります。"
-            tagList={tagList.input}
+            tagList={tagNames.input}
           />
           <Accordion
-            title="<textarea> : テキストエリア"
-            description={tagDescription.textarea}
+            title={tagTitles.textarea}
+            description={tagDescriptions.textarea}
             required=""
             recommended="推奨属性 : rows, cols ･･･ テキストエリアの大きさを指定します。CSSを用いて大きさを指定することも出来ます。"
-            tagList={tagList.textarea}
+            tagList={tagNames.textarea}
           />
           <Accordion
-            title="<button> : ボタン"
-            description={tagDescription.button}
+            title={tagTitles.button}
+            description={tagDescriptions.button}
             required=""
             recommended="推奨属性 : type ･･･ ボタンの既定の動作を指定します。type=submitのように指定し、submitはフォームのデータをサーバに送信、resetは初期値に初期化、buttonは既定の動作を定義しません。"
-            tagList={tagList.button}
+            tagList={tagNames.button}
           />
           <Accordion
-            title="<table> : テーブル"
-            description={tagDescription.table}
+            title={tagTitles.table}
+            description={tagDescriptions.table}
             required=""
             recommended=""
-            tagList={tagList.table}
+            tagList={tagNames.table}
           />
         </div>
       </div>
