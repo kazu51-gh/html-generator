@@ -1,6 +1,6 @@
 import { Dispatch, FC, SetStateAction } from "react";
-import HeaderList from "@/components/header/headerList";
-import HeaderTitle from "@/components/header/headerTitle";
+import HeaderList from "@/components/layout/header/headerList";
+import HeaderTitle from "@/components/layout/header/headerTitle";
 
 type Props = {
   setCurrentView: Dispatch<SetStateAction<string>>;

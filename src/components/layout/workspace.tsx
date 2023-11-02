@@ -1,9 +1,9 @@
 import { FC, useEffect, useState } from "react";
-import BasicSetting from "@/components/basicSetting";
+import BasicSetting from "@/components/layout/basicSetting";
 import CodeArea from "@/components/textarea/codeArea";
-import HtmlDownload from "@/components/htmlDownload";
+import HtmlDownload from "@/components/layout/htmlDownload";
 import TagLists from "@/components/tagList/tagLists";
-import Viewer from "@/components/viewer";
+import Viewer from "@/components/layout/viewer";
 
 type Props = {
   currentView: string;

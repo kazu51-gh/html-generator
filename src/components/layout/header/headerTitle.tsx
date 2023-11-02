@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { basePath } from "../../../next.config";
+import { basePath } from "../../../../next.config";
 import path from "path";
 
 type Props = {

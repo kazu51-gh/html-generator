@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react";
-import Header from "@/components/header/header";
-import Workspace from "@/components/workspace";
+import Header from "@/components/layout/header/header";
+import Workspace from "@/components/layout/workspace";
 
 const Home = () => {
   const [currentView, setCurrentView] = useState<string>('page-setting');

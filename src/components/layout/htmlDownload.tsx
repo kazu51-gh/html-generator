@@ -1,5 +1,5 @@
 import { FC } from "react";
-import DownloadButton from "./buttons/downloadButton";
+import DownloadButton from "@/components/buttons/downloadButton";
 import PageTitle from "@/components/headings/pageTitle";
 
 type Props = {
