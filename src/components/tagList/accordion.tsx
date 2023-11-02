@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import AttributeList from "@/components/tagList/attributeList";
 import DisplayCode from "@/components/tagList/displayCode";
 import IdAndClass from "@/components/tagList/idAndClass";
 import NumberOfElements from "@/components/tagList/numberOfElements";
@@ -7,12 +8,10 @@ import SelectHeading from "@/components/radio/selectHeading";
 type Props = {
   title: string;
   description: string;
-  required: string;
-  recommended: string;
   tagList: string[];
 }
 
-const Accordion: FC<Props> = ({ title, description, required, recommended, tagList }) => {
+const Accordion: FC<Props> = ({ title, description, tagList }) => {
   const [radioValue, setRadioValue] = useState('h1');
   const [ulListNum, setUlListNum] = useState(1);
   const [olListNum, setOlListNum] = useState(1);
@@ -20,6 +19,14 @@ const Accordion: FC<Props> = ({ title, description, required, recommended, tagLi
   const [rows, setRows] = useState(1);
   const [tagId, setTagId] = useState('');
   const [tagClass, setTagClass] = useState('');
+
+  const getTagName = (tagList: string[]) => {
+    if (tagList.length !== 1) {
+      return('h');
+    } else {
+      return(tagList[0]);
+    }
+  }
 
   const displayHTML = (tagList: string[]) => {
     if (tagList.length !== 1) {
@@ -129,14 +136,9 @@ const Accordion: FC<Props> = ({ title, description, required, recommended, tagLi
       </summary>
       <div className="border-t border-t-black p-3 dark:border-t-gray-500">
         {description}
-        <br />
-        <div className="my-3">{required}</div>
-        <div className="my-3">{recommended}</div>
         <hr className="border border-gray-300 my-3 dark:border-gray-500" />
-        <IdAndClass
-          setTagId={setTagId}
-          setTagClass={setTagClass}
-        />
+        <IdAndClass setTagId={setTagId} setTagClass={setTagClass} />
+        <AttributeList tagName={getTagName(tagList)} />
         {displayHTML(tagList)}
       </div>
     </details>
