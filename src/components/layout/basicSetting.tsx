@@ -10,21 +10,20 @@ type Props = {
 }
 
 const BasicSetting: FC<Props> = ({ pageTitle, setPageTitle, pageDescription, setPageDescription }) => {
-
   return(
-    <div>
-      <PageTitle title="ページの基本情報設定" />
+    <div className="h-full w-full">
+      <PageTitle title="ページ情報設定" />
       <Setting
         setSetting={setPageTitle}
         placeholder="(例) 私のホームページ"
         value={pageTitle}
-        headingTitle="ページのタイトル"
+        headingTitle="ページタイトル"
       />
       <Setting
         setSetting={setPageDescription}
         placeholder="(例) 私のことを知ってください。"
         value={pageDescription}
-        headingTitle="ページの説明"
+        headingTitle="ページ説明"
       />
     </div>
   );

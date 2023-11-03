@@ -7,9 +7,8 @@ type Props = {
 }
 
 const Viewer: FC<Props> = ({ textareaData }) => {
-  
   return(
-    <div className="h-full">
+    <div className="h-full w-full">
       <PageTitle title="プレビュー" />
       <div className="block border border-black rounded-md h-[90%] my-3 px-2 w-11/12 dark:bg-white dark:border-gray-500 dark:text-black">
         <div className="default-css">

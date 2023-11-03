@@ -4,7 +4,7 @@ import PageTitle from "@/components/headings/pageTitle";
 
 const TagLists = () => {
   return(
-    <div className="h-screen">
+    <div className="h-full w-full">
       <PageTitle title="タグ一覧" />
       <div className="h-2/3 max-w-xl mx-1 my-2 overflow-y-scroll">
         <div className="bg-white border border-black divide-y divide-black rounded dark:bg-gray-700 dark:border-gray-500 dark:divide-gray-500 dark:text-gray-300">

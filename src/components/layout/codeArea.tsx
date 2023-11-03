@@ -8,10 +8,9 @@ type Props = {
 const CodeArea: FC<Props> = ({ textareaData, setTextareaData }) => {
   return(
     <textarea
-      className="block border border-black mx-auto px-3 py-1.5 resize-none rounded-md text-lg w-11/12 dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300"
-      rows={25}
+      className="border border-black p-1.5 resize-none rounded text-lg h-full w-full dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300"
       onChange={(e) => setTextareaData(e.target.value)}
-      placeholder="HTMLを作成していきましょう。"
+      placeholder="HTMLを作成していきましょう"
       value={textareaData}
     ></textarea>
   );

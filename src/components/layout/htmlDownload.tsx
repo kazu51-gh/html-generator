@@ -10,7 +10,7 @@ type Props = {
 
 const HtmlDownload:FC<Props> = ({ pageTitle, pageDescription, textareaData }) => {
   return(
-    <div>
+    <div className="h-full w-full">
       <PageTitle title="HTMLファイルのダウンロード" />
       <DownloadButton
         pageTitle={pageTitle}

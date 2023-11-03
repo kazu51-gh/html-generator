@@ -9,8 +9,12 @@ const Home = () => {
   
   return(
     <main className="flex flex-col h-screen w-screen">
-      <Header setCurrentView={setCurrentView} />
-      <Workspace currentView={currentView} />
+      <div className="h-[10%]">
+        <Header setCurrentView={setCurrentView} />
+      </div>
+      <div className="h-[90%]">
+        <Workspace currentView={currentView} />
+      </div>
     </main>
   );
 }

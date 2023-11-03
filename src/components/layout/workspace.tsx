@@ -1,8 +1,8 @@
 import { FC, useEffect, useState } from "react";
 import BasicSetting from "@/components/layout/basicSetting";
-import CodeArea from "@/components/textarea/codeArea";
+import CodeArea from "@/components/layout/codeArea";
 import HtmlDownload from "@/components/layout/htmlDownload";
-import TagLists from "@/components/tagList/tagLists";
+import TagLists from "@/components/layout/tagLists";
 import Viewer from "@/components/layout/viewer";
 import getStoredData from "@/utils/getStoredData";
 
@@ -28,14 +28,14 @@ const Workspace: FC<Props> = ({ currentView }) => {
   }, [textareaData]);
 
   return(
-    <div className="flex">
-      <div className="flex-1">
+    <div className="flex flex-row h-full w-full">
+      <div className="flex-1 m-3">
         <CodeArea
           textareaData={textareaData}
           setTextareaData={setTextareaData}
         />
       </div>
-      <div className="flex-1">
+      <div className="flex-1 m-3">
         {currentView === 'page-setting' &&
           <BasicSetting
             pageTitle={pageTitle}
