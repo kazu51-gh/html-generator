@@ -6,9 +6,12 @@ type Props = {
 
 const PageTitle: FC<Props> = ({ title }) => {
   return(
-    <div className="flex w-full">
-      <h2 className="my-3 mr-2 text-2xl">{title}</h2>
-      <div className="border border-black cursor-pointer leading-[14px] my-5 text-center text-sm rounded-full h-4 w-4 dark:border-white">?</div>
+    <div className="flex flex-row items-center w-full">
+      <h2 className="text-2xl">{title}</h2>
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+        <circle cx="16" cy="16" r="10" fill="white" stroke="black" />
+        <text x="8" y="22" font-size="16" font-family="inherit">？</text>
+      </svg>
     </div>
   );
 }
