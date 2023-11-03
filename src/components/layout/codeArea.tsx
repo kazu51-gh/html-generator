@@ -1,4 +1,5 @@
 import { Dispatch, FC, SetStateAction } from "react";
+import PageTitle from "@/components/headings/pageTitle";
 
 type Props = {
   textareaData: string;
@@ -7,12 +8,15 @@ type Props = {
 
 const CodeArea: FC<Props> = ({ textareaData, setTextareaData }) => {
   return(
-    <textarea
-      className="border border-black p-1.5 resize-none rounded text-lg h-full w-full dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300"
-      onChange={(e) => setTextareaData(e.target.value)}
-      placeholder="HTMLを作成していきましょう"
-      value={textareaData}
-    ></textarea>
+    <div className="h-full w-full">
+      <PageTitle title="コードエリア" />
+      <textarea
+        className="border border-black p-1.5 resize-none rounded text-lg h-[90%] w-full dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300"
+        onChange={(e) => setTextareaData(e.target.value)}
+        placeholder="HTMLを作成していきましょう"
+        value={textareaData}
+      ></textarea>
+    </div>
   );
 }
 
