@@ -12,6 +12,7 @@ type Props = {
 }
 
 const Accordion: FC<Props> = ({ title, description, tagList }) => {
+  const [checkedAttributes, setCheckedAttributes] = useState<string[]>([]);
   const [radioValue, setRadioValue] = useState('h1');
   const [ulListNum, setUlListNum] = useState(1);
   const [olListNum, setOlListNum] = useState(1);
@@ -138,7 +139,11 @@ const Accordion: FC<Props> = ({ title, description, tagList }) => {
         {description}
         <hr className="border border-gray-300 my-3 dark:border-gray-500" />
         <IdAndClass setTagId={setTagId} setTagClass={setTagClass} />
-        <AttributeList tagName={getTagName(tagList)} />
+        <AttributeList
+          tagName={getTagName(tagList)}
+          checkedAttributes={checkedAttributes}
+          setCheckedAttributes={setCheckedAttributes}
+        />
         {displayHTML(tagList)}
       </div>
     </details>
