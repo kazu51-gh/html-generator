@@ -21,11 +21,13 @@ const AttributeList: FC<Props> = ({ tagName, checkedAttributes, setCheckedAttrib
   }
 
   return(
-    <div>
-      <div>
-        {tagAttributes.length > 0 && 
+    <div className="my-3 w-full">
+      {tagAttributes.length > 0 && 
+        <div className="flex flex-row items-center">
+          <div className="w-[15%]">
+            <h2 className="text-center">属性</h2>
+          </div>
           <div className="w-1/2">
-            <h2>属性</h2>
             {tagAttributes.length > 4 &&
               <ul className="h-32 mb-3 overflow-y-scroll">
                 {tagAttributes.map((attribute, index) => (
@@ -69,8 +71,8 @@ const AttributeList: FC<Props> = ({ tagName, checkedAttributes, setCheckedAttrib
               </ul>
             }
           </div>
-        }
-      </div>
+        </div>
+      }
     </div>
   );
 }

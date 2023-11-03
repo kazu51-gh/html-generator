@@ -8,7 +8,7 @@ type Props = {
 
 const SelectHeading: FC<Props> = ({tagList, radioValue, setRadioValue}) => {
   return(
-    <div className="flex">
+    <div className="flex justify-evenly m-1 w-full">
       {tagList.map((tag) =>
         <div key={tag} className="flex">
           <input
@@ -19,7 +19,7 @@ const SelectHeading: FC<Props> = ({tagList, radioValue, setRadioValue}) => {
             checked={tag === radioValue}
             onChange={(e) => setRadioValue(e.target.value)}
           />
-          <label className="mr-3" htmlFor={tag}>
+          <label htmlFor={tag}>
             {tag}
           </label>
         </div>

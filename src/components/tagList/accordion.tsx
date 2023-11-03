@@ -124,10 +124,10 @@ const Accordion: FC<Props> = ({ title, description, tagList }) => {
   }
 
   return(
-    <details className="group">
-      <summary className="cursor-pointer flex justify-between items-center p-3 text-lg">
+    <details className="group h-full w-full">
+      <summary className="cursor-pointer flex justify-between items-center list-none p-2 text-lg">
         {title}
-        <svg xmlns="http://www.w3.org/2000/svg" width={28} height={28} viewBox="0 0 28 28">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
           <path
             fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width={1.5}
             d="M 7,10.5 L 14,17.5 L 21,10.5"
@@ -135,7 +135,7 @@ const Accordion: FC<Props> = ({ title, description, tagList }) => {
           />
         </svg>
       </summary>
-      <div className="border-t border-t-black p-3 dark:border-t-gray-500">
+      <div className="border-t border-t-black p-2 dark:border-t-gray-500">
         {description}
         <hr className="border border-gray-300 my-3 dark:border-gray-500" />
         <IdAndClass setTagId={setTagId} setTagClass={setTagClass} />

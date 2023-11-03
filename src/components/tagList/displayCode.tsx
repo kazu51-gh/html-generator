@@ -21,12 +21,12 @@ const DisplayCode: FC<Props> = ({ tagName, attributes, lists, columns, rows }) =
   }
 
   return(
-    <div>
-      <div className="bg-white border border-black inline-block m-3 px-2 py-1 rounded whitespace-pre-wrap dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300">
+    <div className="w-full">
+      <div className="border border-black p-1 my-2 whitespace-pre-wrap dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300">
         {code}
       </div>
       <button
-        className="bg-white border border-black inline-block m-3 px-2 py-1 rounded text-base text-black hover:bg-slate-100 dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300 dark:hover:bg-gray-600"
+        className="block border border-black p-1 mx-auto rounded hover:bg-slate-100 dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300 dark:hover:bg-gray-600"
         onClick={() => copyCode(code)}
       >
         コードをコピー

@@ -6,8 +6,8 @@ const TagLists = () => {
   return(
     <div className="h-full w-full">
       <PageTitle title="タグ一覧" />
-      <div className="h-2/3 max-w-xl mx-1 my-2 overflow-y-scroll">
-        <div className="bg-white border border-black divide-y divide-black rounded dark:bg-gray-700 dark:border-gray-500 dark:divide-gray-500 dark:text-gray-300">
+      <div className="h-[90%] w-[90%] overflow-y-scroll">
+        <div className="border border-black divide-y divide-black rounded dark:bg-gray-700 dark:border-gray-500 dark:divide-gray-500 dark:text-gray-300">
           <Accordion
             title={tagTitles.h}
             description={tagDescriptions.h}
