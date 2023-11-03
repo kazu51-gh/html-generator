@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react";
-import Header from "@/components/layout/header/header";
+import Header from "@/components/layout/header";
 import Workspace from "@/components/layout/workspace";
 
 const Home = () => {

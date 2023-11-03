@@ -9,7 +9,7 @@ type Props = {
 const HeaderList:FC<Props> = ({ listTitle, current, setCurrentView }) => {
   return(
     <li
-      className="cursor-pointer mx-5"
+      className="cursor-pointer font-medium text-lg max-[767px]:text-xs mx-5"
       onClick={() => setCurrentView(current)}
     >
       {listTitle}
