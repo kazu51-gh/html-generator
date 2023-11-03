@@ -27,11 +27,11 @@ const DownloadButton: FC<Props> = ({ pageTitle, pageDescription, textareaData })
   return(
     <div>
       <button
-        className="bg-white border border-black font-medium inline-block my-4 px-8 py-4 rounded text-base text-black dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300"
+        className="border border-black font-medium p-2 rounded text-lg dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300"
         onClick={() => makeHTML(pageTitle, pageDescription, textareaData)}
         type="button"
       >
-        ダウンロード
+        HTMLファイルのダウンロード
       </button>
     </div>
   );
