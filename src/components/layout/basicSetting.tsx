@@ -21,7 +21,7 @@ const BasicSetting: FC<Props> = ({ pageTitle, setPageTitle, pageDescription, set
       />
       <Setting
         setSetting={setPageDescription}
-        placeholder="(例) 私のことを知ってください。"
+        placeholder="(例) 私のことを知ってください"
         value={pageDescription}
         headingTitle="ページ説明"
       />

@@ -11,7 +11,7 @@ type Props = {
 
 const Setting: FC<Props> = ({ setSetting, placeholder, value, headingTitle }) => {
   return(
-    <div className="my-3">
+    <div className="mb-3">
       <SettingTitle
         headingTitle={headingTitle}
       />

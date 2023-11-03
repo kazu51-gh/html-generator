@@ -9,7 +9,7 @@ type Props = {
 const SettingWindow: FC<Props> = ({ setSetting, placeholder, value }) => {
   return(
     <input
-      className="border border-black px-3 py-1.5 rounded-md text-lg w-2/3 dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300"
+      className="border border-black px-3 py-1.5 rounded text-lg w-1/2 dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300"
       onChange={(e) => setSetting(e.target.value)}
       placeholder={placeholder}
       type="text"
