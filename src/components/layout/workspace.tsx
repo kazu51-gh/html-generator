@@ -4,20 +4,13 @@ import CodeArea from "@/components/textarea/codeArea";
 import HtmlDownload from "@/components/layout/htmlDownload";
 import TagLists from "@/components/tagList/tagLists";
 import Viewer from "@/components/layout/viewer";
+import getStoredData from "@/utils/getStoredData";
 
 type Props = {
   currentView: string;
 }
 
 const Workspace: FC<Props> = ({ currentView }) => {
-  const getStoredData = (key: string, defaultData: string): string => {
-    if (typeof sessionStorage !== 'undefined') {
-      return sessionStorage.getItem(key) || defaultData;
-    } else {
-      return defaultData;
-    }
-  }
-
   const [pageTitle, setPageTitle] = useState<string>(getStoredData('pageTitle', ''));
   const [pageDescription, setPageDescription] = useState<string>(getStoredData('pageDescription', ''));
   const [textareaData, setTextareaData] = useState<string>(getStoredData('textareaData', ''));
@@ -36,10 +29,12 @@ const Workspace: FC<Props> = ({ currentView }) => {
 
   return(
     <div className="flex">
-      <CodeArea
-        textareaData={textareaData}
-        setTextareaData={setTextareaData}
-      />
+      <div className="flex-1">
+        <CodeArea
+          textareaData={textareaData}
+          setTextareaData={setTextareaData}
+        />
+      </div>
       <div className="flex-1">
         {currentView === 'page-setting' &&
           <BasicSetting
