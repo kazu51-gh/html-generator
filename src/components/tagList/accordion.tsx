@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import { TagUtility } from "@/utils/tagUtility";
 import AttributeList from "@/components/tagList/attributeList";
 import DisplayCode from "@/components/tagList/displayCode";
 import IdAndClass from "@/components/tagList/idAndClass";
@@ -20,14 +21,7 @@ const Accordion: FC<Props> = ({ title, description, tagList }) => {
   const [rows, setRows] = useState(1);
   const [tagId, setTagId] = useState('');
   const [tagClass, setTagClass] = useState('');
-
-  const getTagName = (tagList: string[]) => {
-    if (tagList.length !== 1) {
-      return('h');
-    } else {
-      return(tagList[0]);
-    }
-  }
+  const tagName = TagUtility.getTagName(tagList);
 
   const displayHTML = (tagList: string[]) => {
     if (tagList.length !== 1) {
@@ -140,7 +134,7 @@ const Accordion: FC<Props> = ({ title, description, tagList }) => {
         <hr className="border border-gray-300 my-3 dark:border-gray-500" />
         <IdAndClass setTagId={setTagId} setTagClass={setTagClass} />
         <AttributeList
-          tagName={getTagName(tagList)}
+          tagName={tagName}
           checkedAttributes={checkedAttributes}
           setCheckedAttributes={setCheckedAttributes}
         />
