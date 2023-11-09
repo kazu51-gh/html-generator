@@ -1,3 +1,4 @@
+import { Attribute } from "@/generateTag/attribute";
 import { Tag } from "@/generateTag/tag";
 
 /**
@@ -6,7 +7,7 @@ import { Tag } from "@/generateTag/tag";
 export class OpeningTag extends Tag {
   private readonly lessThan: string = '<';
   private readonly greaterThan: string = '>';
-  private attributes: string[];
+  private attribute: Attribute;
   private tagName: string;
   
   /**
@@ -15,7 +16,7 @@ export class OpeningTag extends Tag {
   constructor(tagName: string, attributes: string[]) {
     super();
     this.tagName = tagName;
-    this.attributes = attributes;
+    this.attribute = new Attribute(attributes);
   }
 
   /**
@@ -35,12 +36,11 @@ export class OpeningTag extends Tag {
   }
 
   /**
-   * 属性群をスペース繋ぎで取得する
+   * 属性群を取得する
    * @returns 属性群
    */
   private getAttributes(): string {
-    if (this.attributes.length === 0) { return(''); }
-    return(this.attributes.join(' '));
+    return(this.attribute.getAttribute());
   }
 
   /**

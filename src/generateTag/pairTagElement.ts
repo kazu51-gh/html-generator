@@ -1,38 +1,34 @@
 import { ClosingTag } from "@/generateTag/closingTag";
-import { Contents } from "@/generateTag/contents";
-import { OpeningTag } from "@/generateTag/openingTag";
+import { Content } from "@/generateTag/content";
 import { Element } from "@/generateTag/Element";
-import { Attribute } from "@/generateTag/attribute";
+import { OpeningTag } from "@/generateTag/openingTag";
 
 /**
  * ペアタグ要素を定義するクラス
  */
 export class PairTagElement extends Element {
   private openingTag: OpeningTag;
+  private content: Content;
   private closingTag: ClosingTag;
-  private contents: Contents;
-  private attribute: Attribute;
 
   /**
    * ペアタグ要素のインスタンスを生成する
    */
-  constructor() {
+  constructor(tagName: string, attributes: string[] = [], content: string) {
     super();
-    this.openingTag = new OpeningTag();
-    this.closingTag = new ClosingTag();
-    this.contents = new Contents();
-    this.attribute = new Attribute();
+    this.openingTag = new OpeningTag(tagName, attributes);
+    this.content = new Content(content);
+    this.closingTag = new ClosingTag(tagName);
   }
 
   /**
-   * ペアタグ要素を取得する
-   * @param tagName タグ名
-   * @param contents コンテンツ
+   * ペアタグ要素を生成する
    * @returns ペアタグ要素
    */
-  public getPairTagElement(tagName: string, attributes: string[], contents: string): string {
-    const opening = this.openingTag.getOpeningTag(tagName, attributes);
-    const closing = this.closingTag.getClosingTag(tagName);
-    return(opening + contents + closing);
+  public getPairTagElement(): string {
+    const openingTag = this.openingTag.getOpeningTag();
+    const content = this.content.getContent();
+    const closingTag = this.closingTag.getClosingTag();
+    return(`${openingTag}${content}${closingTag}`);
   }
 }
