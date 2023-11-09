@@ -51,6 +51,10 @@ export class OpeningTag extends Tag {
     return(this.greaterThan);
   }
 
+  /**
+   * 開始タグを生成する
+   * @returns 開始タグ
+   */
   public getOpeningTag(): string {
     const lessThan = this.getLessThan();
     const tagName = this.getTagName();
