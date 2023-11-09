@@ -1,12 +1,12 @@
 import { PairTagElement } from "@/generateTag/pairTagElement";
-import { EmptyTagElement } from "@/generateTag/emptyTagElement";
+import { VoidElement } from "@/generateTag/voidElement";
 
 /**
  * 要素(element)を生成するクラス
  */
 export class GenerateElement extends Object {
   private pairTagElement: PairTagElement;
-  private emptyTagElement: EmptyTagElement;
+  private emptyTagElement: VoidElement;
 
   /**
    * 要素を生成するクラスのインスタンスを生成する
@@ -14,7 +14,7 @@ export class GenerateElement extends Object {
   constructor() {
     super();
     this.pairTagElement = new PairTagElement();
-    this.emptyTagElement = new EmptyTagElement();
+    this.emptyTagElement = new VoidElement();
   }
 
   /**

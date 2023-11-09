@@ -1,18 +1,18 @@
 import { ClosingTag } from "@/generateTag/closingTag";
 import { Content } from "@/generateTag/content";
-import { Element } from "@/generateTag/Element";
+import { HTMLElement } from "@/generateTag/HTMLElement";
 import { OpeningTag } from "@/generateTag/openingTag";
 
 /**
- * ペアタグ要素を定義するクラス
+ * 要素(element)を定義するクラス
  */
-export class PairTagElement extends Element {
+export class PairTagElement extends HTMLElement {
   private openingTag: OpeningTag;
   private content: Content;
   private closingTag: ClosingTag;
 
   /**
-   * ペアタグ要素のインスタンスを生成する
+   * 要素のインスタンスを生成する
    */
   constructor(tagName: string, attributes: string[] = [], content: string) {
     super();
@@ -22,10 +22,10 @@ export class PairTagElement extends Element {
   }
 
   /**
-   * ペアタグ要素を生成する
-   * @returns ペアタグ要素
+   * 要素を生成する
+   * @returns 要素
    */
-  public getPairTagElement(): string {
+  public generateElement(): string {
     const openingTag = this.openingTag.getOpeningTag();
     const content = this.content.getContent();
     const closingTag = this.closingTag.getClosingTag();
