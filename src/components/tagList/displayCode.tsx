@@ -10,13 +10,13 @@ type Props = {
 }
 
 const DisplayCode: FC<Props> = ({ tagName, attributes, lists, columns, rows }) => {
-  const code = HtmlElementFactory.generate(tagName, attributes, lists, columns, rows);
+  const code = HtmlElementFactory.generate(tagName, attributes, '', lists, columns, rows);
 
   const copyCode = (code: string) => {
     navigator.clipboard.writeText(code).then(
       () => { console.log('コピー成功'); },
       () => { alert('コピー失敗'); }
-    )
+    );
   }
 
   return(
