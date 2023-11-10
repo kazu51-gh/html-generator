@@ -1,27 +1,22 @@
+import { Attribute } from "@/generateTag/attribute";
 import { Tag } from "@/generateTag/tag";
 
 /**
  * 開始タグ(opening tag)を定義するクラス
  */
 export class OpeningTag extends Tag {
-  private greaterThan: string;
-  private lessThan: string;
+  private readonly lessThan: string = '<';
+  private readonly greaterThan: string = '>';
+  private attribute: Attribute;
+  private tagName: string;
   
   /**
    * 開始タグのインスタンスを生成する
    */
-  constructor() {
+  constructor(tagName: string, attributes: string[]) {
     super();
-    this.lessThan = '<';
-    this.greaterThan = '>';
-  }
-
-  /**
-   * 大なり文字(>)を取得する
-   * @returns 大なり文字(>)
-   */
-  private getGreaterThan(): string {
-    return this.greaterThan;
+    this.tagName = tagName;
+    this.attribute = new Attribute(attributes);
   }
 
   /**
@@ -29,26 +24,44 @@ export class OpeningTag extends Tag {
    * @returns 小なり文字(<)
    */
   private getLessThan(): string {
-    return this.lessThan;
+    return(this.lessThan);
   }
 
   /**
-   * ペアタグ要素の開始タグを取得する
-   * @param tagName タグ名
-   * @param attribute 属性
+   * タグ名を取得する
+   * @returns タグ名
+   */
+  private getTagName(): string {
+    return(this.tagName);
+  }
+
+  /**
+   * 属性群を取得する
+   * @returns 属性群
+   */
+  private getAttributes(): string {
+    return(this.attribute.getAttribute());
+  }
+
+  /**
+   * 大なり文字(>)を取得する
+   * @returns 大なり文字(>)
+   */
+  private getGreaterThan(): string {
+    return(this.greaterThan);
+  }
+
+  /**
+   * 開始タグを生成する
    * @returns 開始タグ
    */
-  public getOpeningTag(tagName: string, attribute: string[]): string {
+  public getOpeningTag(): string {
     const lessThan = this.getLessThan();
+    const tagName = this.getTagName();
+    const attribute = this.getAttributes();
     const greaterThan = this.getGreaterThan();
-    let attributes = '';
 
-    if (attribute.length === 0) { return(lessThan + tagName + greaterThan); }
-
-    for(let i = 0; i < attribute.length; i++) {
-      attributes = attributes + ' ' + attribute[i];
-    }
-    
-    return(lessThan + tagName + attributes + greaterThan);
+    if (attribute === '') { return(`${lessThan}${tagName}${greaterThan}`); }
+    return(`${lessThan}${tagName} ${attribute}${greaterThan}`);
   }
 }

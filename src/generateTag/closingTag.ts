@@ -4,26 +4,17 @@ import { Tag } from "@/generateTag/tag";
  * 終了タグ(closing tag)を定義するクラス
  */
 export class ClosingTag extends Tag {
-  private greaterThan: string;
-  private lessThan: string;
-  private slash: string;
+  private readonly lessThan: string = '<';
+  private readonly slash: string = '/';
+  private readonly greaterThan: string = '>';
+  private tagName: string;
   
   /**
    * 終了タグのインスタンスを生成する
    */
-  constructor() {
+  constructor(tagName: string) {
     super();
-    this.lessThan = '<';
-    this.slash = '/';
-    this.greaterThan = '>';
-  }
-
-  /**
-   * 大なり文字(>)を取得する
-   * @returns 大なり文字(>)
-   */
-  private getGreaterThan(): string {
-    return this.greaterThan;
+    this.tagName = tagName;
   }
 
   /**
@@ -31,7 +22,7 @@ export class ClosingTag extends Tag {
    * @returns 小なり文字(<)
    */
   private getLessThan(): string {
-    return this.lessThan;
+    return(this.lessThan);
   }
 
   /**
@@ -39,18 +30,34 @@ export class ClosingTag extends Tag {
    * @returns スラッシュ(/)
    */
   private getSlash(): string {
-    return this.slash;
+    return(this.slash);
   }
 
   /**
-   * 終了タグを取得する
-   * @param tagName タグ名
+   * タグ名を取得する
+   * @returns タグ名
+   */
+  private getTagName(): string {
+    return(this.tagName);
+  }
+
+  /**
+   * 大なり文字(>)を取得する
+   * @returns 大なり文字(>)
+   */
+  private getGreaterThan(): string {
+    return(this.greaterThan);
+  }
+
+  /**
+   * 終了タグを生成する
    * @returns 終了タグ
    */
-  public getClosingTag(tagName: string): string {
+  public getClosingTag(): string {
     const lessThan = this.getLessThan();
     const slash = this.getSlash();
+    const tagName = this.getTagName();
     const greaterThan = this.getGreaterThan();
-    return(lessThan + slash + tagName + greaterThan);
+    return(`${lessThan}${slash}${tagName}${greaterThan}`);
   }
 }

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { GenerateElement } from "@/generateTag/generateElement";
+import { HtmlElementFactory } from "@/utils/elementFactory";
 
 type Props = {
   tagName: string;
@@ -10,14 +10,13 @@ type Props = {
 }
 
 const DisplayCode: FC<Props> = ({ tagName, attributes, lists, columns, rows }) => {
-  const generateElement = new GenerateElement();
-  const code = generateElement.generateElement(tagName, attributes, '', lists, columns, rows);
+  const code = HtmlElementFactory.generate(tagName, attributes, '', lists, columns, rows);
 
   const copyCode = (code: string) => {
     navigator.clipboard.writeText(code).then(
       () => { console.log('コピー成功'); },
       () => { alert('コピー失敗'); }
-    )
+    );
   }
 
   return(
