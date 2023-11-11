@@ -24,7 +24,7 @@ const IdAndClass:FC<Props> = ({ setTagId, setTagClass }) => {
 
   const handleClassChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    const pattern = /^[A-Za-z][A-Za-z0-9_-]*$/;
+    const pattern = /^[A-Za-z][A-Za-z0-9_\- ]*$/;
     if (value !== '' && !pattern.test(value)) {
       setClassError('先頭に数字を含まない半角英数字、ハイフン(-)、アンダースコア(_)を使用した文字列にしてください');
     } else if (value !== '' && /[ ]{2,}/.test(value)) {
