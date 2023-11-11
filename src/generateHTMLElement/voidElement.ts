@@ -1,5 +1,5 @@
-import { HTMLElement } from "@/generateTag/HTMLElement";
-import { OpeningTag } from "@/generateTag/openingTag";
+import { HTMLElement } from "@/generateHTMLElement/HTMLElement";
+import { OpeningTag } from "@/generateHTMLElement/openingTag";
 
 /**
  * 空要素(void element)を定義するクラス
@@ -21,7 +21,7 @@ export class VoidElement extends HTMLElement {
    * @returns 空要素
    */
   public generateVoidElement(): string {
-    const openingTag = this.openingTag.getOpeningTag();
+    const openingTag = this.openingTag.generateOpeningTag();
     return(openingTag);
   }
 }

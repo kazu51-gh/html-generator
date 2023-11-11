@@ -13,7 +13,7 @@ export class Attribute extends Object {
   }
 
   /**
-   * 属性群をスペース繋ぎで生成する
+   * 属性群をスペース繋ぎで取得する
    * 空配列の場合は何もない文字列を返す
    * @returns 属性群
    */

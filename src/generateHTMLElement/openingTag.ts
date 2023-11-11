@@ -1,5 +1,5 @@
-import { Attribute } from "@/generateTag/attribute";
-import { Tag } from "@/generateTag/tag";
+import { Attribute } from "@/generateHTMLElement/attribute";
+import { Tag } from "@/generateHTMLElement/tag";
 
 /**
  * 開始タグ(opening tag)を定義するクラス
@@ -55,13 +55,13 @@ export class OpeningTag extends Tag {
    * 開始タグを生成する
    * @returns 開始タグ
    */
-  public getOpeningTag(): string {
+  public generateOpeningTag(): string {
     const lessThan = this.getLessThan();
     const tagName = this.getTagName();
     const attribute = this.getAttributes();
     const greaterThan = this.getGreaterThan();
 
-    if (attribute === '') { return(`${lessThan}${tagName}${greaterThan}`); }
+    if (attribute === '') { return(lessThan + tagName + greaterThan); }
     return(`${lessThan}${tagName} ${attribute}${greaterThan}`);
   }
 }

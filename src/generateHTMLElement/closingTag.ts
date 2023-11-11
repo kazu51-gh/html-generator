@@ -1,4 +1,4 @@
-import { Tag } from "@/generateTag/tag";
+import { Tag } from "@/generateHTMLElement/tag";
 
 /**
  * 終了タグ(closing tag)を定義するクラス
@@ -19,7 +19,7 @@ export class ClosingTag extends Tag {
 
   /**
    * 小なり文字(<)を取得する
-   * @returns 小なり文字(<)
+   * @returns 小なり文字
    */
   private getLessThan(): string {
     return(this.lessThan);
@@ -27,7 +27,7 @@ export class ClosingTag extends Tag {
 
   /**
    * スラッシュ(/)を取得する
-   * @returns スラッシュ(/)
+   * @returns スラッシュ
    */
   private getSlash(): string {
     return(this.slash);
@@ -43,7 +43,7 @@ export class ClosingTag extends Tag {
 
   /**
    * 大なり文字(>)を取得する
-   * @returns 大なり文字(>)
+   * @returns 大なり文字
    */
   private getGreaterThan(): string {
     return(this.greaterThan);
@@ -53,11 +53,11 @@ export class ClosingTag extends Tag {
    * 終了タグを生成する
    * @returns 終了タグ
    */
-  public getClosingTag(): string {
+  public generateClosingTag(): string {
     const lessThan = this.getLessThan();
     const slash = this.getSlash();
     const tagName = this.getTagName();
     const greaterThan = this.getGreaterThan();
-    return(`${lessThan}${slash}${tagName}${greaterThan}`);
+    return(lessThan + slash + tagName + greaterThan);
   }
 }

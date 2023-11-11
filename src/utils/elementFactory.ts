@@ -1,5 +1,5 @@
-import { PairTagElement } from "@/generateTag/pairTagElement";
-import { VoidElement } from "@/generateTag/voidElement";
+import { PairTagElement } from "@/generateHTMLElement/pairTagElement";
+import { VoidElement } from "@/generateHTMLElement/voidElement";
 import { contentData } from "@/data/contentData";
 
 export class HtmlElementFactory {

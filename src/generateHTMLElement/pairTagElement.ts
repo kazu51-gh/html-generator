@@ -1,7 +1,7 @@
-import { ClosingTag } from "@/generateTag/closingTag";
-import { Content } from "@/generateTag/content";
-import { HTMLElement } from "@/generateTag/HTMLElement";
-import { OpeningTag } from "@/generateTag/openingTag";
+import { ClosingTag } from "@/generateHTMLElement/closingTag";
+import { Content } from "@/generateHTMLElement/content";
+import { HTMLElement } from "@/generateHTMLElement/HTMLElement";
+import { OpeningTag } from "@/generateHTMLElement/openingTag";
 
 /**
  * 要素(element)を定義するクラス
@@ -26,9 +26,9 @@ export class PairTagElement extends HTMLElement {
    * @returns 要素
    */
   public generateElement(): string {
-    const openingTag = this.openingTag.getOpeningTag();
+    const openingTag = this.openingTag.generateOpeningTag();
     const content = this.content.getContent();
-    const closingTag = this.closingTag.getClosingTag();
-    return(`${openingTag}${content}${closingTag}`);
+    const closingTag = this.closingTag.generateClosingTag();
+    return(openingTag + content + closingTag);
   }
 }
