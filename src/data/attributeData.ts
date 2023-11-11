@@ -1,7 +1,7 @@
 export const attributes: { [key: string]: string[] } = {
   a: [
     'download',
-    'href (基本必須)',
+    'href',
     'hreflang',
     'ping',
     'referrerpolicy',
@@ -10,7 +10,7 @@ export const attributes: { [key: string]: string[] } = {
     'type'
   ],
   blockquote: [
-    'cite (基本必須)'
+    'cite'
   ],
   br: [],
   button: [
@@ -25,7 +25,7 @@ export const attributes: { [key: string]: string[] } = {
     'name',
     'popovertarget',
     'popovertargetaction',
-    'type (推奨)',
+    'type',
     'value'
   ],
   code: [],
@@ -33,7 +33,7 @@ export const attributes: { [key: string]: string[] } = {
   h: [],
   hr: [],
   img: [
-    'alt (推奨)',
+    'alt',
     'crossorigin',
     'decoding',
     'fetchpriority',
@@ -41,7 +41,7 @@ export const attributes: { [key: string]: string[] } = {
     'ismap',
     'loading',
     'referrerpolicy',
-    'src (必須)',
+    'src',
     'srcset',
     'sizes',
     'usemap',
@@ -77,7 +77,7 @@ export const attributes: { [key: string]: string[] } = {
     'size',
     'src',
     'step',
-    'type (推奨)',
+    'type',
     'value',
     'width'
   ],
@@ -91,7 +91,7 @@ export const attributes: { [key: string]: string[] } = {
   strong: [],
   textarea: [
     'autocomplete',
-    'cols (推奨)',
+    'cols',
     'dirname',
     'disabled',
     'form',
@@ -101,7 +101,7 @@ export const attributes: { [key: string]: string[] } = {
     'placeholder',
     'readonly',
     'required',
-    'rows (推奨)',
+    'rows',
     'wrap'
   ],
   table: [],
