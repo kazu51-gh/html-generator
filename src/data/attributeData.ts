@@ -107,7 +107,7 @@ export const attributes: { [key: string]: string[] } = {
   ul: [],
 }
 
-export const attributeCodes = {
+export const attributeCodes: { [key: string]: { [attribute: string]: string } } = {
   a: {
     'href': 'href="URL"',
     'target': 'target="コンテンツの表示形式"',
