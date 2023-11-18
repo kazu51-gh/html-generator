@@ -5,6 +5,7 @@ import DisplayCode from "@/components/tagList/displayCode";
 import IdAndClass from "@/components/tagList/idAndClass";
 import NumberOfElements from "@/components/tagList/numberOfElements";
 import SelectHeading from "@/components/radio/selectHeading";
+import { AttributeUtility } from "@/utils/attributeUtility";
 
 type Props = {
   title: string;
@@ -25,93 +26,43 @@ const Accordion: FC<Props> = ({ title, description, tagList }) => {
 
   const displayHTML = (tagList: string[]) => {
     if (tagList.length !== 1) {
+      const attributeList = AttributeUtility.getAttributeList('h', tagId, tagClass, checkedAttributes);
       return(
         <div>
           <SelectHeading tagList={tagList} radioValue={radioValue} setRadioValue={setRadioValue} />
-          {tagId === '' && tagClass === '' &&
-            <DisplayCode tagName={radioValue} attributes={[]} lists={0} columns={0} rows={0} />
-          }
-          {tagId !== '' && tagClass === '' &&
-            <DisplayCode tagName={radioValue} attributes={[`id="${tagId}"`]} lists={0} columns={0} rows={0} />
-          }
-          {tagId === '' && tagClass !== '' &&
-            <DisplayCode tagName={radioValue} attributes={[`class="${tagClass}"`]} lists={0} columns={0} rows={0} />
-          }
-          {tagId !== '' && tagClass !== '' &&
-            <DisplayCode tagName={radioValue} attributes={[`id="${tagId}"`, `class="${tagClass}"`]} lists={0} columns={0} rows={0} />
-          }
+          <DisplayCode tagName={radioValue} attributes={attributeList} lists={0} columns={0} rows={0} />
         </div>
       );
     } else if (tagList[0] === 'ul') {
+      const attributeList = AttributeUtility.getAttributeList('ul', tagId, tagClass, checkedAttributes);
       return(
         <div>
           <NumberOfElements title="リストの数(1以上の整数を入力)" setFunction={setUlListNum} />
-          {tagId === '' && tagClass === '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[]} lists={ulListNum} columns={0} rows={0} />
-          }
-          {tagId !== '' && tagClass === '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[`id="${tagId}"`]} lists={ulListNum} columns={0} rows={0} />
-          }
-          {tagId === '' && tagClass !== '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[`class="${tagClass}"`]} lists={ulListNum} columns={0} rows={0} />
-          }
-          {tagId !== '' && tagClass !== '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[`id="${tagId}"`, `class="${tagClass}"`]} lists={ulListNum} columns={0} rows={0} />
-          }
+          <DisplayCode tagName={'ul'} attributes={attributeList} lists={ulListNum} columns={0} rows={0} />
         </div>
       );
     } else if (tagList[0] === 'ol') {
+      const attributeList = AttributeUtility.getAttributeList('ol', tagId, tagClass, checkedAttributes);
       return(
         <div>
           <NumberOfElements title="リストの数(1以上の整数を入力)" setFunction={setOlListNum} />
-          {tagId === '' && tagClass === '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[]} lists={olListNum} columns={0} rows={0} />
-          }
-          {tagId !== '' && tagClass === '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[`id="${tagId}"`]} lists={olListNum} columns={0} rows={0} />
-          }
-          {tagId === '' && tagClass !== '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[`class="${tagClass}"`]} lists={olListNum} columns={0} rows={0} />
-          }
-          {tagId !== '' && tagClass !== '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[`id="${tagId}"`, `class="${tagClass}"`]} lists={olListNum} columns={0} rows={0} />
-          }
+          <DisplayCode tagName={'ol'} attributes={attributeList} lists={olListNum} columns={0} rows={0} />
         </div>
       );
     } else if (tagList[0] === 'table') {
+      const attributeList = AttributeUtility.getAttributeList('table', tagId, tagClass, checkedAttributes);
       return(
         <div>
           <NumberOfElements title="行数(1以上の整数を入力)" setFunction={setColumns} />
           <NumberOfElements title="列数(1以上の整数を入力)" setFunction={setRows} />
-          {tagId === '' && tagClass === '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[]} lists={0} columns={columns} rows={rows} />
-          }
-          {tagId !== '' && tagClass === '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[`id="${tagId}"`]} lists={0} columns={columns} rows={rows} />
-          }
-          {tagId === '' && tagClass !== '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[`class="${tagClass}"`]} lists={0} columns={columns} rows={rows} />
-          }
-          {tagId !== '' && tagClass !== '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[`id="${tagId}"`, `class="${tagClass}"`]} lists={0} columns={columns} rows={rows} />
-          }
+          <DisplayCode tagName={'table'} attributes={attributeList} lists={0} columns={columns} rows={rows} />
         </div>
       );
     } else {
+      const attributeList = AttributeUtility.getAttributeList(tagList[0], tagId, tagClass, checkedAttributes);
       return(
         <div>
-          {tagId === '' && tagClass === '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[]} lists={0} columns={0} rows={0} />
-          }
-          {tagId !== '' && tagClass === '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[`id="${tagId}"`]} lists={0} columns={0} rows={0} />
-          }
-          {tagId === '' && tagClass !== '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[`class="${tagClass}"`]} lists={0} columns={0} rows={0} />
-          }
-          {tagId !== '' && tagClass !== '' &&
-            <DisplayCode tagName={tagList[0]} attributes={[`id="${tagId}"`, `class="${tagClass}"`]} lists={0} columns={0} rows={0} />
-          }
+          <DisplayCode tagName={tagList[0]} attributes={attributeList} lists={0} columns={0} rows={0} />
         </div>
       );
     }
