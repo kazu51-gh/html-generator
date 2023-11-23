@@ -84,16 +84,16 @@ const Accordion: FC<Props> = ({ title, description, tagList }) => {
       <div className="border-t border-t-black p-2 dark:border-t-gray-500">
         {description}
         <hr className="border border-gray-300 my-3 dark:border-gray-500" />
-        <div className="my-3">
+        <div className="attribute-settings">
           <h3 className="text-xl">属性</h3>
           <p className="text-sm text-[#9CA3AF]">{headingDescriptions.attribute}</p>
+          <IdAndClass setTagId={setTagId} setTagClass={setTagClass} />
+          <AttributeList
+            tagName={tagName}
+            checkedAttributes={checkedAttributes}
+            setCheckedAttributes={setCheckedAttributes}
+          />
         </div>
-        <IdAndClass setTagId={setTagId} setTagClass={setTagClass} />
-        <AttributeList
-          tagName={tagName}
-          checkedAttributes={checkedAttributes}
-          setCheckedAttributes={setCheckedAttributes}
-        />
         {displayHTML(tagList)}
       </div>
     </details>

@@ -134,6 +134,32 @@ export const attributes: { [key: string]: string[] } = {
 }
 
 export const attributeCodes: { [key: string]: { [attribute: string]: string } } = {
+  global: {
+    'accesskey': 'accesskey=""',
+    'autocapitalize': 'autocapitalize=""',
+    'autofocus': 'autofocus=""',
+    'contenteditable': 'contenteditable=""',
+    'dir': 'dir=""',
+    'draggable': 'draggable=""',
+    'enterkeyhint': 'enterkeyhint=""',
+    'hidden': 'hidden=""',
+    'inert': 'inert=""',
+    'inputmode': 'inputmode=""',
+    'is': 'is=""',
+    'itemid': 'itemid=""',
+    'itemprop': 'itemprop=""',
+    'itemref': 'itemref=""',
+    'itemscope': 'itemscope=""',
+    'itemtype': 'itemtype=""',
+    'lang': 'lang=""',
+    'nonce': 'nonce=""',
+    'popover': 'popover=""',
+    'spellcheck': 'spellcheck=""',
+    'style': 'style=""',
+    'tabindex': 'tabindex=""',
+    'title': 'title=""',
+    'translate': 'translate=""',
+  },
   a: {
     'href': 'href="URL"',
     'target': 'target="コンテンツの表示形式"',
