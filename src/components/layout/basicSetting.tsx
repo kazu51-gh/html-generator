@@ -1,5 +1,5 @@
 import { Dispatch, FC, SetStateAction } from "react";
-import { descriptions } from "@/data/headData";
+import { headingDescriptions } from "@/data/headingData";
 import DisabledValue from "@/components/input/disabledValue";
 import PageTitle from "@/components/headings/pageTitle";
 import SettingTitle from "@/components/headings/settingTitle";
@@ -20,7 +20,7 @@ const BasicSetting: FC<Props> = ({ pageTitle, setPageTitle, pageDescription, set
       <PageTitle title="ページ情報設定" />
       <SettingTitle
         headingTitle="ページタイトル"
-        description={descriptions.title}
+        description={headingDescriptions.title}
       />
       <SettingWindow
         value={pageTitle}
@@ -29,7 +29,7 @@ const BasicSetting: FC<Props> = ({ pageTitle, setPageTitle, pageDescription, set
       />
       <SettingTitle
         headingTitle="ページ説明"
-        description={descriptions.description}
+        description={headingDescriptions.description}
       />
       <SettingWindow
         value={pageDescription}
@@ -38,12 +38,12 @@ const BasicSetting: FC<Props> = ({ pageTitle, setPageTitle, pageDescription, set
       />
       <SettingTitle
         headingTitle="文字エンコーディング"
-        description={descriptions.charset}
+        description={headingDescriptions.charset}
       />
       <DisabledValue value="utf-8" />
       <SettingTitle
         headingTitle="head部のコード"
-        description={descriptions.head}
+        description={headingDescriptions.head}
       />
       <div className="border border-black p-1 my-3 whitespace-pre-wrap dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300">
         {generateHead.generateHead(pageTitle, pageDescription)}

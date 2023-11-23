@@ -1,4 +1,5 @@
 import { Dispatch, FC, SetStateAction, useState } from "react";
+import { headingDescriptions } from "@/data/headingData";
 
 type Props = {
   setTagId: Dispatch<SetStateAction<string>>;
@@ -36,29 +37,27 @@ const IdAndClass:FC<Props> = ({ setTagId, setTagClass }) => {
   }
 
   return(
-    <div className="w-full">
-      <div className="flex flex-row my-1">
-        <label className="mr-1.5">id :</label>
+    <div className="id-class-setting">
+      <div className="id-setting my-3">
+        <h4 className="text-base">id</h4>
+        <p className="text-sm text-[#9CA3AF]">{headingDescriptions.id}</p>
         <input
-          className="border border-black px-1 rounded w-1/2 dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300"
+          className="border border-black mt-3 px-1 rounded w-1/2 dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300"
           onChange={(e) => handleIdChange(e)}
           type="text"
         />
+        {idError !== '' && <p className="text-xs text-red-500 my-1">{idError}</p>}
       </div>
-      {idError !== '' &&
-        <p className="text-xs text-red-500 my-1">{idError}</p>
-      }
-      <div className="flex flex-row my-1">
-        <label className="mr-1.5">class :</label>
+      <div className="class-setting my-3">
+        <h4 className="text-base">class</h4>
+        <p className="text-sm text-[#9CA3AF]">{headingDescriptions.class}</p>
         <input
-          className="border border-black px-1 rounded w-1/2 dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300"
+          className="border border-black mt-3 px-1 rounded w-1/2 dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300"
           onChange={(e) => handleClassChange(e)}
           type="text"
         />
+        {classError !== '' && <p className="text-xs text-red-500 my-1">{classError}</p>}
       </div>
-      {classError !== '' &&
-        <p className="text-xs text-red-500 my-1">{classError}</p>
-      }
     </div>
   );
 }

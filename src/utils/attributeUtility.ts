@@ -13,15 +13,16 @@ export class AttributeUtility extends Object {
    * @returns 属性群
    */
   public static getAttributeList = (tagName: string, tagId: string, tagClass: string, checkedAttributes: string[]): string[] => {
-    const attributes = attributeCodes[tagName];
+    const globalAttributes = attributeCodes['global'];
+    const tagAttributes = attributeCodes[tagName];
     let attributeList: string[] = [];
-    if (tagId !== '') { attributeList.push(`id="${tagId}"`) }
-    if (tagClass !== '') { attributeList.push(`class="${tagClass}"`) }
+    if (tagId !== '') { attributeList.push(`id="${tagId}"`); }
+    if (tagClass !== '') { attributeList.push(`class="${tagClass}"`); }
     checkedAttributes.forEach(att => {
-      const attribute = attributes[att];
-      if (attributeList.indexOf(attribute) === -1) {
-        attributeList.push(attribute);
-      }
+      const globalAttribute = globalAttributes[att];
+      const tagAttribute = tagAttributes[att];
+      if (globalAttribute !== '' && attributeList.indexOf(globalAttribute) === -1) { attributeList.push(globalAttribute); }
+      if (tagAttribute !== '' && attributeList.indexOf(tagAttribute) === -1) { attributeList.push(tagAttribute); }
     });
     return(attributeList);
   }
