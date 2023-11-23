@@ -6,6 +6,7 @@ import IdAndClass from "@/components/tagList/idAndClass";
 import NumberOfElements from "@/components/tagList/numberOfElements";
 import SelectHeading from "@/components/radio/selectHeading";
 import { AttributeUtility } from "@/utils/attributeUtility";
+import { headingDescriptions } from "@/data/headingData";
 
 type Props = {
   title: string;
@@ -83,6 +84,10 @@ const Accordion: FC<Props> = ({ title, description, tagList }) => {
       <div className="border-t border-t-black p-2 dark:border-t-gray-500">
         {description}
         <hr className="border border-gray-300 my-3 dark:border-gray-500" />
+        <div className="my-3">
+          <h3 className="text-xl">属性</h3>
+          <p className="text-sm text-[#9CA3AF]">{headingDescriptions.attribute}</p>
+        </div>
         <IdAndClass setTagId={setTagId} setTagClass={setTagClass} />
         <AttributeList
           tagName={tagName}
