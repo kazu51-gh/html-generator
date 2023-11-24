@@ -1,5 +1,5 @@
-import { PairTagElement } from "@/generateHTMLElement/pairTagElement";
-import { VoidElement } from "@/generateHTMLElement/voidElement";
+import { NormalElement } from "@/HTMLElementGenerator/normalElement";
+import { VoidElement } from "@/HTMLElementGenerator/voidElement";
 import { contentData } from "@/data/contentData";
 
 export class HtmlElementFactory {
@@ -11,32 +11,51 @@ export class HtmlElementFactory {
     columns: number = 0,
     rows: number = 0
     ): string => {
-    const voidElements: string[] = ['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'];
-    const headingElement: string[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+    const voidElements: string[] = ['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr'];
+    const headingElements: string[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
     const listElements: string[] = ['ol', 'ul'];
     
-    if (voidElements.includes(tagName)) {
-      const voidElement = new VoidElement(tagName, attributes);
-      return(voidElement.generateVoidElement());
-    } else if (headingElement.includes(tagName)) {
-      const element = new PairTagElement(tagName, attributes, contentData['h']);
-      return(element.generateElement());
-    } else if (listElements.includes(tagName)) {
+    if (voidElements.includes(tagName)) { return(this.generateVoidElement(tagName, attributes)); }
+    else if (headingElements.includes(tagName)) { return(this.generateHeadingElement(tagName, attributes, contentData['h'])); }
+    else if (listElements.includes(tagName)) {
       const liElement = this.generateList(listCounter);
-      const element = new PairTagElement(tagName, attributes, liElement);
+      const element = new NormalElement(tagName, attributes, liElement);
       return(element.generateElement());
     } else if (tagName === 'table') {
       const tableContent = this.generateTableContent(columns, rows);
-      const element = new PairTagElement(tagName, attributes, tableContent);
+      const element = new NormalElement(tagName, attributes, tableContent);
       return(element.generateElement());
     } else if (contentData[tagName]) {
       const content = contentData[tagName];
-      const element = new PairTagElement(tagName, attributes, content);
+      const element = new NormalElement(tagName, attributes, content);
       return(element.generateElement());
     } else {
-      const element = new PairTagElement(tagName, attributes, content);
+      const element = new NormalElement(tagName, attributes, content);
       return(element.generateElement());
     }
+  }
+
+  /**
+   * 空要素を生成する
+   * @param tagName タグ名
+   * @param attributes 属性群
+   * @returns 空要素
+   */
+  private static generateVoidElement(tagName: string, attributes: string[]): string {
+    const voidElement = new VoidElement(tagName, attributes);
+    return(voidElement.generateElement());
+  }
+
+  /**
+   * h要素(h1~h6要素)を生成する
+   * @param tagName タグ名
+   * @param attributes 属性群
+   * @param content コンテンツ
+   * @returns hタグ
+   */
+  private static generateHeadingElement(tagName: string, attributes: string[], content: string): string {
+    const normalElement = new NormalElement(tagName, attributes, content);
+    return(normalElement.generateElement());
   }
 
   /**
@@ -47,7 +66,7 @@ export class HtmlElementFactory {
   private static generateList = (listCounter: number): string => {
     let code = '';
     for(let i = 0; i < listCounter; i++) {
-      const element = new PairTagElement('li', [], `リスト${i+1}`);
+      const element = new NormalElement('li', [], `リスト${i+1}`);
       code = code + '\r\n\t' + element.generateElement();
     }
     return code + '\r\n';
@@ -81,7 +100,7 @@ export class HtmlElementFactory {
    * @returns caption要素
    */
   private static generateCaptionElement = (): string => {
-    const element = new PairTagElement('caption', [], 'テーブル名');
+    const element = new NormalElement('caption', [], 'テーブル名');
     return(element.generateElement());
   }
 
@@ -91,7 +110,7 @@ export class HtmlElementFactory {
    * @returns tr要素
    */
   private static generateTrElementForThead = (trContent: string): string => {
-    const element = new PairTagElement('tr', [], trContent);
+    const element = new NormalElement('tr', [], trContent);
     return(element.generateElement());
   }
 
@@ -101,7 +120,7 @@ export class HtmlElementFactory {
    * @returns thead要素
    */
   private static generateTheadElement = (trElements: string): string => {
-    const element = new PairTagElement('thead', [], trElements);
+    const element = new NormalElement('thead', [], trElements);
     return(element.generateElement());
   }
 
@@ -111,7 +130,7 @@ export class HtmlElementFactory {
    * @returns thead要素
    */
   private static generateTbodyElement = (trElements: string): string => {
-    const element = new PairTagElement('tbody', [], trElements);
+    const element = new NormalElement('tbody', [], trElements);
     return(element.generateElement());
   }
 
@@ -123,7 +142,7 @@ export class HtmlElementFactory {
   private static generateThElement = (columns: number): string => {
     let code = '';
     for(let i = 0; i < columns; i++) {
-      const element = new PairTagElement('th', [], `列タイトル${i+1}`);
+      const element = new NormalElement('th', [], `列タイトル${i+1}`);
       code = code + '\r\n\t\t\t' + element.generateElement();
     }
     return code + '\r\n';
@@ -137,7 +156,7 @@ export class HtmlElementFactory {
   private static generateTdElement = (columns: number): string => {
     let code = '';
     for(let i = 0; i < columns; i++) {
-      const element = new PairTagElement('td', [], `コンテンツ${i+1}`);
+      const element = new NormalElement('td', [], `コンテンツ${i+1}`);
       code = code + '\r\n\t\t\t' + element.generateElement();
     }
     return code + '\r\n';
@@ -152,7 +171,7 @@ export class HtmlElementFactory {
   private static generateTrElement = (rows: number, tdTags: string): string => {
     let code = '';
     for(let i = 0; i < rows; i++) {
-      const element = new PairTagElement('tr', [], tdTags);
+      const element = new NormalElement('tr', [], tdTags);
       code = code + '\r\n\t\t' + element.generateElement();
     }
     return code + '\r\n';

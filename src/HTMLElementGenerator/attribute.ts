@@ -13,12 +13,13 @@ export class Attribute extends Object {
   }
 
   /**
-   * 属性群をスペース繋ぎで取得する
+   * スペースで繋がれた属性群を生成する
    * 空配列の場合は何もない文字列を返す
    * @returns 属性群
    */
-  public getAttribute(): string {
-    if (this.attributes.length === 0) { return(''); }
-    return(this.attributes.join(' '));
+  public generateConnectedAttributes(): string {
+    const attributes = this.attributes;
+    if (attributes.length === 0) { return(''); }
+    return(attributes.join(' '));
   }
 }
