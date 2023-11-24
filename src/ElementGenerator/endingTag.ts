@@ -1,4 +1,4 @@
-import { Tag } from "@/HTMLElementGenerator/tag";
+import { Tag } from "@/ElementGenerator/tag";
 
 /**
  * 終了タグ(ending tag)を定義するクラス

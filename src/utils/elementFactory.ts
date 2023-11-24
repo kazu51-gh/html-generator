@@ -1,6 +1,5 @@
-import { NormalElement } from "@/HTMLElementGenerator/normalElement";
-import { VoidElement } from "@/HTMLElementGenerator/voidElement";
-import { contentData } from "@/data/contentData";
+import { NormalElement } from "@/ElementGenerator/normalElement";
+import { VoidElement } from "@/ElementGenerator/voidElement";
 
 export class HtmlElementFactory {
   public static generate = (
@@ -14,7 +13,19 @@ export class HtmlElementFactory {
     const voidElements: string[] = ['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr'];
     const headingElements: string[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
     const listElements: string[] = ['ol', 'ul'];
-    
+    const contentData: Record<string, string> = {
+      a: 'リンクとして表示するテキスト',
+      blockquote: '引用文',
+      button: 'ボタンに表示するテキスト',
+      code: 'コード',
+      div: 'コンテンツ',
+      h: '見出しのテキスト',
+      p: 'テキスト',
+      span: 'コンテンツ',
+      strong: '強調するテキスト',
+      textarea: '初期テキスト',
+    }
+
     if (voidElements.includes(tagName)) { return(this.generateVoidElement(tagName, attributes)); }
     else if (headingElements.includes(tagName)) { return(this.generateHeadingElement(tagName, attributes, contentData['h'])); }
     else if (listElements.includes(tagName)) {
