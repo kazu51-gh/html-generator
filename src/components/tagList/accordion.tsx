@@ -7,6 +7,7 @@ import NumberOfElements from "@/components/tagList/numberOfElements";
 import SelectHeading from "@/components/radio/selectHeading";
 import { AttributeUtility } from "@/utils/attributeUtility";
 import { headingDescriptions } from "@/data/headingData";
+import { contentData } from "@/data/contentData";
 
 type Props = {
   title: string;
@@ -26,44 +27,88 @@ const Accordion: FC<Props> = ({ title, description, tagList }) => {
   const tagName = TagUtility.getTagName(tagList);
 
   const displayHTML = (tagList: string[]) => {
-    if (tagList.length !== 1) {
+    if (tagList.length !== 1) { // h要素(h1~h6要素)
+      const tagName = radioValue;
       const attributeList = AttributeUtility.getAttributeList('h', tagId, tagClass, checkedAttributes);
+      const content = '見出し';
       return(
         <div>
-          <SelectHeading tagList={tagList} radioValue={radioValue} setRadioValue={setRadioValue} />
-          <DisplayCode tagName={radioValue} attributes={attributeList} lists={0} columns={0} rows={0} />
+          <SelectHeading
+            tagList={tagList}
+            radioValue={radioValue}
+            setRadioValue={setRadioValue}
+          />
+          <DisplayCode
+            tagName={tagName}
+            attributes={attributeList}
+            content={content}
+          />
         </div>
       );
     } else if (tagList[0] === 'ul') {
+      const tagName = tagList[0];
       const attributeList = AttributeUtility.getAttributeList('ul', tagId, tagClass, checkedAttributes);
       return(
         <div>
-          <NumberOfElements title="リストの数(1以上の整数を入力)" setFunction={setUlListNum} />
-          <DisplayCode tagName={'ul'} attributes={attributeList} lists={ulListNum} columns={0} rows={0} />
+          <NumberOfElements
+            title="リストの数(1以上の整数を入力)"
+            setFunction={setUlListNum}
+          />
+          <DisplayCode
+            tagName={tagName}
+            attributes={attributeList}
+            lists={ulListNum}
+          />
         </div>
       );
     } else if (tagList[0] === 'ol') {
+      const tagName = tagList[0];
       const attributeList = AttributeUtility.getAttributeList('ol', tagId, tagClass, checkedAttributes);
       return(
         <div>
-          <NumberOfElements title="リストの数(1以上の整数を入力)" setFunction={setOlListNum} />
-          <DisplayCode tagName={'ol'} attributes={attributeList} lists={olListNum} columns={0} rows={0} />
+          <NumberOfElements
+            title="リストの数(1以上の整数を入力)"
+            setFunction={setOlListNum}
+          />
+          <DisplayCode
+            tagName={tagName}
+            attributes={attributeList}
+            lists={olListNum}
+          />
         </div>
       );
     } else if (tagList[0] === 'table') {
+      const tagName = tagList[0];
       const attributeList = AttributeUtility.getAttributeList('table', tagId, tagClass, checkedAttributes);
       return(
         <div>
-          <NumberOfElements title="行数(1以上の整数を入力)" setFunction={setColumns} />
-          <NumberOfElements title="列数(1以上の整数を入力)" setFunction={setRows} />
-          <DisplayCode tagName={'table'} attributes={attributeList} lists={0} columns={columns} rows={rows} />
+          <NumberOfElements
+            title="行数(1以上の整数を入力)"
+            setFunction={setColumns}
+          />
+          <NumberOfElements
+            title="列数(1以上の整数を入力)"
+            setFunction={setRows}
+          />
+          <DisplayCode
+            tagName={tagName}
+            attributes={attributeList}
+            columns={columns}
+            rows={rows}
+          />
         </div>
       );
-    } else {
+    } else { // h要素, ul要素, ol要素, table要素以外の要素
+      const tagName = tagList[0];
       const attributeList = AttributeUtility.getAttributeList(tagList[0], tagId, tagClass, checkedAttributes);
+      const content = contentData[tagName];
       return(
         <div>
-          <DisplayCode tagName={tagList[0]} attributes={attributeList} lists={0} columns={0} rows={0} />
+          <DisplayCode
+            tagName={tagName}
+            attributes={attributeList}
+            content={content}
+          />
         </div>
       );
     }

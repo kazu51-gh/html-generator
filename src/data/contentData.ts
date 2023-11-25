@@ -4,7 +4,7 @@ export const contentData: Record<string, string> = {
   button: 'ボタンに表示するテキスト',
   code: 'コード',
   div: 'コンテンツ',
-  h: '見出しのテキスト',
+  h: '見出し',
   p: 'テキスト',
   span: 'コンテンツ',
   strong: '強調するテキスト',
