@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { GenerateHTML } from "@/generateHTML/generateHTML";
+import { CreateHTMLDocument } from "@/DocumentFactory/createHTMLDocument";
 
 type Props = {
   pageTitle: string;
@@ -9,15 +9,15 @@ type Props = {
 
 const DownloadButton: FC<Props> = ({ pageTitle, pageDescription, textareaData }) => {
   const makeHTML = (title: string, description: string, textareaData: string) => {
-    const generateHTML = new GenerateHTML();
     const contents = textareaData.split('\n');
-    let contentsList = [];
-    for(let i = 0; i < contents.length; i++) {
+    let contentsList: string[] = [];
+    [...Array(contents.length)].forEach((_, i) => {
       const code = '\t\t' + contents[i];
       if (code !== '\t\tundefined') { contentsList.push(code); }
-    }
-    const text = generateHTML.generate(title, description, contentsList.join('\r\n'));
-    const downloadData = new Blob([text], {type: 'text/html'});
+    });
+    const createHTML = new CreateHTMLDocument(title, description, contentsList.join('\r\n'));
+    const html = createHTML.create();
+    const downloadData = new Blob([html], {type: 'text/html'});
     const downloadLink = document.createElement('a');
     downloadLink.href = URL.createObjectURL(downloadData);
     downloadLink.download = 'sample.html';
