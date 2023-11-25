@@ -30,7 +30,7 @@ export class CreateHTMLDocument extends Object {
    */
   public create(): string {
     const headFactory = new HeadFactory(this.pageTitle, this.pageDescription);
-    const head = headFactory.create();
+    const head = headFactory.createForHTML();
     const bodyFactory = new BodyFactory(this.bodyContent);
     const body = bodyFactory.create();
     const htmlContents = '\r\n\t' + head + '\r\n\t' + body + '\r\n';

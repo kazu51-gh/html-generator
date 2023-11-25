@@ -21,10 +21,23 @@ export class HeadFactory extends HTMLDocumentFactory {
   }
 
   /**
-   * HTML文書のhead部を作成する
+   * head部作成ページのコードを作成する
    * @returns head部
    */
   create(): string {
+    const charset = this.createCharset();
+    const pageDescription = this.createDescription();
+    const pageTitle = this.createTitle();
+    const headContents = '\r\n\t' + charset + '\r\n\t' + pageDescription + '\r\n\t' + pageTitle + '\r\n';
+    const head = this.createHead(headContents);
+    return(head);
+  }
+
+  /**
+   * HTML文書のhead部を作成する
+   * @returns head部
+   */
+  public createForHTML(): string {
     const charset = this.createCharset();
     const pageDescription = this.createDescription();
     const pageTitle = this.createTitle();
