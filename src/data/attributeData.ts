@@ -1,4 +1,4 @@
-export const attributes: { [key: string]: string[] } = {
+export const attributes: Record<string, string[]> = {
   global: [
     'accesskey',
     'autocapitalize',
@@ -133,7 +133,7 @@ export const attributes: { [key: string]: string[] } = {
   ul: [],
 }
 
-export const attributeCodes: { [key: string]: { [attribute: string]: string } } = {
+export const attributeCodes: Record<string, Record<string, string>> = {
   global: {
     'accesskey': 'accesskey=""',
     'autocapitalize': 'autocapitalize=""',
