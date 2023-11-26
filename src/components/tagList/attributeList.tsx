@@ -1,5 +1,5 @@
 import { Dispatch, FC, SetStateAction } from "react";
-import { attributes } from "@/data/attributeData";
+import { attributeDescriptions, attributes } from "@/data/attributeData";
 import { headingDescriptions } from "@/data/headingData";
 
 type Props = {
@@ -10,7 +10,9 @@ type Props = {
 
 const AttributeList: FC<Props> = ({ tagName, checkedAttributes, setCheckedAttributes }) => {
   const globalAttributes = attributes['global'];
+  const globalAttributeDescriptions = attributeDescriptions['global'];
   const tagAttributes = attributes[tagName];
+  const tagAttributeDescriptions = attributeDescriptions[tagName];
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {name, checked} = e.target;
@@ -27,18 +29,28 @@ const AttributeList: FC<Props> = ({ tagName, checkedAttributes, setCheckedAttrib
       <div className="global-attributes-setting my-3">
         <h4 className="text-base">グローバル属性</h4>
         <p className="text-sm text-[#9CA3AF]">{headingDescriptions.globalAttribute}</p>
-        <div className="m-3 w-1/2">
-          <ul className="h-32 overflow-y-scroll">
+        <div className="m-3 w-11/12">
+          <ul className="h-40 overflow-y-scroll">
             {globalAttributes.map((attribute, index) => (
               <li key={index}>
-                <input
-                  type="checkbox"
-                  id={`${tagName}-${attribute}`}
-                  name={attribute}
-                  checked={checkedAttributes.includes(attribute)}
-                  onChange={handleCheckboxChange}
-                />
-                <label className="mx-2" htmlFor={`${tagName}-${attribute}`}>{attribute}</label>
+                <div className="flex flex-row justify-between items-center">
+                  <div className="flex flex-row">
+                    <input
+                      className="mx-1"
+                      type="checkbox"
+                      id={`${tagName}-${attribute}`}
+                      name={attribute}
+                      checked={checkedAttributes.includes(attribute)}
+                      onChange={handleCheckboxChange}
+                    />
+                    <label htmlFor={`${tagName}-${attribute}`}>{attribute}</label>
+                  </div>
+                  <div className="flex flex-col mr-2 text-center">
+                    <p className="text-sm my-0.5">{globalAttributeDescriptions[attribute][0]}</p>
+                    <p className="text-sm my-0.5">{'値：'+ globalAttributeDescriptions[attribute][1]}</p>
+                  </div>
+                </div>
+                <hr className="border border-black my-1" />
               </li>
             ))}
           </ul>
@@ -49,39 +61,31 @@ const AttributeList: FC<Props> = ({ tagName, checkedAttributes, setCheckedAttrib
           <div className="intrinsic-attributes-setting">
             <h4 className="text-base">固有属性</h4>
             <p className="text-sm text-[#9CA3AF]">{headingDescriptions.intrinsicAttribute}</p>
-            <div className="m-3 w-1/2">
-              {tagAttributes.length > 4 &&
-                <ul className="h-32 overflow-y-scroll">
-                  {tagAttributes.map((attribute, index) => (
-                    <li key={index}>
-                      <input
-                        type="checkbox"
-                        id={attribute}
-                        name={attribute}
-                        checked={checkedAttributes.includes(attribute)}
-                        onChange={handleCheckboxChange}
-                      />
-                      <label className="mx-2" htmlFor={attribute}>{attribute}</label>
-                    </li>
-                  ))}
-                </ul>
-              }
-              {tagAttributes.length <= 4 &&
-                <ul>
-                  {tagAttributes.map((attribute, index) => (
-                    <li key={index}>
-                      <input
-                        type="checkbox"
-                        id={attribute}
-                        name={attribute}
-                        checked={checkedAttributes.includes(attribute)}
-                        onChange={handleCheckboxChange}
-                      />
-                      <label className="mx-2" htmlFor={attribute}>{attribute}</label>
-                    </li>
-                  ))}
-                </ul>
-              }
+            <div className="m-3 w-11/12">
+              <ul className="h-40 overflow-y-scroll">
+                {tagAttributes.map((attribute, index) => (
+                  <li key={index}>
+                    <div className="flex flex-row justify-between items-center">
+                      <div className="flex flex-row">
+                        <input
+                          className="mr-1"
+                          type="checkbox"
+                          id={attribute}
+                          name={attribute}
+                          checked={checkedAttributes.includes(attribute)}
+                          onChange={handleCheckboxChange}
+                        />
+                        <label htmlFor={attribute}>{attribute}</label>
+                      </div>
+                      <div className="flex flex-col mr-2 text-center">
+                        <p className="text-sm">{tagAttributeDescriptions[attribute][0]}</p>
+                        <p className="text-sm">{'値：'+ tagAttributeDescriptions[attribute][1]}</p>
+                      </div>
+                    </div>
+                    <hr className="border border-black my-1" />
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         }

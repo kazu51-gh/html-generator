@@ -18,12 +18,14 @@ export class AttributeUtility extends Object {
     let attributeList: string[] = [];
     if (tagId !== '') { attributeList.push(`id="${tagId}"`); }
     if (tagClass !== '') { attributeList.push(`class="${tagClass}"`); }
-    checkedAttributes.forEach(att => {
-      const globalAttribute = globalAttributes[att];
-      const tagAttribute = tagAttributes[att];
-      if (globalAttribute !== '' && attributeList.indexOf(globalAttribute) === -1) { attributeList.push(globalAttribute); }
-      if (tagAttribute !== '' && attributeList.indexOf(tagAttribute) === -1) { attributeList.push(tagAttribute); }
+    checkedAttributes.forEach(attribute => {
+      const globalAttribute = globalAttributes[attribute];
+      const tagAttribute = tagAttributes[attribute];
+
+      if (globalAttribute !== undefined) { attributeList.push(globalAttribute); }
+      else if (tagAttribute !== undefined) { attributeList.push(tagAttribute); }
     });
+
     return(attributeList);
   }
 }
