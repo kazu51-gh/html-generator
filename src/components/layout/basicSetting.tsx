@@ -4,7 +4,7 @@ import DisabledValue from "@/components/input/disabledValue";
 import PageTitle from "@/components/headings/pageTitle";
 import SettingTitle from "@/components/headings/settingTitle";
 import SettingWindow from "@/components/input/settingWindow";
-import { HeadFactory } from "@/DocumentFactory/headFactory";
+import { HeadFactory } from "@/DocumentFactory/headElementFactory";
 
 type Props = {
   pageTitle: string;
