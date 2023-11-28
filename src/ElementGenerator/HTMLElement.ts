@@ -13,5 +13,5 @@ export abstract class HTMLElement extends Object {
   /**
    * HTML要素を生成して返す
    */
-  abstract generateElement(): string;
+  public abstract generateElement(): string;
 }

@@ -18,26 +18,18 @@ export class StartingTag extends Tag {
   }
 
   /**
-   * 小なり文字(<)を取得する
+   * 開始タグの最初の文字を取得する
    * @returns 小なり文字
    */
-  getLessThan(): string {
+  protected getLessThan(): string {
     return(this.lessThan);
-  }
-
-  /**
-   * 大なり文字(>)を取得する
-   * @returns 大なり文字
-   */
-  getGreaterThan(): string {
-    return(this.greaterThan);
   }
 
   /**
    * タグ名を取得する
    * @returns タグ名
    */
-  getTagName(): string {
+  protected getTagName(): string {
     return(this.tagName);
   }
 
@@ -46,14 +38,23 @@ export class StartingTag extends Tag {
    * @returns 属性群
    */
   private getAttributes(): string {
-    return(this.attribute.generateConnectedAttributes());
+    const attributes = this.attribute.getAttributes();
+    return(attributes);
+  }
+
+  /**
+   * 開始タグの最後の文字を取得する
+   * @returns 大なり文字
+   */
+  protected getGreaterThan(): string {
+    return(this.greaterThan);
   }
 
   /**
    * 開始タグを生成する
    * @returns 開始タグ
    */
-  public generateStartingTag(): string {
+  public generateTag(): string {
     const lessThan = this.getLessThan();
     const tagName = this.getTagName();
     const attributes = this.getAttributes();

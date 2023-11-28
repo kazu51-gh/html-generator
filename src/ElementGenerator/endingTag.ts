@@ -8,37 +8,22 @@ export class EndingTag extends Tag {
   
   /**
    * 終了タグのインスタンスを生成する
+   * @param tagName タグ名
    */
   constructor(tagName: string) {
     super(tagName);
   }
 
   /**
-   * 小なり文字(<)を取得する
+   * 終了タグの最初の文字を取得する
    * @returns 小なり文字
    */
-  getLessThan(): string {
+  protected getLessThan(): string {
     return(this.lessThan);
   }
 
   /**
-   * 大なり文字(>)を取得する
-   * @returns 大なり文字
-   */
-  getGreaterThan(): string {
-    return(this.greaterThan);
-  }
-
-  /**
-   * タグ名を取得する
-   * @returns タグ名
-   */
-  getTagName(): string {
-    return(this.tagName);
-  }
-
-  /**
-   * 斜線文字(/)を取得する
+   * 斜線文字を取得する
    * @returns 斜線文字
    */
   private getSolidus(): string {
@@ -46,10 +31,26 @@ export class EndingTag extends Tag {
   }
 
   /**
+   * タグ名を取得する
+   * @returns タグ名
+   */
+  protected getTagName(): string {
+    return(this.tagName);
+  }
+
+  /**
+   * 終了タグの最後の文字を取得する
+   * @returns 大なり文字
+   */
+  protected getGreaterThan(): string {
+    return(this.greaterThan);
+  }
+
+  /**
    * 終了タグを生成する
    * @returns 終了タグ
    */
-  public generateEndingTag(): string {
+  public generateTag(): string {
     const lessThan = this.getLessThan();
     const solidus = this.getSolidus();
     const tagName = this.getTagName();

@@ -6,20 +6,29 @@ export class Attribute extends Object {
 
   /**
    * 属性のインスタンスを生成する
+   * @param attributes 属性群
    */
-  constructor(attributes: string[] = []) {
+  constructor(attributes: string[]) {
     super();
     this.attributes = attributes;
   }
 
   /**
-   * スペースで繋がれた属性群を生成する
-   * 空配列の場合は何もない文字列を返す
+   * 属性群を取得する
    * @returns 属性群
    */
-  public generateConnectedAttributes(): string {
-    const attributes = this.attributes;
-    if (attributes.length === 0) { return(''); }
-    return(attributes.join(' '));
+  public getAttributes(): string {
+    const tagAttributes = this.createConnectedAttributes();
+    return(tagAttributes);
+  }
+
+  /**
+   * スペース繋ぎの属性群を作成する
+   * 空配列の場合は空文字列を返す
+   * @returns 属性群
+   */
+  private createConnectedAttributes(): string {
+    if (this.attributes.length === 0) { return(''); }
+    return(this.attributes.join(' '));
   }
 }

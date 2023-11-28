@@ -9,7 +9,7 @@ import { StartingTag } from "@/ElementGenerator/startingTag";
 export class NormalElement extends HTMLElement {
   private startingTag: StartingTag;
   private content: Content;
-  private closingTag: EndingTag;
+  private endingTag: EndingTag;
 
   /**
    * 通常要素のインスタンスを生成する
@@ -17,11 +17,35 @@ export class NormalElement extends HTMLElement {
    * @param attributes 属性群
    * @param content コンテンツ
    */
-  constructor(tagName: string, attributes: string[] = [], content: string) {
+  constructor(tagName: string, attributes: string[], content: string) {
     super();
     this.startingTag = new StartingTag(tagName, attributes);
     this.content = new Content(content);
-    this.closingTag = new EndingTag(tagName);
+    this.endingTag = new EndingTag(tagName);
+  }
+
+  /**
+   * 開始タグを取得する
+   * @returns 開始タグ
+   */
+  private getStartingTag(): string {
+    return(this.startingTag.generateTag());
+  }
+
+  /**
+   * コンテンツを取得する
+   * @returns コンテンツ
+   */
+  private getContent(): string {
+    return(this.content.getContent());
+  }
+
+  /**
+   * 終了タグを取得する
+   * @returns 終了タグ
+   */
+  private getEndingTag(): string {
+    return(this.endingTag.generateTag());
   }
 
   /**
@@ -29,9 +53,7 @@ export class NormalElement extends HTMLElement {
    * @returns 通常要素
    */
   public generateElement(): string {
-    const startingTag = this.startingTag.generateStartingTag();
-    const content = this.content.getContent();
-    const closingTag = this.closingTag.generateEndingTag();
-    return(startingTag + content + closingTag);
+    const element = this.getStartingTag() + this.getContent() + this.getEndingTag();
+    return(element);
   }
 }
