@@ -3,7 +3,9 @@ import { NormalElementFactory } from "@/ElementFactory/normalElementFactory";
 /**
  * table要素を作成するクラス
  */
-export class TableElementFactory extends NormalElementFactory {
+export class TableElementFactory extends Object {
+  private tagName: string;
+  private attributes: string[];
   private columns: number;
   private rows: number;
 
@@ -14,8 +16,10 @@ export class TableElementFactory extends NormalElementFactory {
    * @param columns 行数
    * @param rows 列数
    */
-  constructor(tagName: string, attributes: string[] = [], columns: number = 1, rows: number = 1) {
-    super(tagName, attributes, '');
+  constructor(tagName: string, attributes: string[], columns: number, rows: number) {
+    super();
+    this.tagName = tagName;
+    this.attributes = attributes;
     this.columns = columns;
     this.rows = rows;
   }
@@ -122,7 +126,7 @@ export class TableElementFactory extends NormalElementFactory {
   /**
    * tbody要素を作成する
    * @param trElements tr要素群
-   * @returns thead要素
+   * @returns tbody要素
    */
   private createTbodyElement(trElements: string): string {
     const normalElementFactory = new NormalElementFactory('tbody', [], trElements);

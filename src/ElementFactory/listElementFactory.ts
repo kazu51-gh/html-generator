@@ -3,7 +3,9 @@ import { NormalElementFactory } from "@/ElementFactory/normalElementFactory";
 /**
  * リスト要素(ol要素, ul要素)を作成するクラス
  */
-export class ListElementFactory extends NormalElementFactory {
+export class ListElementFactory extends Object {
+  private tagName: string;
+  private attributes: string[];
   private listCounter: number;
 
   /**
@@ -12,8 +14,10 @@ export class ListElementFactory extends NormalElementFactory {
    * @param attributes 属性群
    * @param listCounter リスト数
    */
-  constructor(tagName: string, attributes: string[] = [], listCounter: number) {
-    super(tagName, attributes, '');
+  constructor(tagName: string, attributes: string[], listCounter: number) {
+    super();
+    this.tagName = tagName;
+    this.attributes = attributes;
     this.listCounter = listCounter;
   }
 
@@ -30,7 +34,7 @@ export class ListElementFactory extends NormalElementFactory {
 
   /**
    * li要素を指定された個数だけ作成する
-   * @returns li要素の集合文字列
+   * @returns li要素群
    */
   private createLiElement(): string {
     let code = '';
