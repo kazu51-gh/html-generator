@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { CreateHTMLDocument } from "@/DocumentFactory/createHTMLDocument";
+import { HTMLDocumentFactory } from "@/DocumentFactory/HTMLDocumentFactory";
 
 type Props = {
   pageTitle: string;
@@ -15,8 +15,8 @@ const DownloadButton: FC<Props> = ({ pageTitle, pageDescription, textareaData })
       const code = '\t\t' + contents[i];
       if (code !== '\t\tundefined') { contentsList.push(code); }
     });
-    const createHTML = new CreateHTMLDocument(title, description, contentsList.join('\r\n'));
-    const html = createHTML.create();
+    const htmlDocumentFactory = new HTMLDocumentFactory(contentsList.join('\r\n'), title, description);
+    const html = htmlDocumentFactory.createDocument();
     const downloadData = new Blob([html], {type: 'text/html'});
     const downloadLink = document.createElement('a');
     downloadLink.href = URL.createObjectURL(downloadData);
