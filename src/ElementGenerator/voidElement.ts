@@ -12,9 +12,17 @@ export class VoidElement extends HTMLElement {
    * @param tagName タグ名
    * @param attributes 属性群
    */
-  constructor(tagName: string, attributes: string[] = []) {
+  constructor(tagName: string, attributes: string[]) {
     super();
     this.startingTag = new StartingTag(tagName, attributes);
+  }
+
+  /**
+   * 開始タグを取得する
+   * @returns 開始タグ
+   */
+  private getStartingTag(): string {
+    return(this.startingTag.generateTag());
   }
 
   /**
@@ -22,7 +30,7 @@ export class VoidElement extends HTMLElement {
    * @returns 空要素
    */
   public generateElement(): string {
-    const element = this.startingTag.generateStartingTag();
+    const element = this.getStartingTag();
     return(element);
   }
 }

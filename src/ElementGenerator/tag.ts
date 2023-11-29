@@ -18,15 +18,20 @@ export abstract class Tag extends Object {
   /**
    * 開始タグおよび終了タグの最初の文字を返す
    */
-  abstract getLessThan(): string;
-
-  /**
-   * 開始タグおよび終了タグの最後の文字を返す
-   */
-  abstract getGreaterThan(): string;
+  protected abstract getLessThan(): string;
 
   /**
    * 開始タグおよび終了タグのタグ名を返す
    */
-  abstract getTagName(): string;
+  protected abstract getTagName(): string;
+
+  /**
+   * 開始タグおよび終了タグの最後の文字を返す
+   */
+  protected abstract getGreaterThan(): string;
+
+  /**
+   * タグを生成する
+   */
+  public abstract generateTag(): string;
 }
