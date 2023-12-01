@@ -1,6 +1,8 @@
 import { Dispatch, FC, SetStateAction } from "react";
-import HeaderList from "@/components/header/headerList";
-import HeaderTitle from "@/components/header/headerTitle";
+import { basePath } from "../../../next.config";
+import path from "path";
+
+const BASE_PATH = basePath ? basePath : "";
 
 type Props = {
   setCurrentView: Dispatch<SetStateAction<string>>;
@@ -8,14 +10,42 @@ type Props = {
 
 const Header: FC<Props> = ({ setCurrentView }) => {
   return(
-    <div className="h-full items-center flex flex-row max-[767px]:flex-col max-[767px]:justify-around min-[768px]:justify-between mx-3">
-      <HeaderTitle />
-      <ul className="flex flex-row">
-        <HeaderList listTitle='HOME' current='home' setCurrentView={setCurrentView} />
-        <HeaderList listTitle='ページ情報設定' current='page-setting' setCurrentView={setCurrentView} />
-        <HeaderList listTitle='タグ一覧' current='tag-lists' setCurrentView={setCurrentView} />
-        <HeaderList listTitle='プレビュー' current='viewer' setCurrentView={setCurrentView} />
-        <HeaderList listTitle='ダウンロード' current='html-download' setCurrentView={setCurrentView} />
+    <div className="items-center flex flex-row max-[767px]:flex-col max-[767px]:justify-around min-[768px]:justify-between m-3">
+      <a
+        className="cursor-pointer font-medium text-2xl"
+        href={path.join(BASE_PATH, '/')}
+      >HTML Generator</a>
+      <ul className="flex flex-row max-[767px]:my-2">
+        <li
+          className="page-list max-[767px]:text-xs mx-5"
+          onClick={() => setCurrentView('home')}
+        >
+          HOME
+        </li>
+        <li
+          className="page-list max-[767px]:text-xs mx-5"
+          onClick={() => setCurrentView('page-setting')}
+        >
+          ページ情報設定
+        </li>
+        <li
+          className="page-list max-[767px]:text-xs mx-5"
+          onClick={() => setCurrentView('element-list')}
+        >
+          HTML要素一覧
+        </li>
+        <li
+          className="page-list max-[767px]:text-xs mx-5"
+          onClick={() => setCurrentView('viewer')}
+        >
+          プレビュー
+        </li>
+        <li
+          className="page-list max-[767px]:text-xs mx-5"
+          onClick={() => setCurrentView('html-download')}
+        >
+          ダウンロード
+        </li>
       </ul>
     </div>
   );

@@ -8,7 +8,7 @@ const Home = () => {
       <p className="text-2xl m-6">{functionDescriptions.home}</p>
       <FunctionDescription title="(共通) コードエリア" description={functionDescriptions.codeArea} />
       <FunctionDescription title="ページ情報設定" description={functionDescriptions.pageSetting} />
-      <FunctionDescription title="タグ一覧" description={functionDescriptions.tagLists} />
+      <FunctionDescription title="HTML要素一覧" description={functionDescriptions.elementList} />
       <FunctionDescription title="プレビュー" description={functionDescriptions.viewer} />
       <FunctionDescription title="ダウンロード" description={functionDescriptions.download} />
     </div>

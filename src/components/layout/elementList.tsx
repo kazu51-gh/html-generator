@@ -2,7 +2,7 @@ import Accordion from "@/components/tagList/accordion";
 import { tagDescriptions, tagNames, tagTitles } from "@/data/tagData";
 import PageTitle from "@/components/headings/pageTitle";
 
-const TagLists = () => {
+const ElementList = () => {
   return(
     <div className="h-full w-full">
       <PageTitle title="タグ一覧" />
@@ -99,4 +99,4 @@ const TagLists = () => {
   );
 }
 
-export default TagLists;
+export default ElementList;
