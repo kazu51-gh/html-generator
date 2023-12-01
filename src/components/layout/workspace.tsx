@@ -3,18 +3,18 @@ import BasicSetting from "@/components/layout/basicSetting";
 import CodeArea from "@/components/layout/codeArea";
 import Home from "@/components/layout/home";
 import HtmlDownload from "@/components/layout/htmlDownload";
-import TagLists from "@/components/layout/tagLists";
+import ElementList from "@/components/layout/elementList";
 import Viewer from "@/components/layout/viewer";
-import getStoredData from "@/utils/getStoredData";
+import { SessionUtility } from "@/utils/sessionUtility";
 
 type Props = {
   currentView: string;
 }
 
 const Workspace: FC<Props> = ({ currentView }) => {
-  const [pageTitle, setPageTitle] = useState<string>(getStoredData('pageTitle', ''));
-  const [pageDescription, setPageDescription] = useState<string>(getStoredData('pageDescription', ''));
-  const [textareaData, setTextareaData] = useState<string>(getStoredData('textareaData', ''));
+  const [pageTitle, setPageTitle] = useState<string>(SessionUtility.getStoredData('pageTitle', ''));
+  const [pageDescription, setPageDescription] = useState<string>(SessionUtility.getStoredData('pageDescription', ''));
+  const [textareaData, setTextareaData] = useState<string>(SessionUtility.getStoredData('textareaData', ''));
 
   useEffect(() => {
     sessionStorage.setItem('pageTitle', pageTitle);
@@ -48,7 +48,7 @@ const Workspace: FC<Props> = ({ currentView }) => {
             setPageDescription={setPageDescription}
           />
         }
-        {currentView === 'tag-lists' && <TagLists />}
+        {currentView === 'element-list' && <ElementList />}
         {currentView === 'viewer' &&
           <Viewer textareaData={textareaData} />
         }

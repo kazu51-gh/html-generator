@@ -8,14 +8,14 @@ const Home = () => {
   const [currentView, setCurrentView] = useState<string>('home');
   
   return(
-    <main className="flex flex-col h-screen w-screen">
-      <div className="h-[10%]">
+    <div className="flex flex-col h-screen w-screen">
+      <header>
         <Header setCurrentView={setCurrentView} />
-      </div>
-      <div className="h-[90%]">
+      </header>
+      <main className="h-[90%]">
         <Workspace currentView={currentView} />
-      </div>
-    </main>
+      </main>
+    </div>
   );
 }
 
