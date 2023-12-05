@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from "react";
 import BasicSetting from "@/components/layout/basicSetting";
 import CodeArea from "@/components/layout/codeArea";
 import Home from "@/components/layout/home";
+import HTMLDescription from "@/components/layout/htmlDescription";
 import HtmlDownload from "@/components/layout/htmlDownload";
 import ElementList from "@/components/layout/elementList";
 import Viewer from "@/components/layout/viewer";
@@ -40,6 +41,7 @@ const Workspace: FC<Props> = ({ currentView }) => {
         }
       </div>
       <div className="flex-1 m-3">
+        {currentView === 'home' && <HTMLDescription />}
         {currentView === 'page-setting' &&
           <BasicSetting
             pageTitle={pageTitle}
