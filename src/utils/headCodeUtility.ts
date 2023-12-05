@@ -2,7 +2,7 @@ import { NormalElementFactory } from "@/ElementFactory/normalElementFactory";
 import { VoidElementFactory } from "@/ElementFactory/voidElementFactory";
 
 /**
- * head要素のコードを作成するユーティリティクラス
+ * ページ情報設定画面のhead部コードを作成するユーティリティクラス
  */
 export class HeadCodeUtility extends Object {
   private title: string;
