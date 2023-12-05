@@ -2,9 +2,9 @@ import { NormalElementFactory } from "@/ElementFactory/normalElementFactory";
 import { VoidElementFactory } from "@/ElementFactory/voidElementFactory";
 
 /**
- * head要素を作成するクラス
+ * ページ情報設定画面のhead部コードを作成するユーティリティクラス
  */
-export class HeadElementFactory extends Object {
+export class HeadCodeUtility extends Object {
   private title: string;
   private description: string;
 
@@ -38,7 +38,7 @@ export class HeadElementFactory extends Object {
     const charset = this.createCharset();
     const pageDescription = this.createDescription();
     const pageTitle = this.createTitle();
-    const content = '\r\n\t\t' + charset + '\r\n\t\t' + pageDescription + '\r\n\t\t' + pageTitle + '\r\n\t';
+    const content = '\r\n\t' + charset + '\r\n\t' + pageDescription + '\r\n\t' + pageTitle + '\r\n';
     return(content);
   }
 

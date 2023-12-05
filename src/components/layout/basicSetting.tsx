@@ -4,7 +4,7 @@ import DisabledValue from "@/components/input/disabledValue";
 import PageTitle from "@/components/headings/pageTitle";
 import SettingTitle from "@/components/headings/settingTitle";
 import SettingWindow from "@/components/input/settingWindow";
-import { HeadElementFactory } from "@/DocumentFactory/headElementFactory";
+import { HeadCodeUtility } from "@/utils/headCodeUtility";
 
 type Props = {
   pageTitle: string;
@@ -14,7 +14,8 @@ type Props = {
 }
 
 const BasicSetting: FC<Props> = ({ pageTitle, setPageTitle, pageDescription, setPageDescription }) => {
-  const headElementFactory = new HeadElementFactory(pageTitle, pageDescription);
+  const head = new HeadCodeUtility(pageTitle, pageDescription);
+  
   return(
     <div className="h-full w-full">
       <PageTitle title="ページ情報設定" />
@@ -46,7 +47,7 @@ const BasicSetting: FC<Props> = ({ pageTitle, setPageTitle, pageDescription, set
         description={headingDescriptions.head}
       />
       <div className="border border-black p-1 my-3 whitespace-pre-wrap dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300">
-        {headElementFactory.createElement()}
+        {head.createElement()}
       </div>
     </div>
   );
