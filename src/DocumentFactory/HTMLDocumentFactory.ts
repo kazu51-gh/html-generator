@@ -27,7 +27,7 @@ export class HTMLDocumentFactory extends Object {
    * @returns HTML文書
    */
   public createDocument(): string {
-    const headElement = this.headElementFactory.createElementForHTML();
+    const headElement = this.headElementFactory.createElement();
     const bodyElement = this.bodyElementFactory.createElement();
     const htmlContent = '\r\n\t' + headElement + '\r\n\t' + bodyElement + '\r\n';
     const normalElementFactory = new NormalElementFactory('html', ['lang="ja"'], htmlContent);

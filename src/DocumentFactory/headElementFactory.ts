@@ -31,33 +31,10 @@ export class HeadElementFactory extends Object {
   }
 
   /**
-   * HTML文書用のhead要素を作成する
-   * @returns head要素
-   */
-  public createElementForHTML(): string {
-    const content = this.createHeadContentForHTML();
-    const normalElementFactory = new NormalElementFactory('head', [], content);
-    const element = normalElementFactory.createElement();
-    return(element);
-  }
-
-  /**
    * head要素のコンテンツを作成する
    * @returns head要素のコンテンツ
    */
   private createHeadContent(): string {
-    const charset = this.createCharset();
-    const pageDescription = this.createDescription();
-    const pageTitle = this.createTitle();
-    const content = '\r\n\t' + charset + '\r\n\t' + pageDescription + '\r\n\t' + pageTitle + '\r\n';
-    return(content);
-  }
-
-  /**
-   * HTML文書用のhead要素のコンテンツを作成する
-   * @returns head要素のコンテンツ
-   */
-  private createHeadContentForHTML(): string {
     const charset = this.createCharset();
     const pageDescription = this.createDescription();
     const pageTitle = this.createTitle();
