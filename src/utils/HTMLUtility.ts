@@ -1,4 +1,4 @@
-import { NormalElementFactory } from "@/ElementFactory/normalElementFactory";
+import { NormalElementFactory } from "@/packages/ElementFactory/normalElementFactory";
 
 /**
  * HTMLに関するユーティリティクラス

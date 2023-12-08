@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { headingElements, listElements, voidElements } from "@/data/elementData";
-import { NormalElementFactory } from "@/ElementFactory/normalElementFactory";
-import { VoidElementFactory } from "@/ElementFactory/voidElementFactory";
-import { ListElementFactory } from "@/ElementFactory/listElementFactory";
-import { TableElementFactory } from "@/ElementFactory/tableElementFactory";
+import { ListElementFactory } from "@/packages/ElementFactory/listElementFactory";
+import { NormalElementFactory } from "@/packages/ElementFactory/normalElementFactory";
+import { TableElementFactory } from "@/packages/ElementFactory/tableElementFactory";
+import { VoidElementFactory } from "@/packages/ElementFactory/voidElementFactory";
 
 type Props = {
   tagName: string;
