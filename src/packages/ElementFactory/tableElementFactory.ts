@@ -5,7 +5,8 @@ import { NormalElementFactory } from "@/packages/ElementFactory/normalElementFac
  * table要素を作成するクラス
  */
 export class TableElementFactory extends HTMLElementFactory {
-  private normalElementFactory: NormalElementFactory;
+  private captionFactory: NormalElementFactory;
+  private tableFactory: NormalElementFactory;
   private columns: number;
   private rows: number;
 
@@ -20,41 +21,32 @@ export class TableElementFactory extends HTMLElementFactory {
     super();
     this.columns = columns;
     this.rows = rows;
-    const content = this.createContent();
-    this.normalElementFactory = new NormalElementFactory(tagName, attributes, content);
+    this.captionFactory = new NormalElementFactory('caption', [], '表題');
+    const tableContent = this.createTableContent();
+    this.tableFactory = new NormalElementFactory(tagName, attributes, tableContent);
   }
 
   /**
-   * table要素に内包するコンテンツを作成する
+   * table要素のコンテンツを作成する
    * @returns コンテンツ
    */
-  private createContent(): string {
-    const caption = this.createCaptionElement();
+  public createTableContent(): string {
+    const captionElement = this.captionFactory.createElement();
     const thElements = this.createHeaderCellElements() + '\t\t';
     const tdElements = this.createCellElements() + '\t\t';
     const trElementForThead = '\r\n\t\t' + this.createRowElementForThead(thElements) + '\r\n\t';
     const trElementsForTbody = this.createRowElementsForTbody(tdElements) + '\t';
     const thead = this.createHeadingRowsGroupElement(trElementForThead);
     const tbody = this.createRowsGroupElement(trElementsForTbody);
-    const content = '\r\n\t' + caption + '\r\n\t' + thead + '\r\n\t' + tbody + '\r\n';
-    return content;
-  }
-
-  /**
-   * caption要素を作成する
-   * @returns caption要素
-   */
-  private createCaptionElement(): string {
-    const normalElementFactory = new NormalElementFactory('caption', [], '表題');
-    const element = normalElementFactory.createElement();
-    return element;
+    const tableContent = '\r\n\t' + captionElement + '\r\n\t' + thead + '\r\n\t' + tbody + '\r\n';
+    return tableContent;
   }
 
   /**
    * th要素を指定された個数だけ作成する
    * @returns th要素群
    */
-  private createHeaderCellElements(): string {
+  public createHeaderCellElements(): string {
     let code = '';
     [...Array(this.columns)].forEach((_, i) => {
       const normalElementFactory = new NormalElementFactory('th', [], `列タイトル${i+1}`);
@@ -68,7 +60,7 @@ export class TableElementFactory extends HTMLElementFactory {
    * td要素を指定された個数だけ作成する
    * @returns td要素群
    */
-  private createCellElements(): string {
+  public createCellElements(): string {
     let code = '';
     [...Array(this.columns)].forEach((_, i) => {
       const normalElementFactory = new NormalElementFactory('td', [], `コンテンツ${i+1}`);
@@ -83,7 +75,7 @@ export class TableElementFactory extends HTMLElementFactory {
    * @param thElements th要素群
    * @returns tr要素
    */
-  private createRowElementForThead(thElements: string): string {
+  public createRowElementForThead(thElements: string): string {
     const normalElementFactory = new NormalElementFactory('tr', [], thElements);
     const element = normalElementFactory.createElement();
     return element;
@@ -94,7 +86,7 @@ export class TableElementFactory extends HTMLElementFactory {
    * @param tdElements td要素群
    * @returns tr要素群
    */
-  private createRowElementsForTbody(tdElements: string): string {
+  public createRowElementsForTbody(tdElements: string): string {
     let code = '';
     [...Array(this.rows)].forEach(() => {
       const normalElementFactory = new NormalElementFactory('tr', [], tdElements);
@@ -109,7 +101,7 @@ export class TableElementFactory extends HTMLElementFactory {
    * @param trElement tr要素
    * @returns thead要素
    */
-  private createHeadingRowsGroupElement(trElement: string): string {
+  public createHeadingRowsGroupElement(trElement: string): string {
     const normalElementFactory = new NormalElementFactory('thead', [], trElement);
     const element = normalElementFactory.createElement();
     return element;
@@ -120,7 +112,7 @@ export class TableElementFactory extends HTMLElementFactory {
    * @param trElements tr要素群
    * @returns tbody要素
    */
-  private createRowsGroupElement(trElements: string): string {
+  public createRowsGroupElement(trElements: string): string {
     const normalElementFactory = new NormalElementFactory('tbody', [], trElements);
     const element = normalElementFactory.createElement();
     return element;
@@ -131,7 +123,7 @@ export class TableElementFactory extends HTMLElementFactory {
    * @returns table要素
    */
   public createElement(): string {
-    const element = this.normalElementFactory.createElement();
+    const element = this.tableFactory.createElement();
     return element;
   }
 }

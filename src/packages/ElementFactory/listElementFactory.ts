@@ -4,37 +4,37 @@ import { NormalElementFactory } from "@/packages/ElementFactory/normalElementFac
 /**
  * リスト要素(ol要素またはul要素)を作成するクラス
  */
-
 export class ListElementFactory extends HTMLElementFactory {
+  private listFactory: NormalElementFactory;
+  private listItemFactory: NormalElementFactory;
   private listItemCounter: number;
-  private normalElementFactory: NormalElementFactory;
 
   /**
    * リスト要素作成器のインスタンスを生成する
    * @param tagName タグ名
    * @param attributes 属性群
-   * @param listItemCounter 内包するリストアイテム要素(li要素)の個数
+   * @param listItemCounter li要素の個数
    */
   constructor(tagName: string, attributes: string[], listItemCounter: number) {
     super();
     this.listItemCounter = listItemCounter;
-    const content = this.createContent();
-    this.normalElementFactory = new NormalElementFactory(tagName, attributes, content);
+    this.listItemFactory = new NormalElementFactory('li', [], 'リスト項目');
+    const listContent = this.createListContent();
+    this.listFactory = new NormalElementFactory(tagName, attributes, listContent);
   }
 
   /**
-   * リストアイテム要素を指定された数だけ作成し、内包するコンテンツを作成する
+   * リスト要素のコンテンツを作成する
    * @returns コンテンツ
    */
-  private createContent(): string {
+  public createListContent(): string {
     let code = '';
-    [...Array(this.listItemCounter)].forEach((_, i) => {
-      const normalElementFactory = new NormalElementFactory('li', [], `リスト${i+1}`);
-      const listItem = normalElementFactory.createElement();
-      code = code + '\r\n\t' + listItem;
+    const listItemElement = this.listItemFactory.createElement();
+    [...Array(this.listItemCounter)].map(() => {
+      code += '\r\n\t' + listItemElement;
     });
-    const content = code + '\r\n';
-    return content;
+    const listContent = code + '\r\n';
+    return listContent;
   }
 
   /**
@@ -42,7 +42,7 @@ export class ListElementFactory extends HTMLElementFactory {
    * @returns リスト要素
    */
   public createElement(): string {
-    const element = this.normalElementFactory.createElement();
+    const element = this.listFactory.createElement();
     return element;
   }
 }

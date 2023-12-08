@@ -1,7 +1,6 @@
 /**
  * HTML要素を作成するクラスの抽象クラス
  */
-
 export abstract class HTMLElementFactory extends Object {
 
   /**

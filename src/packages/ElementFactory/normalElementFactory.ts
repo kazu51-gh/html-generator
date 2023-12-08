@@ -4,7 +4,6 @@ import { NormalElement } from "@/packages/ElementGenerator/normalElement";
 /**
  * 通常要素を作成するクラス
  */
-
 export class NormalElementFactory extends HTMLElementFactory {
   private normalElement: NormalElement;
 

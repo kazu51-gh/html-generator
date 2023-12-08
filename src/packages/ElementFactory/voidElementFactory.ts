@@ -4,7 +4,6 @@ import { VoidElement } from "@/packages/ElementGenerator/voidElement";
 /**
  * 空要素を作成するクラス
  */
-
 export class VoidElementFactory extends HTMLElementFactory {
   private voidElement: VoidElement;
 
