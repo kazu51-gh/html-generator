@@ -30,28 +30,10 @@ export class HTMLDocumentFactory extends Object {
    * @returns コンテンツ
    */
   public createHtmlContent(): string {
-    const head = this.createHeadElement();
-    const body = this.createBodyElement();
-    const htmlContent = '\r\n\t' + head + '\r\n\t' + body + '\r\n';
+    const headElement = this.headFactory.createElement();
+    const bodyElement = this.bodyFactory.createElement();
+    const htmlContent = '\r\n\t' + headElement + '\r\n\t' + bodyElement + '\r\n';
     return htmlContent;
-  }
-
-  /**
-   * head要素を作成する
-   * @returns head要素
-   */
-  public createHeadElement(): string {
-    const element = this.headFactory.createElement();
-    return element;
-  }
-
-  /**
-   * body要素を作成する
-   * @returns body要素
-   */
-  public createBodyElement(): string {
-    const element = this.bodyFactory.createElement();
-    return element;
   }
 
   /**

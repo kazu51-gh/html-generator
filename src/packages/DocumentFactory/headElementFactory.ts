@@ -30,38 +30,11 @@ export class HeadElementFactory extends HTMLElementFactory {
    * @returns コンテンツ
    */
   public createHeadContent(): string {
-    const charset = this.createCharset();
-    const description = this.createDescription();
-    const title = this.createTitleElement();
-    const headContent = '\r\n\t\t' + charset + '\r\n\t\t' + description + '\r\n\t\t' + title + '\r\n\t';
+    const charset = this.charsetFactory.createElement();
+    const description = this.descriptionFactory.createElement();
+    const titleElement = this.titleFactory.createElement();
+    const headContent = '\r\n\t\t' + charset + '\r\n\t\t' + description + '\r\n\t\t' + titleElement + '\r\n\t';
     return headContent;
-  }
-
-  /**
-   * charsetを定義するmeta要素を作成する
-   * @returns charsetのmeta要素
-   */
-  public createCharset(): string {
-    const element = this.charsetFactory.createElement();
-    return element;
-  }
-
-  /**
-   * descriptionを定義するmeta要素を作成する
-   * @returns descriptionのmeta要素
-   */
-  public createDescription(): string {
-    const element = this.descriptionFactory.createElement();
-    return element;
-  }
-
-  /**
-   * title要素を作成する
-   * @returns タイトル要素
-   */
-  public createTitleElement(): string {
-    const element = this.titleFactory.createElement();
-    return element;
   }
 
   /**
