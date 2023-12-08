@@ -1,7 +1,7 @@
-import { Content } from "@/packages/ElementGenerator/content";
-import { EndingTag } from "@/packages/ElementGenerator/endingTag";
-import { HTMLElement } from "@/packages/ElementGenerator/HTMLElement";
-import { StartingTag } from "@/packages/ElementGenerator/startingTag";
+import { Content } from "./content";
+import { EndingTag } from "./endingTag";
+import { HTMLElement } from "./HTMLElement";
+import { StartingTag } from "./startingTag";
 
 /**
  * HTMLの通常要素(normal element)を定義するクラス
