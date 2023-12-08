@@ -1,7 +1,6 @@
 /**
  * HTMLのタグ(tag)を定義するクラス
  */
-
 export class Tag extends Object {
   private readonly lessThan: string = '<';
   private readonly greaterThan: string = '>';

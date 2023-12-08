@@ -1,7 +1,6 @@
 /**
  * HTMLのコンテンツ(content)を定義するクラス
  */
-
 export class Content extends Object {
   private content: string;
 

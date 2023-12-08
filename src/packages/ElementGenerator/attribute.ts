@@ -1,7 +1,6 @@
 /**
  * HTMLの属性(attribute)を定義するクラス
  */
-
 export class Attribute extends Object {
   private attributes: string[];
 

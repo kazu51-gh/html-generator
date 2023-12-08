@@ -4,7 +4,6 @@ import { Tag } from "@/packages/ElementGenerator/tag";
 /**
  * HTMLの開始タグ(starting tag)を定義するクラス
  */
-
 export class StartingTag extends Tag {
   private attribute: Attribute;
 
@@ -19,21 +18,12 @@ export class StartingTag extends Tag {
   }
 
   /**
-   * 属性を取得する
-   * @returns 属性
-   */
-  public getAttribute(): string {
-    const attribute = this.attribute.getAttribute();
-    return(attribute);
-  }
-
-  /**
    * 開始タグを生成する
    * @returns 開始タグ
    */
   public generateStartingTag(): string {
     const lessThan = this.getLessThan();
-    const attribute = this.getAttribute();
+    const attribute = this.attribute.getAttribute();
     const tagName = this.getTagName();
     const greaterThan = this.getGreaterThan();
 
