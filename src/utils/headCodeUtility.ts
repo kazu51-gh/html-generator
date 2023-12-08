@@ -1,5 +1,5 @@
-import { NormalElementFactory } from "@/ElementFactory/normalElementFactory";
-import { VoidElementFactory } from "@/ElementFactory/voidElementFactory";
+import { NormalElementFactory } from "@/packages/ElementFactory/normalElementFactory";
+import { VoidElementFactory } from "@/packages/ElementFactory/voidElementFactory";
 
 /**
  * ページ情報設定画面のhead部コードを作成するユーティリティクラス
