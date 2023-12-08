@@ -1,6 +1,6 @@
-import { HTMLElementFactory } from "@/packages/ElementFactory/HTMLElementFactory";
-import { NormalElementFactory } from "@/packages/ElementFactory/normalElementFactory";
-import { VoidElementFactory } from "@/packages/ElementFactory/voidElementFactory";
+import { HTMLElementFactory } from "../ElementFactory/HTMLElementFactory";
+import { NormalElementFactory } from "../ElementFactory/normalElementFactory";
+import { VoidElementFactory } from "../ElementFactory/voidElementFactory";
 
 /**
  * HTML文書のhead要素を作成するクラス

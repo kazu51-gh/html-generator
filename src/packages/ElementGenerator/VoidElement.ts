@@ -1,5 +1,5 @@
-import { HTMLElement } from "@/packages/ElementGenerator/HTMLElement";
-import { StartingTag } from "@/packages/ElementGenerator/startingTag";
+import { HTMLElement } from "./HTMLElement";
+import { StartingTag } from "./startingTag";
 
 /**
  * HTMLの空要素(void element)を定義するクラス

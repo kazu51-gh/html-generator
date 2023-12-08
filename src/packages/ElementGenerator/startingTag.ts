@@ -1,5 +1,5 @@
-import { Attribute } from "@/packages/ElementGenerator/attribute";
-import { Tag } from "@/packages/ElementGenerator/tag";
+import { Attribute } from "./attribute";
+import { Tag } from "./tag";
 
 /**
  * HTMLの開始タグ(starting tag)を定義するクラス
