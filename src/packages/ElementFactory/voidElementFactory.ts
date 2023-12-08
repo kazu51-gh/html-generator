@@ -1,5 +1,5 @@
-import { HTMLElementFactory } from "./HTMLElementFactory";
-import { VoidElement } from "../ElementGenerator/voidElement";
+import { HTMLElementFactory } from "@/packages/ElementFactory/HTMLElementFactory";
+import { VoidElement } from "@/packages/ElementGenerator/voidElement";
 
 /**
  * 空要素を作成するクラス

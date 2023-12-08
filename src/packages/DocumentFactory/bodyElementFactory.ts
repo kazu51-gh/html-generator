@@ -1,5 +1,5 @@
-import { HTMLElementFactory } from "../ElementFactory/HTMLElementFactory";
-import { NormalElementFactory } from "../ElementFactory/normalElementFactory";
+import { HTMLElementFactory } from "@/packages/ElementFactory/HTMLElementFactory";
+import { NormalElementFactory } from "@/packages/ElementFactory/normalElementFactory";
 
 /**
  * HTML文書のbody要素を作成するクラス

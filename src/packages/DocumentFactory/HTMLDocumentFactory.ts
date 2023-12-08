@@ -1,6 +1,6 @@
-import { BodyElementFactory } from "./bodyElementFactory";
-import { HeadElementFactory } from "./headElementFactory";
-import { NormalElementFactory } from "../ElementFactory/normalElementFactory";
+import { BodyElementFactory } from "@/packages/DocumentFactory/bodyElementFactory";
+import { HeadElementFactory } from "@/packages/DocumentFactory/headElementFactory";
+import { NormalElementFactory } from "@/packages/ElementFactory/normalElementFactory";
 
 /**
  * HTML文書を作成するクラス

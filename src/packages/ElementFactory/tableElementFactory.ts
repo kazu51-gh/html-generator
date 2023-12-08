@@ -1,5 +1,5 @@
-import { HTMLElementFactory } from "./HTMLElementFactory";
-import { NormalElementFactory } from "./normalElementFactory";
+import { HTMLElementFactory } from "@/packages/ElementFactory/HTMLElementFactory";
+import { NormalElementFactory } from "@/packages/ElementFactory/normalElementFactory";
 
 /**
  * table要素を作成するクラス

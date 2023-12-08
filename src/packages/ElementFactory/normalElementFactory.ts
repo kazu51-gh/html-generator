@@ -1,5 +1,5 @@
-import { HTMLElementFactory } from "./HTMLElementFactory";
-import { NormalElement } from "../ElementGenerator/normalElement";
+import { HTMLElementFactory } from "@/packages/ElementFactory/HTMLElementFactory";
+import { NormalElement } from "@/packages/ElementGenerator/normalElement";
 
 /**
  * 通常要素を作成するクラス
