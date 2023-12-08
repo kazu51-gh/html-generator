@@ -10,7 +10,7 @@ export class ListElementFactory extends HTMLElementFactory {
   private normalElementFactory: NormalElementFactory;
 
   /**
-   * リスト要素生成器のインスタンスを生成する
+   * リスト要素作成器のインスタンスを生成する
    * @param tagName タグ名
    * @param attributes 属性群
    * @param listItemCounter 内包するリストアイテム要素(li要素)の個数

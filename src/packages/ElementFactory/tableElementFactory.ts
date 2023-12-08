@@ -1,13 +1,16 @@
 import { HTMLElementFactory } from "@/packages/ElementFactory/HTMLElementFactory";
 import { NormalElementFactory } from "@/packages/ElementFactory/normalElementFactory";
 
+/**
+ * table要素を作成するクラス
+ */
 export class TableElementFactory extends HTMLElementFactory {
   private normalElementFactory: NormalElementFactory;
   private columns: number;
   private rows: number;
 
   /**
-   * 
+   * table要素作成器のインスタンスを生成する
    * @param tagName タグ名
    * @param attributes 属性群
    * @param columns 列数(横方向のセル数)
