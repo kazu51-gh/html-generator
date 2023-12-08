@@ -1,5 +1,5 @@
 import { HTMLElementFactory } from "@/packages/ElementFactory/HTMLElementFactory";
-import { NormalElementFactory } from "@/packages/ElementFactory/NormalElementFactory";
+import { NormalElementFactory } from "@/packages/ElementFactory/normalElementFactory";
 
 export class TableElementFactory extends HTMLElementFactory {
   private normalElementFactory: NormalElementFactory;
