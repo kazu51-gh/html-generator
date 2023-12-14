@@ -1,13 +1,14 @@
 import { FC, useState } from "react";
+import { AttributeUtility } from "@/utils/attributeUtility";
 import { TagUtility } from "@/utils/tagUtility";
 import AttributeList from "@/components/tagList/attributeList";
 import DisplayCode from "@/components/tagList/displayCode";
 import IdAndClass from "@/components/tagList/idAndClass";
 import NumberOfElements from "@/components/tagList/numberOfElements";
 import SelectHeading from "@/components/radio/selectHeading";
-import { AttributeUtility } from "@/utils/attributeUtility";
 import { headingDescriptions } from "@/data/headingData";
 import { contentData } from "@/data/contentData";
+import { headingElements, listElements } from "@/data/elementData";
 
 type Props = {
   title: string;
@@ -18,98 +19,52 @@ type Props = {
 const Accordion: FC<Props> = ({ title, description, tagList }) => {
   const [checkedAttributes, setCheckedAttributes] = useState<string[]>([]);
   const [radioValue, setRadioValue] = useState('h1');
-  const [ulListNum, setUlListNum] = useState(1);
-  const [olListNum, setOlListNum] = useState(1);
+  const [lists, setLists] = useState<number>(1);
   const [columns, setColumns] = useState(1);
   const [rows, setRows] = useState(1);
   const [tagId, setTagId] = useState('');
   const [tagClass, setTagClass] = useState('');
   const tagName = TagUtility.getTagName(tagList);
 
-  const displayHTML = (tagList: string[]) => {
-    if (tagList.length !== 1) { // h要素(h1~h6要素)
-      const tagName = radioValue;
-      const attributeList = AttributeUtility.getAttributeList('h', tagId, tagClass, checkedAttributes);
-      const content = '見出し';
+  const displayHTML = () => {
+    if (headingElements.includes(tagName)) {
+      const attributeList = AttributeUtility.getAttributeList(radioValue, tagId, tagClass, checkedAttributes);
+      const content = contentData['h'];
       return(
-        <div>
-          <SelectHeading
-            tagList={tagList}
-            radioValue={radioValue}
-            setRadioValue={setRadioValue}
-          />
-          <DisplayCode
-            tagName={tagName}
-            attributes={attributeList}
-            content={content}
-          />
-        </div>
+        <DisplayCode
+          tagName={tagName}
+          attributes={attributeList}
+          content={content}
+        />
       );
-    } else if (tagList[0] === 'ul') {
-      const tagName = tagList[0];
-      const attributeList = AttributeUtility.getAttributeList('ul', tagId, tagClass, checkedAttributes);
+    } else if (listElements.includes(tagName)) {
+      const attributeList = AttributeUtility.getAttributeList(tagName, tagId, tagClass, checkedAttributes);
       return(
-        <div>
-          <NumberOfElements
-            title="リストの数(1以上の整数を入力)"
-            setFunction={setUlListNum}
-          />
-          <DisplayCode
-            tagName={tagName}
-            attributes={attributeList}
-            lists={ulListNum}
-          />
-        </div>
+        <DisplayCode
+          tagName={tagName}
+          attributes={attributeList}
+          lists={lists}
+        />
       );
-    } else if (tagList[0] === 'ol') {
-      const tagName = tagList[0];
-      const attributeList = AttributeUtility.getAttributeList('ol', tagId, tagClass, checkedAttributes);
+    } else if (tagName === 'table') {
+      const attributeList = AttributeUtility.getAttributeList(tagName, tagId, tagClass, checkedAttributes);
       return(
-        <div>
-          <NumberOfElements
-            title="リストの数(1以上の整数を入力)"
-            setFunction={setOlListNum}
-          />
-          <DisplayCode
-            tagName={tagName}
-            attributes={attributeList}
-            lists={olListNum}
-          />
-        </div>
+        <DisplayCode
+          tagName={tagName}
+          attributes={attributeList}
+          columns={columns}
+          rows={rows}
+        />
       );
-    } else if (tagList[0] === 'table') {
-      const tagName = tagList[0];
-      const attributeList = AttributeUtility.getAttributeList('table', tagId, tagClass, checkedAttributes);
-      return(
-        <div>
-          <NumberOfElements
-            title="行数(1以上の整数を入力)"
-            setFunction={setColumns}
-          />
-          <NumberOfElements
-            title="列数(1以上の整数を入力)"
-            setFunction={setRows}
-          />
-          <DisplayCode
-            tagName={tagName}
-            attributes={attributeList}
-            columns={columns}
-            rows={rows}
-          />
-        </div>
-      );
-    } else { // h要素, ul要素, ol要素, table要素以外の要素
-      const tagName = tagList[0];
-      const attributeList = AttributeUtility.getAttributeList(tagList[0], tagId, tagClass, checkedAttributes);
+    } else {
+      const attributeList = AttributeUtility.getAttributeList(tagName, tagId, tagClass, checkedAttributes);
       const content = contentData[tagName];
       return(
-        <div>
-          <DisplayCode
-            tagName={tagName}
-            attributes={attributeList}
-            content={content}
-          />
-        </div>
+        <DisplayCode
+          tagName={tagName}
+          attributes={attributeList}
+          content={content}
+        />
       );
     }
   }
@@ -139,7 +94,19 @@ const Accordion: FC<Props> = ({ title, description, tagList }) => {
             setCheckedAttributes={setCheckedAttributes}
           />
         </div>
-        {displayHTML(tagList)}
+        {headingElements.includes(tagName) && 
+          <SelectHeading tagList={tagList} radioValue={radioValue} setRadioValue={setRadioValue} />
+        }
+        {listElements.includes(tagName) &&
+          <NumberOfElements title="リスト数(1以上の整数)" setFunction={setLists} />
+        }
+        {tagName === 'table' &&
+          <NumberOfElements title="行数(1以上の整数)" setFunction={setColumns} />
+        }
+        {tagName === 'table' &&
+          <NumberOfElements title="列数(1以上の整数)" setFunction={setRows} />
+        }
+        {displayHTML()}
       </div>
     </details>
   );
