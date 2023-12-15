@@ -1,4 +1,4 @@
-import { functionDescriptions } from "@/data/functionData";
+import { functionDescriptions } from "@/data/descriptionData";
 import FunctionDescription from "@/components/headings/functionDescription";
 
 const Home = () => {

@@ -1,5 +1,6 @@
 import Accordion from "@/components/tagList/accordion";
-import { tagDescriptions, tagNames, tagTitles } from "@/data/tagData";
+import { tagNames, tagTitles } from "@/data/tagData";
+import { tagDescriptions } from "@/data/descriptionData";
 import PageTitle from "@/components/headings/pageTitle";
 
 const ElementList = () => {

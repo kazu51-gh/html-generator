@@ -6,7 +6,7 @@ import DisplayCode from "@/components/tagList/displayCode";
 import IdAndClass from "@/components/tagList/idAndClass";
 import NumberOfElements from "@/components/tagList/numberOfElements";
 import SelectHeading from "@/components/radio/selectHeading";
-import { headingDescriptions } from "@/data/headingData";
+import { headingDescriptions } from "@/data/descriptionData";
 import { contentData } from "@/data/contentData";
 import { headingElements, listElements } from "@/data/elementData";
 
