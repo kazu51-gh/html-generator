@@ -1,4 +1,6 @@
-export const tagNames = {
+import { TagList } from "@/types/tagList";
+
+export const tagNames: TagList = {
   a: ['a'],
   blockquote: ['blockquote'],
   br: ['br'],
