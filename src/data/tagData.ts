@@ -17,23 +17,3 @@ export const tagNames = {
   table: ['table'],
   ul: ['ul'],
 }
-
-export const tagTitles = {
-  a: '<a> : リンク',
-  blockquote: '<blockquote> : 引用',
-  br: '<br> : 改行',
-  button: '<button> : ボタン',
-  code: '<code> : コード表示',
-  div: '<div> : ブロック要素のコンテナ',
-  h: '<h1> ~ <h6> : 見出し',
-  hr: '<hr> : 水平線',
-  img: '<img> : 画像',
-  input: '<input> : 入力フォーム',
-  ol: '<ol> : 順序ありの箇条書き',
-  p: '<p> : 本文',
-  span: '<span> : インライン要素のコンテナ',
-  strong: '<strong> : 強調表示',
-  textarea: '<textarea> : テキストエリア',
-  table: '<table> : テーブル',
-  ul: '<ul> : 順序なしの箇条書き',
-}

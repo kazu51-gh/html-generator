@@ -1,5 +1,25 @@
 import { Description } from "@/types/description";
 
+export const accordionDescriptions: Description = {
+  a: 'a : ハイパーリンク',
+  blockquote: 'blockquote : 引用',
+  br: 'br : 改行',
+  button: 'button : ボタン',
+  code: 'code : コンピュータコード',
+  div: 'div : 要素用コンテナ',
+  h: 'h1 ~ h6 : 見出し',
+  hr: 'hr : 主題区切り(水平線)',
+  img: 'img : 画像',
+  input: 'input : 入力フォーム',
+  ol: 'ol : 順序付きリスト',
+  p: 'p : 段落',
+  span: 'span : テキストマークアップ用コンテナ',
+  strong: 'strong : 重要要素',
+  textarea: 'textarea : テキストエリア',
+  table: 'table : 表',
+  ul: 'ul : 順序なしリスト',
+}
+
 export const functionDescriptions: Description = {
   codeArea: 'HTML文書のbody部となる内容を記述するエリアです。',
   download: '作成したHTML文書をダウンロードするページです。',

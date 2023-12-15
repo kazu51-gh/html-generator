@@ -1,6 +1,6 @@
 import Accordion from "@/components/tagList/accordion";
-import { tagNames, tagTitles } from "@/data/tagData";
-import { tagDescriptions } from "@/data/descriptionData";
+import { tagNames } from "@/data/tagData";
+import { accordionDescriptions, tagDescriptions } from "@/data/descriptionData";
 import PageTitle from "@/components/headings/pageTitle";
 
 const ElementList = () => {
@@ -10,87 +10,87 @@ const ElementList = () => {
       <div className="h-[90%] w-[90%] overflow-y-scroll">
         <div className="border border-black divide-y divide-black rounded dark:bg-gray-700 dark:border-gray-500 dark:divide-gray-500 dark:text-gray-300">
           <Accordion
-            title={tagTitles.h}
+            title={accordionDescriptions.h}
             description={tagDescriptions.h}
             tagList={tagNames.h}
           />
           <Accordion
-            title={tagTitles.p}
+            title={accordionDescriptions.p}
             description={tagDescriptions.p}
             tagList={tagNames.p}
           />
           <Accordion
-            title={tagTitles.a}
+            title={accordionDescriptions.a}
             description={tagDescriptions.a}
             tagList={tagNames.a}
           />
           <Accordion
-            title={tagTitles.img}
+            title={accordionDescriptions.img}
             description={tagDescriptions.img}
             tagList={tagNames.img}
           />
           <Accordion
-            title={tagTitles.ul}
+            title={accordionDescriptions.ul}
             description={tagDescriptions.ul}
             tagList={tagNames.ul}
           />
           <Accordion
-            title={tagTitles.ol}
+            title={accordionDescriptions.ol}
             description={tagDescriptions.ol}
             tagList={tagNames.ol}
           />
           <Accordion
-            title={tagTitles.div}
+            title={accordionDescriptions.div}
             description={tagDescriptions.div}
             tagList={tagNames.div}
           />
           <Accordion
-            title={tagTitles.span}
+            title={accordionDescriptions.span}
             description={tagDescriptions.span}
             tagList={tagNames.span}
           />
           <Accordion
-            title={tagTitles.br}
+            title={accordionDescriptions.br}
             description={tagDescriptions.br}
             tagList={tagNames.br}
           />
           <Accordion
-            title={tagTitles.hr}
+            title={accordionDescriptions.hr}
             description={tagDescriptions.hr}
             tagList={tagNames.hr}
           />
           <Accordion
-            title={tagTitles.strong}
+            title={accordionDescriptions.strong}
             description={tagDescriptions.strong}
             tagList={tagNames.strong}
           />
           <Accordion
-            title={tagTitles.blockquote}
+            title={accordionDescriptions.blockquote}
             description={tagDescriptions.blockquote}
             tagList={tagNames.blockquote}
           />
           <Accordion
-            title={tagTitles.code}
+            title={accordionDescriptions.code}
             description={tagDescriptions.code}
             tagList={tagNames.code}
           />
           <Accordion
-            title={tagTitles.input}
+            title={accordionDescriptions.input}
             description={tagDescriptions.input}
             tagList={tagNames.input}
           />
           <Accordion
-            title={tagTitles.textarea}
+            title={accordionDescriptions.textarea}
             description={tagDescriptions.textarea}
             tagList={tagNames.textarea}
           />
           <Accordion
-            title={tagTitles.button}
+            title={accordionDescriptions.button}
             description={tagDescriptions.button}
             tagList={tagNames.button}
           />
           <Accordion
-            title={tagTitles.table}
+            title={accordionDescriptions.table}
             description={tagDescriptions.table}
             tagList={tagNames.table}
           />
