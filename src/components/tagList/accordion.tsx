@@ -27,8 +27,8 @@ const Accordion: FC<Props> = ({ title, description, tagList }) => {
   const tagName = TagUtility.getTagName(tagList);
 
   const displayHTML = () => {
+    const attributeList = AttributeUtility.getAttributeList(tagId, tagClass, checkedAttributes);
     if (headingElements.includes(tagName)) {
-      const attributeList = AttributeUtility.getAttributeList(radioValue, tagId, tagClass, checkedAttributes);
       const content = contentData['h'];
       return(
         <DisplayCode
@@ -38,7 +38,6 @@ const Accordion: FC<Props> = ({ title, description, tagList }) => {
         />
       );
     } else if (listElements.includes(tagName)) {
-      const attributeList = AttributeUtility.getAttributeList(tagName, tagId, tagClass, checkedAttributes);
       return(
         <DisplayCode
           tagName={tagName}
@@ -47,7 +46,6 @@ const Accordion: FC<Props> = ({ title, description, tagList }) => {
         />
       );
     } else if (tagName === 'table') {
-      const attributeList = AttributeUtility.getAttributeList(tagName, tagId, tagClass, checkedAttributes);
       return(
         <DisplayCode
           tagName={tagName}
@@ -57,7 +55,6 @@ const Accordion: FC<Props> = ({ title, description, tagList }) => {
         />
       );
     } else {
-      const attributeList = AttributeUtility.getAttributeList(tagName, tagId, tagClass, checkedAttributes);
       const content = contentData[tagName];
       return(
         <DisplayCode
