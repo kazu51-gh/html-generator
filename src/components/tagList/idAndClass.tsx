@@ -1,5 +1,5 @@
 import { Dispatch, FC, SetStateAction, useState } from "react";
-import { headingDescriptions } from "@/data/headingData";
+import { headingDescriptions } from "@/data/descriptionData";
 
 type Props = {
   setTagId: Dispatch<SetStateAction<string>>;

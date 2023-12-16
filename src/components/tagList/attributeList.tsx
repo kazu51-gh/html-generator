@@ -1,6 +1,6 @@
 import { Dispatch, FC, SetStateAction } from "react";
 import { attributeDescriptions, attributes } from "@/data/attributeData";
-import { headingDescriptions } from "@/data/headingData";
+import { headingDescriptions } from "@/data/descriptionData";
 
 type Props = {
   tagName: string;

@@ -1,5 +1,5 @@
 import { Dispatch, FC, SetStateAction } from "react";
-import { headingDescriptions } from "@/data/headingData";
+import { headingDescriptions } from "@/data/descriptionData";
 import DisabledValue from "@/components/input/disabledValue";
 import PageTitle from "@/components/headings/pageTitle";
 import SettingTitle from "@/components/headings/settingTitle";
