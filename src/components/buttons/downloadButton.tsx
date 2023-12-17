@@ -13,7 +13,7 @@ const DownloadButton: FC<Props> = ({ pageTitle, pageDescription, textareaData })
   return(
     <div>
       <button
-        className="border border-black font-medium p-2 rounded text-lg dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300"
+        className="border border-black font-medium p-2 rounded text-lg"
         onClick={() => downloadUtility.downloadHTMLDocument()}
         type="button"
       >

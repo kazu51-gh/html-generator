@@ -1,7 +1,7 @@
 import { functionDescriptions } from "@/data/descriptionData";
 import FunctionDescription from "@/components/headings/functionDescription";
 
-const Home = () => {
+const HomeDescription = () => {
   return(
     <div>
       <h2 className="text-4xl">ようこそ</h2>
@@ -15,4 +15,4 @@ const Home = () => {
   );
 }
 
-export default Home;
+export default HomeDescription;

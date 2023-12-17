@@ -1,5 +1,5 @@
-import { Dispatch, FC, SetStateAction } from "react";
 import { attributeDescriptions, attributes } from "@/data/attributeData";
+import { Dispatch, FC, SetStateAction } from "react";
 import { headingDescriptions } from "@/data/descriptionData";
 
 type Props = {

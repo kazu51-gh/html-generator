@@ -1,6 +1,6 @@
-import Accordion from "@/components/tagList/accordion";
-import { tagNames } from "@/data/tagData";
 import { accordionDescriptions, tagDescriptions } from "@/data/descriptionData";
+import { tagNames } from "@/data/tagData";
+import Accordion from "@/components/tagList/accordion";
 import PageTitle from "@/components/headings/pageTitle";
 
 const ElementList = () => {
@@ -8,7 +8,7 @@ const ElementList = () => {
     <div className="h-full w-full">
       <PageTitle title="タグ一覧" />
       <div className="h-[90%] w-[90%] overflow-y-scroll">
-        <div className="border border-black divide-y divide-black rounded dark:bg-gray-700 dark:border-gray-500 dark:divide-gray-500 dark:text-gray-300">
+        <div className="border border-black divide-y divide-black rounded">
           <Accordion
             title={accordionDescriptions.h}
             description={tagDescriptions.h}

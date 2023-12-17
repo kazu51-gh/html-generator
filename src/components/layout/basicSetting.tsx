@@ -1,10 +1,10 @@
 import { Dispatch, FC, SetStateAction } from "react";
+import { HeadCodeUtility } from "@/utils/headCodeUtility";
 import { headingDescriptions } from "@/data/descriptionData";
 import DisabledValue from "@/components/input/disabledValue";
 import PageTitle from "@/components/headings/pageTitle";
 import SettingTitle from "@/components/headings/settingTitle";
 import SettingWindow from "@/components/input/settingWindow";
-import { HeadCodeUtility } from "@/utils/headCodeUtility";
 
 type Props = {
   pageTitle: string;
@@ -46,7 +46,7 @@ const BasicSetting: FC<Props> = ({ pageTitle, setPageTitle, pageDescription, set
         headingTitle="head部のコード"
         description={headingDescriptions.head}
       />
-      <div className="border border-black p-1 my-3 whitespace-pre-wrap dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300">
+      <div className="border border-black p-1 my-3 whitespace-pre-wrap">
         {head.createElement()}
       </div>
     </div>

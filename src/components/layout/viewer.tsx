@@ -1,6 +1,6 @@
 import { FC } from "react";
-import parse from "html-react-parser";
 import PageTitle from "@/components/headings/pageTitle";
+import parse from "html-react-parser";
 
 type Props = {
   textareaData: string;
@@ -10,7 +10,7 @@ const Viewer: FC<Props> = ({ textareaData }) => {
   return(
     <div className="h-full w-full">
       <PageTitle title="プレビュー" />
-      <div className="border border-black rounded h-[90%] p-1.5 dark:bg-white dark:border-gray-500 dark:text-black">
+      <div className="border border-black rounded h-[90%] p-1.5">
         <div className="default-css">
           {parse(textareaData)}
         </div>

@@ -1,14 +1,14 @@
-import { FC, useState } from "react";
 import { AttributeUtility } from "@/utils/attributeUtility";
+import { contentData } from "@/data/contentData";
+import { FC, useState } from "react";
+import { headingDescriptions } from "@/data/descriptionData";
+import { headingElements, listElements } from "@/data/elementData";
 import { TagUtility } from "@/utils/tagUtility";
 import AttributeList from "@/components/tagList/attributeList";
 import DisplayCode from "@/components/tagList/displayCode";
 import IdAndClass from "@/components/tagList/idAndClass";
 import NumberOfElements from "@/components/tagList/numberOfElements";
 import SelectHeading from "@/components/radio/selectHeading";
-import { headingDescriptions } from "@/data/descriptionData";
-import { contentData } from "@/data/contentData";
-import { headingElements, listElements } from "@/data/elementData";
 
 type Props = {
   title: string;
@@ -78,9 +78,9 @@ const Accordion: FC<Props> = ({ title, description, tagList }) => {
           />
         </svg>
       </summary>
-      <div className="border-t border-t-black p-2 dark:border-t-gray-500">
+      <div className="border-t border-t-black p-2">
         {description}
-        <hr className="border border-gray-300 my-3 dark:border-gray-500" />
+        <hr className="border border-gray-300 my-3" />
         <div className="attribute-settings">
           <h3 className="text-xl">属性</h3>
           <p className="text-sm text-[#9CA3AF]">{headingDescriptions.attribute}</p>

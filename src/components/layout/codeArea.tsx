@@ -11,7 +11,7 @@ const CodeArea: FC<Props> = ({ textareaData, setTextareaData }) => {
     <div className="h-full w-full">
       <PageTitle title="コードエリア" />
       <textarea
-        className="border border-black p-1.5 resize-none rounded text-lg h-[90%] w-full dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300"
+        className="border border-black p-1.5 resize-none rounded text-lg h-[90%] w-full"
         onChange={(e) => setTextareaData(e.target.value)}
         placeholder="HTMLを作成していきましょう"
         value={textareaData}

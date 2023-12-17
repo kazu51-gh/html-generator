@@ -19,7 +19,7 @@ const NumberOfElements:FC<Props> = ({ title, setFunction }) => {
     <div className="flex my-2">
       <p>{title}：</p>
       <input
-        className="border border-black px-1 w-12 rounded dark:bg-gray-500 dark:border-gray-300 dark:text-gray-300"
+        className="border border-black px-1 w-12 rounded"
         defaultValue={1}
         min={1}
         onChange={(e) => handleChange(e)}
