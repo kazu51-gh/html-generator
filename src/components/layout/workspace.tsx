@@ -1,12 +1,12 @@
 import { FC, useEffect, useState } from "react";
+import { SessionUtility } from "@/utils/sessionUtility";
 import BasicSetting from "@/components/layout/basicSetting";
 import CodeArea from "@/components/layout/codeArea";
-import Home from "@/components/layout/home";
+import HomeDescription from "@/components/layout/homeDescription";
 import HTMLDescription from "@/components/layout/htmlDescription";
 import HtmlDownload from "@/components/layout/htmlDownload";
 import ElementList from "@/components/layout/elementList";
 import Viewer from "@/components/layout/viewer";
-import { SessionUtility } from "@/utils/sessionUtility";
 
 type Props = {
   currentView: string;
@@ -32,7 +32,7 @@ const Workspace: FC<Props> = ({ currentView }) => {
   return(
     <div className="flex flex-row h-full w-full">
       <div className="flex-1 m-3">
-        {currentView === 'home' && <Home />}
+        {currentView === 'home' && <HomeDescription />}
         {currentView !== 'home' &&
           <CodeArea
             textareaData={textareaData}
