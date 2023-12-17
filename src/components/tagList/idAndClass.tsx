@@ -42,7 +42,7 @@ const IdAndClass:FC<Props> = ({ setTagId, setTagClass }) => {
         <h4 className="text-base">id</h4>
         <p className="text-sm text-[#9CA3AF]">{headingDescriptions.id}</p>
         <input
-          className="border border-black mt-3 px-1 rounded w-1/2 dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300"
+          className="border border-black mt-3 px-1 rounded w-1/2"
           onChange={(e) => handleIdChange(e)}
           type="text"
         />
@@ -52,7 +52,7 @@ const IdAndClass:FC<Props> = ({ setTagId, setTagClass }) => {
         <h4 className="text-base">class</h4>
         <p className="text-sm text-[#9CA3AF]">{headingDescriptions.class}</p>
         <input
-          className="border border-black mt-3 px-1 rounded w-1/2 dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300"
+          className="border border-black mt-3 px-1 rounded w-1/2"
           onChange={(e) => handleClassChange(e)}
           type="text"
         />

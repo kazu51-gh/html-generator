@@ -78,9 +78,9 @@ const Accordion: FC<Props> = ({ title, description, tagList }) => {
           />
         </svg>
       </summary>
-      <div className="border-t border-t-black p-2 dark:border-t-gray-500">
+      <div className="border-t border-t-black p-2">
         {description}
-        <hr className="border border-gray-300 my-3 dark:border-gray-500" />
+        <hr className="border border-gray-300 my-3" />
         <div className="attribute-settings">
           <h3 className="text-xl">属性</h3>
           <p className="text-sm text-[#9CA3AF]">{headingDescriptions.attribute}</p>

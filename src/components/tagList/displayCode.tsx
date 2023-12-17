@@ -15,11 +15,11 @@ const DisplayCode: FC<Props> = ({ tagName, attributes, content = '', lists = 0, 
 
   return(
     <div className="w-full">
-      <div className="border border-black p-1 my-2 whitespace-pre-wrap dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300">
+      <div className="border border-black p-1 my-2 whitespace-pre-wrap">
         {code}
       </div>
       <button
-        className="block border border-black p-1 mx-auto rounded hover:bg-slate-100 dark:bg-gray-700 dark:border-gray-500 dark:text-gray-300 dark:hover:bg-gray-600"
+        className="block border border-black p-1 mx-auto rounded hover:bg-slate-100"
         onClick={() => CodeUtility.copyCode(code)}
       >
         コードをコピー
