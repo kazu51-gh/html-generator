@@ -1,5 +1,5 @@
-import { FC } from "react";
 import { CodeUtility } from "@/utils/codeUtility";
+import { FC } from "react";
 
 type Props = {
   tagName: string;

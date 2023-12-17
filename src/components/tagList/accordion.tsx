@@ -1,14 +1,14 @@
-import { FC, useState } from "react";
 import { AttributeUtility } from "@/utils/attributeUtility";
+import { contentData } from "@/data/contentData";
+import { FC, useState } from "react";
+import { headingDescriptions } from "@/data/descriptionData";
+import { headingElements, listElements } from "@/data/elementData";
 import { TagUtility } from "@/utils/tagUtility";
 import AttributeList from "@/components/tagList/attributeList";
 import DisplayCode from "@/components/tagList/displayCode";
 import IdAndClass from "@/components/tagList/idAndClass";
 import NumberOfElements from "@/components/tagList/numberOfElements";
 import SelectHeading from "@/components/radio/selectHeading";
-import { headingDescriptions } from "@/data/descriptionData";
-import { contentData } from "@/data/contentData";
-import { headingElements, listElements } from "@/data/elementData";
 
 type Props = {
   title: string;

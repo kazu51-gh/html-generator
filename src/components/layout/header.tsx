@@ -1,5 +1,5 @@
-import { Dispatch, FC, SetStateAction } from "react";
 import { basePath } from "../../../next.config";
+import { Dispatch, FC, SetStateAction } from "react";
 import HeaderList from "@/components/list/headerList";
 import path from "path";
 

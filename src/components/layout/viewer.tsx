@@ -1,6 +1,6 @@
 import { FC } from "react";
-import parse from "html-react-parser";
 import PageTitle from "@/components/headings/pageTitle";
+import parse from "html-react-parser";
 
 type Props = {
   textareaData: string;
