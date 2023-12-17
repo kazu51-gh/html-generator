@@ -8,7 +8,7 @@ const font = Noto_Sans_JP({
 
 export const metadata: Metadata = {
   title: 'HTML Generator',
-  description: 'learn HTML and generate HTML file',
+  description: 'learn HTML and create HTML document',
 }
 
 export default function RootLayout({
