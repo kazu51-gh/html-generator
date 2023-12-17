@@ -1,5 +1,6 @@
 import { Dispatch, FC, SetStateAction } from "react";
 import { basePath } from "../../../next.config";
+import HeaderList from "@/components/list/headerList";
 import path from "path";
 
 const BASE_PATH = basePath ? basePath : "";
@@ -16,36 +17,31 @@ const Header: FC<Props> = ({ setCurrentView }) => {
         href={path.join(BASE_PATH, '/')}
       >HTML Generator</a>
       <ul className="flex flex-row max-[767px]:my-2">
-        <li
-          className="page-list max-[767px]:text-xs mx-5"
-          onClick={() => setCurrentView('home')}
-        >
-          HOME
-        </li>
-        <li
-          className="page-list max-[767px]:text-xs mx-5"
-          onClick={() => setCurrentView('page-setting')}
-        >
-          ページ情報設定
-        </li>
-        <li
-          className="page-list max-[767px]:text-xs mx-5"
-          onClick={() => setCurrentView('element-list')}
-        >
-          HTML要素一覧
-        </li>
-        <li
-          className="page-list max-[767px]:text-xs mx-5"
-          onClick={() => setCurrentView('viewer')}
-        >
-          プレビュー
-        </li>
-        <li
-          className="page-list max-[767px]:text-xs mx-5"
-          onClick={() => setCurrentView('html-download')}
-        >
-          ダウンロード
-        </li>
+        <HeaderList
+          listName="HOME"
+          viewName="home"
+          setCurrentView={setCurrentView}
+        />
+        <HeaderList
+          listName="ページ情報設定"
+          viewName="page-setting"
+          setCurrentView={setCurrentView}
+        />
+        <HeaderList
+          listName="HTML要素一覧"
+          viewName="element-list"
+          setCurrentView={setCurrentView}
+        />
+        <HeaderList
+          listName="プレビュー"
+          viewName="viewer"
+          setCurrentView={setCurrentView}
+        />
+        <HeaderList
+          listName="ダウンロード"
+          viewName="html-download"
+          setCurrentView={setCurrentView}
+        />
       </ul>
     </div>
   );
