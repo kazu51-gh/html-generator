@@ -1,19 +1,13 @@
-import { Dispatch, FC, SetStateAction } from "react";
+import { FC } from "react";
 import { HeadCodeUtility } from "@/utils/headCodeUtility";
+import { HeadData } from "@/types/htmlData";
 import { headingDescriptions } from "@/data/descriptionData";
 import DisabledValue from "@/components/input/disabledValue";
 import PageTitle from "@/components/headings/pageTitle";
 import SettingTitle from "@/components/headings/settingTitle";
 import SettingWindow from "@/components/input/settingWindow";
 
-type Props = {
-  pageTitle: string;
-  setPageTitle: Dispatch<SetStateAction<string>>;
-  pageDescription: string;
-  setPageDescription: Dispatch<SetStateAction<string>>;
-}
-
-const BasicSetting: FC<Props> = ({ pageTitle, setPageTitle, pageDescription, setPageDescription }) => {
+const BasicSetting: FC<HeadData> = ({ pageTitle, setPageTitle, pageDescription, setPageDescription }) => {
   const head = new HeadCodeUtility(pageTitle, pageDescription);
   
   return(

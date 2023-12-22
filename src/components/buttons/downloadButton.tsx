@@ -1,13 +1,8 @@
 import { FC } from "react";
+import { HTMLDocumentData } from "@/types/htmlData";
 import { HTMLDownloadUtility } from "@/utils/htmlDownloadUtility";
 
-type Props = {
-  pageTitle: string;
-  pageDescription: string;
-  textareaData: string;
-}
-
-const DownloadButton: FC<Props> = ({ pageTitle, pageDescription, textareaData }) => {
+const DownloadButton: FC<HTMLDocumentData> = ({ pageTitle, pageDescription, textareaData }) => {
   const downloadUtility = new HTMLDownloadUtility(pageTitle, pageDescription, textareaData);
 
   return(

@@ -1,14 +1,9 @@
 import { FC } from "react";
+import { HTMLDocumentData } from "@/types/htmlData";
 import DownloadButton from "@/components/buttons/downloadButton";
 import PageTitle from "@/components/headings/pageTitle";
 
-type Props = {
-  pageTitle: string;
-  pageDescription: string;
-  textareaData: string;
-}
-
-const HtmlDownload:FC<Props> = ({ pageTitle, pageDescription, textareaData }) => {
+const HtmlDownload:FC<HTMLDocumentData> = ({ pageTitle, pageDescription, textareaData }) => {
   return(
     <div className="h-full w-full">
       <PageTitle title="ダウンロード" />

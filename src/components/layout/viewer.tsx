@@ -1,12 +1,9 @@
+import { BodyData } from "@/types/htmlData";
 import { FC } from "react";
 import PageTitle from "@/components/headings/pageTitle";
 import parse from "html-react-parser";
 
-type Props = {
-  textareaData: string;
-}
-
-const Viewer: FC<Props> = ({ textareaData }) => {
+const Viewer: FC<BodyData> = ({ textareaData, setTextareaData }) => {
   return(
     <div className="h-full w-full">
       <PageTitle title="プレビュー" />

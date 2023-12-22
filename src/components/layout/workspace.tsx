@@ -49,7 +49,10 @@ const Workspace: FC<ViewState> = ({ currentView }) => {
         }
         {currentView === 'element-list' && <ElementList />}
         {currentView === 'viewer' &&
-          <Viewer textareaData={textareaData} />
+          <Viewer
+            textareaData={textareaData}
+            setTextareaData={setTextareaData}
+          />
         }
         {currentView === 'html-download' &&
           <HtmlDownload
