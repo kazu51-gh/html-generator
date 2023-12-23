@@ -1,14 +1,10 @@
 import { FC } from "react";
+import { Introduction } from "@/types/introduction";
 
-type Props = {
-  headingTitle: string;
-  description: string;
-}
-
-const SettingTitle: FC<Props> = ({ headingTitle, description }) => {
+const SettingTitle: FC<Introduction> = ({ title, description }) => {
   return(
     <div className="w-full">
-      <h3 className="text-xl">{headingTitle}</h3>
+      <h3 className="text-xl">{title}</h3>
       <p className="text-sm text-[#9CA3AF]">{description}</p>
     </div>
   );

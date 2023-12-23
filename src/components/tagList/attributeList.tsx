@@ -1,14 +1,9 @@
 import { attributeDescriptions, attributes } from "@/data/attributeData";
-import { Dispatch, FC, SetStateAction } from "react";
+import { CheckedAttributes } from "@/types/checkedAttributes";
+import { FC } from "react";
 import { headingDescriptions } from "@/data/descriptionData";
 
-type Props = {
-  tagName: string;
-  checkedAttributes: string[];
-  setCheckedAttributes: Dispatch<SetStateAction<string[]>>;
-}
-
-const AttributeList: FC<Props> = ({ tagName, checkedAttributes, setCheckedAttributes }) => {
+const AttributeList: FC<CheckedAttributes> = ({ tagName, checkedAttributes, setCheckedAttributes }) => {
   const globalAttributes = attributes['global'];
   const globalAttributeDescriptions = attributeDescriptions['global'];
   const tagAttributes = attributes[tagName];

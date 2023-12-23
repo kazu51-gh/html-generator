@@ -1,3 +1,4 @@
+import { AccordionValue } from "@/types/accordion";
 import { AttributeUtility } from "@/utils/attributeUtility";
 import { contentData } from "@/data/contentData";
 import { FC, useState } from "react";
@@ -10,13 +11,7 @@ import IdAndClass from "@/components/tagList/idAndClass";
 import NumberOfElements from "@/components/tagList/numberOfElements";
 import SelectHeading from "@/components/radio/selectHeading";
 
-type Props = {
-  title: string;
-  description: string;
-  tagList: string[];
-}
-
-const Accordion: FC<Props> = ({ title, description, tagList }) => {
+const Accordion: FC<AccordionValue> = ({ title, description, tagList }) => {
   const [checkedAttributes, setCheckedAttributes] = useState<string[]>([]);
   const [radioValue, setRadioValue] = useState('h1');
   const [lists, setLists] = useState<number>(1);

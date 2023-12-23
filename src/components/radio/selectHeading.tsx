@@ -1,12 +1,7 @@
-import { Dispatch, FC, SetStateAction } from "react";
+import { FC } from "react";
+import { Radio } from "@/types/radio";
 
-type Props = {
-  tagList: string[];
-  radioValue: string;
-  setRadioValue: Dispatch<SetStateAction<string>>;
-}
-
-const SelectHeading: FC<Props> = ({tagList, radioValue, setRadioValue}) => {
+const SelectHeading: FC<Radio> = ({tagList, radioValue, setRadioValue}) => {
   return(
     <div className="flex justify-evenly m-1 w-full">
       {tagList.map((tag) =>

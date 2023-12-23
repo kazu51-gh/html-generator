@@ -1,11 +1,7 @@
-import { Dispatch, FC, SetStateAction } from "react";
+import { FC } from "react";
+import { SetNumber } from "@/types/setNumber";
 
-type Props = {
-  title: string;
-  setFunction: Dispatch<SetStateAction<number>>;
-}
-
-const NumberOfElements:FC<Props> = ({ title, setFunction }) => {
+const NumberOfElements:FC<SetNumber> = ({ title, setFunction }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const number = parseInt(e.target.value);
     if (number >= 1) {

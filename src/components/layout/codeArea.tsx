@@ -1,8 +1,10 @@
-import { BodyData } from "@/types/htmlData";
+import { BodyData, BodyDataState } from "@/types/bodyData";
 import { FC } from "react";
 import PageTitle from "@/components/headings/pageTitle";
 
-const CodeArea: FC<BodyData> = ({ textareaData, setTextareaData }) => {
+type Body = BodyData & BodyDataState;
+
+const CodeArea: FC<Body> = ({ textareaData, setTextareaData }) => {
   return(
     <div className="h-full w-full">
       <PageTitle title="コードエリア" />

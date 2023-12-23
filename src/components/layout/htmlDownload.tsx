@@ -1,7 +1,10 @@
+import { BodyData } from "@/types/bodyData";
 import { FC } from "react";
-import { HTMLDocumentData } from "@/types/htmlData";
+import { HeadData } from "@/types/headData";
 import DownloadButton from "@/components/buttons/downloadButton";
 import PageTitle from "@/components/headings/pageTitle";
+
+type HTMLDocumentData = HeadData & BodyData;
 
 const HtmlDownload:FC<HTMLDocumentData> = ({ pageTitle, pageDescription, textareaData }) => {
   return(

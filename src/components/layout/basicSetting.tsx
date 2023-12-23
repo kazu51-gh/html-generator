@@ -1,20 +1,22 @@
 import { FC } from "react";
 import { HeadCodeUtility } from "@/utils/headCodeUtility";
-import { HeadData } from "@/types/htmlData";
+import { HeadData, HeadDataState } from "@/types/headData";
 import { headingDescriptions } from "@/data/descriptionData";
 import DisabledValue from "@/components/input/disabledValue";
 import PageTitle from "@/components/headings/pageTitle";
 import SettingTitle from "@/components/headings/settingTitle";
 import SettingWindow from "@/components/input/settingWindow";
 
-const BasicSetting: FC<HeadData> = ({ pageTitle, setPageTitle, pageDescription, setPageDescription }) => {
+type Head = HeadData & HeadDataState;
+
+const BasicSetting: FC<Head> = ({ pageTitle, setPageTitle, pageDescription, setPageDescription }) => {
   const head = new HeadCodeUtility(pageTitle, pageDescription);
   
   return(
     <div className="h-full w-full">
       <PageTitle title="ページ情報設定" />
       <SettingTitle
-        headingTitle="ページタイトル"
+        title="ページタイトル"
         description={headingDescriptions.title}
       />
       <SettingWindow
@@ -23,7 +25,7 @@ const BasicSetting: FC<HeadData> = ({ pageTitle, setPageTitle, pageDescription, 
         placeholder="(例) 私のホームページ"
       />
       <SettingTitle
-        headingTitle="ページ説明"
+        title="ページ説明"
         description={headingDescriptions.description}
       />
       <SettingWindow
@@ -32,12 +34,12 @@ const BasicSetting: FC<HeadData> = ({ pageTitle, setPageTitle, pageDescription, 
         placeholder="(例) 私のことを知ってください"
       />
       <SettingTitle
-        headingTitle="文字エンコーディング"
+        title="文字エンコーディング"
         description={headingDescriptions.charset}
       />
       <DisabledValue value="utf-8" />
       <SettingTitle
-        headingTitle="head部のコード"
+        title="head部のコード"
         description={headingDescriptions.head}
       />
       <div className="border border-black p-1 my-3 whitespace-pre-wrap">
