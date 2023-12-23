@@ -1,20 +1,14 @@
-import { Dispatch, FC, SetStateAction } from "react";
+import { FC } from "react";
+import { HeaderMenu } from "@/types/headerMenu";
 
-type Props = {
-  listName: string;
-  viewName: string;
-  setCurrentView: Dispatch<SetStateAction<string>>;
-}
-
-const HeaderList: FC<Props> = ({ listName, viewName, setCurrentView }) => {
+const HeaderList: FC<HeaderMenu> = ({ listName, viewName, setCurrentView }) => {
   return (
-    <li
-      className="page-list max-[767px]:text-xs"
+    <li className="page-list max-[767px]:text-xs"
       onClick={() => setCurrentView(viewName)}
     >
       {listName}
     </li>
-  )
+  );
 }
 
 export default HeaderList;
