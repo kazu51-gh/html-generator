@@ -1,6 +1,6 @@
 import { basePath } from "../../../next.config";
 import { FC } from "react";
-import { ViewState } from "@/types/viewState";
+import { ViewState } from "@/types/view";
 import HeaderList from "@/components/list/headerList";
 import path from "path";
 

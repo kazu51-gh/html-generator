@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { SessionUtility } from "@/utils/sessionUtility";
-import { ViewState } from "@/types/viewState";
+import { View } from "@/types/view";
 import BasicSetting from "@/components/layout/basicSetting";
 import CodeArea from "@/components/layout/codeArea";
 import ElementList from "@/components/layout/elementList";
@@ -9,7 +9,7 @@ import HTMLDescription from "@/components/layout/htmlDescription";
 import HtmlDownload from "@/components/layout/htmlDownload";
 import Viewer from "@/components/layout/viewer";
 
-const Workspace: FC<ViewState> = ({ currentView }) => {
+const Workspace: FC<View> = ({ currentView }) => {
   const [pageTitle, setPageTitle] = useState<string>(SessionUtility.getStoredData('pageTitle', ''));
   const [pageDescription, setPageDescription] = useState<string>(SessionUtility.getStoredData('pageDescription', ''));
   const [textareaData, setTextareaData] = useState<string>(SessionUtility.getStoredData('textareaData', ''));
