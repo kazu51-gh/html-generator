@@ -1,13 +1,9 @@
+import { DisabledInputWindow } from "@/types/inputWindow";
 import { FC } from "react";
 
-type Props = {
-  value: string;
-}
-
-const DisabledValue: FC<Props> = ({ value }) => {
+const DisabledValue: FC<DisabledInputWindow> = ({ value }) => {
   return(
-    <input
-      className="border border-black my-3 p-1.5 rounded text-lg w-1/2"
+    <input className="border border-black my-3 p-1.5 rounded text-lg w-1/2"
       type="text"
       value={value}
       disabled

@@ -1,15 +1,12 @@
 import { basePath } from "../../../next.config";
-import { Dispatch, FC, SetStateAction } from "react";
+import { FC } from "react";
+import { ViewState } from "@/types/view";
 import HeaderList from "@/components/list/headerList";
 import path from "path";
 
 const BASE_PATH = basePath ? basePath : "";
 
-type Props = {
-  setCurrentView: Dispatch<SetStateAction<string>>;
-}
-
-const Header: FC<Props> = ({ setCurrentView }) => {
+const Header: FC<ViewState> = ({ setCurrentView }) => {
   return(
     <div className="items-center flex flex-row max-[767px]:flex-col max-[767px]:justify-around min-[768px]:justify-between m-3">
       <a

@@ -1,12 +1,10 @@
-import { Dispatch, FC, SetStateAction } from "react";
+import { BodyData, BodyDataState } from "@/types/bodyData";
+import { FC } from "react";
 import PageTitle from "@/components/headings/pageTitle";
 
-type Props = {
-  textareaData: string;
-  setTextareaData: Dispatch<SetStateAction<string>>;
-}
+type Body = BodyData & BodyDataState;
 
-const CodeArea: FC<Props> = ({ textareaData, setTextareaData }) => {
+const CodeArea: FC<Body> = ({ textareaData, setTextareaData }) => {
   return(
     <div className="h-full w-full">
       <PageTitle title="コードエリア" />

@@ -1,12 +1,8 @@
-import { Dispatch, FC, SetStateAction, useState } from "react";
+import { FC, useState } from "react";
 import { headingDescriptions } from "@/data/descriptionData";
+import { IdClassState } from "@/types/idClassState";
 
-type Props = {
-  setTagId: Dispatch<SetStateAction<string>>;
-  setTagClass: Dispatch<SetStateAction<string>>;
-}
-
-const IdAndClass:FC<Props> = ({ setTagId, setTagClass }) => {
+const IdAndClass:FC<IdClassState> = ({ setTagId, setTagClass }) => {
   const [idError, setIdError] = useState<string>('');
   const [classError, setClassError] = useState<string>('');
 

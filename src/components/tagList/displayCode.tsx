@@ -1,16 +1,8 @@
 import { CodeUtility } from "@/utils/codeUtility";
+import { ElementMaterial } from "@/types/elementMaterial";
 import { FC } from "react";
 
-type Props = {
-  tagName: string;
-  attributes: string[];
-  content?: string;
-  lists?: number;
-  columns?: number;
-  rows?: number;
-}
-
-const DisplayCode: FC<Props> = ({ tagName, attributes, content = '', lists = 0, columns = 0, rows = 0 }) => {
+const DisplayCode: FC<ElementMaterial> = ({ tagName, attributes, content = '', lists = 0, columns = 0, rows = 0 }) => {
   const code = CodeUtility.createCode(tagName, attributes, content, lists, columns, rows);
 
   return(
