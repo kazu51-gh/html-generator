@@ -1,26 +1,17 @@
 import { FC } from "react";
-import { SetNumber } from "@/types/setNumber";
+import { SetNumberFunction } from "@/types/setFunction";
+import NumberInputWindow from "@/components/input/numberInputWindow";
 
-const NumberOfElements:FC<SetNumber> = ({ title, setFunction }) => {
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const number = parseInt(e.target.value);
-    if (number >= 1) {
-      setFunction(number);
-    } else {
-      setFunction(1);
-    }
-  }
+type SetNumber = SetNumberFunction & {
+  title: string;
+}
 
+const NumberOfElements: FC<SetNumber> = ({ title, setFunction }) => {
   return(
     <div className="flex my-2">
-      <p>{title}：</p>
-      <input
-        className="border border-black px-1 w-12 rounded"
-        defaultValue={1}
-        min={1}
-        onChange={(e) => handleChange(e)}
-        required
-        type="number"
+      <p>{title}<span className="px-1">:</span></p>
+      <NumberInputWindow
+        setFunction={setFunction}
       />
     </div>
   );

@@ -1,11 +1,11 @@
 import { Dispatch, SetStateAction } from "react";
 
-export type InputWindow = {
+export type Window = {
   value: string;
   setValue: Dispatch<SetStateAction<string>>;
   placeholder: string;
 }
 
-export type DisabledInputWindow = {
+export type DisabledWindow = {
   value: string;
 }

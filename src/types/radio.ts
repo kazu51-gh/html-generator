@@ -1,7 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 
-export type Radio = {
-  tagList: string[];
+export type RadioValue = {
   radioValue: string;
   setRadioValue: Dispatch<SetStateAction<string>>;
 }

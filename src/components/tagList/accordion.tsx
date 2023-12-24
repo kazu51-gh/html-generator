@@ -9,16 +9,17 @@ import AttributeList from "@/components/tagList/attributeList";
 import DisplayCode from "@/components/tagList/displayCode";
 import IdAndClass from "@/components/tagList/idAndClass";
 import NumberOfElements from "@/components/tagList/numberOfElements";
-import SelectHeading from "@/components/radio/selectHeading";
+import SelectHeading from "@/components/tagList/selectHeading";
+import SettingTitle from "@/components/headings/settingTitle";
 
 const Accordion: FC<AccordionValue> = ({ title, description, tagList }) => {
   const [checkedAttributes, setCheckedAttributes] = useState<string[]>([]);
-  const [radioValue, setRadioValue] = useState('h1');
+  const [radioValue, setRadioValue] = useState<string>('h1');
+  const [tagId, setTagId] = useState<string>('');
+  const [tagClass, setTagClass] = useState<string>('');
   const [lists, setLists] = useState<number>(1);
-  const [columns, setColumns] = useState(1);
-  const [rows, setRows] = useState(1);
-  const [tagId, setTagId] = useState('');
-  const [tagClass, setTagClass] = useState('');
+  const [columns, setColumns] = useState<number>(1);
+  const [rows, setRows] = useState<number>(1);
   const tagName = TagUtility.getTagName(tagList);
 
   const displayHTML = () => {
@@ -27,7 +28,7 @@ const Accordion: FC<AccordionValue> = ({ title, description, tagList }) => {
       const content = contentData['h'];
       return(
         <DisplayCode
-          tagName={tagName}
+          tagName={radioValue}
           attributes={attributeList}
           content={content}
         />
@@ -66,26 +67,25 @@ const Accordion: FC<AccordionValue> = ({ title, description, tagList }) => {
       <summary className="cursor-pointer flex justify-between items-center list-none p-2 text-lg">
         {title}
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
-          <path
-            fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width={1.5}
+          <path className="block transition-all duration-300 group-open:rotate-180 origin-center"
+            fill="none" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
             d="M 7,10.5 L 14,17.5 L 21,10.5"
-            className="block transition-all duration-300 group-open:rotate-180 origin-center"
           />
         </svg>
       </summary>
       <div className="border-t border-t-black p-2">
         {description}
-        <hr className="border border-gray-300 my-3" />
-        <div className="attribute-settings">
-          <h3 className="text-xl">属性</h3>
-          <p className="text-sm text-[#9CA3AF]">{headingDescriptions.attribute}</p>
-          <IdAndClass setTagId={setTagId} setTagClass={setTagClass} />
-          <AttributeList
-            tagName={tagName}
-            checkedAttributes={checkedAttributes}
-            setCheckedAttributes={setCheckedAttributes}
-          />
-        </div>
+        <hr className="border border-[#9CA3AF] my-1" />
+        <SettingTitle
+          title="属性"
+          description={headingDescriptions.attribute}
+        />
+        <IdAndClass setTagId={setTagId} setTagClass={setTagClass} />
+        <AttributeList
+          tagName={tagName}
+          checkedAttributes={checkedAttributes}
+          setCheckedAttributes={setCheckedAttributes}
+        />
         {headingElements.includes(tagName) && 
           <SelectHeading tagList={tagList} radioValue={radioValue} setRadioValue={setRadioValue} />
         }
