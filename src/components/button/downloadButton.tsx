@@ -9,15 +9,12 @@ const DownloadButton: FC<HTMLDocumentData> = ({ pageTitle, pageDescription, text
   const downloadUtility = new HTMLDownloadUtility(pageTitle, pageDescription, textareaData);
 
   return(
-    <div>
-      <button
-        className="border border-black font-medium p-2 rounded text-lg"
-        onClick={() => downloadUtility.downloadHTMLDocument()}
-        type="button"
-      >
-        HTMLファイルのダウンロード
-      </button>
-    </div>
+    <button className="border border-black p-2 rounded text-lg"
+      onClick={() => downloadUtility.downloadHTMLDocument()}
+      type="button"
+    >
+      HTMLファイルのダウンロード
+    </button>
   );
 }
 

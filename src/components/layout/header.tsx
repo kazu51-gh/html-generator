@@ -9,10 +9,11 @@ const BASE_PATH = basePath ? basePath : "";
 const Header: FC<ViewState> = ({ setCurrentView }) => {
   return(
     <div className="items-center flex flex-row max-[767px]:flex-col max-[767px]:justify-around min-[768px]:justify-between m-3">
-      <a
-        className="cursor-pointer font-medium text-2xl"
+      <a className="cursor-pointer font-medium text-2xl"
         href={path.join(BASE_PATH, '/')}
-      >HTML Generator</a>
+      >
+        HTML Generator
+      </a>
       <ul className="flex flex-row max-[767px]:my-2">
         <HeaderList
           listName="HOME"

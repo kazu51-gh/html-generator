@@ -7,7 +7,7 @@ const Viewer: FC<BodyData> = ({ textareaData }) => {
   return(
     <div className="h-full w-full">
       <PageTitle title="プレビュー" />
-      <div className="border border-black rounded h-[90%] p-1.5">
+      <div className="border border-black rounded h-[90%] p-1">
         <div className="default-css">
           {parse(textareaData)}
         </div>

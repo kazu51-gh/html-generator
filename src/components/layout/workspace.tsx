@@ -1,12 +1,12 @@
 import { FC, useEffect, useState } from "react";
 import { SessionUtility } from "@/utils/sessionUtility";
 import { View } from "@/types/view";
+import ApplicationDescription from "@/components/layout/applicationDescription";
 import BasicSetting from "@/components/layout/basicSetting";
 import CodeArea from "@/components/layout/codeArea";
 import ElementList from "@/components/layout/elementList";
-import HomeDescription from "@/components/layout/homeDescription";
 import HTMLDescription from "@/components/layout/htmlDescription";
-import HtmlDownload from "@/components/layout/htmlDownload";
+import HTMLDownload from "@/components/layout/htmlDownload";
 import Viewer from "@/components/layout/viewer";
 
 const Workspace: FC<View> = ({ currentView }) => {
@@ -29,7 +29,7 @@ const Workspace: FC<View> = ({ currentView }) => {
   return(
     <div className="flex flex-row h-full w-full">
       <div className="flex-1 m-3">
-        {currentView === 'home' && <HomeDescription />}
+        {currentView === 'home' && <ApplicationDescription />}
         {currentView !== 'home' &&
           <CodeArea
             textareaData={textareaData}
@@ -52,7 +52,7 @@ const Workspace: FC<View> = ({ currentView }) => {
           <Viewer textareaData={textareaData} />
         }
         {currentView === 'html-download' &&
-          <HtmlDownload
+          <HTMLDownload
             pageTitle={pageTitle}
             pageDescription={pageDescription}
             textareaData={textareaData}
